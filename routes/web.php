@@ -7,6 +7,10 @@ use \App\Http\Controllers\BusinessCommentController;
 use App\Http\Controllers\CustomerNotificationMobileController;
 use App\Http\Controllers\SettingController;
 use \App\Http\Controllers\AdsController;
+use \App\Http\Controllers\MainPageController;
+use App\Http\Controllers\CustomerBlogController;
+use \App\Http\Controllers\AjaxController;
+use \App\Http\Controllers\ActivityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,8 +41,11 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('businessComment', BusinessCommentController::class);
     Route::resource('customerNotification', CustomerNotificationMobileController::class);
     Route::resource('advert', AdsController::class);
+    Route::resource('mainPage', MainPageController::class);
+    Route::resource('customerBlog', CustomerBlogController::class);
+    Route::resource('activity', ActivityController::class);
 
-    Route::controller(\App\Http\Controllers\AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
+    Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
         Route::post('/update-featured', 'updateFeatured')->name('updateFeatured');
         Route::post('/delete/object', 'deleteFeatured')->name('deleteFeatured');
         Route::post('/delete/all/object', 'deleteAllFeatured')->name('deleteAllFeatured');
@@ -48,7 +55,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::controller(SettingController::class)->prefix('settings')->as('settings.')->group(function (){
         Route::get('/customer', [SettingController::class, 'customer'])->name('customer');
         Route::get('/business', [SettingController::class, 'business'])->name('business');
-
+        Route::post('update/main', [SettingController::class, 'updateMain'])->name('updateMain');
         Route::post('/', [SettingController::class, 'update'])->name('update');
     });
 });

@@ -85,7 +85,7 @@
 
                                         <!--begin:Input-->
                                         <span class="form-check form-check-custom form-check-solid">
-                                             <input class="form-check-input" type="radio" name="notification_icon" value="{{$icon->icon}}"/>
+                                             <input class="form-check-input" type="radio" name="notification_icon" value="{{$icon->id}}"/>
                                         </span>
 
                                         <!--end:Input-->

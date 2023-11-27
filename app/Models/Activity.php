@@ -4,12 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Activity extends Model
 {
-    use HasFactory;
-    protected $dates=['start_date', 'stop_date'];
+    use HasFactory, HasTranslations;
 
+    protected $translatable=['title', 'description'];
+
+    public function getTitle()
+    {
+        return $this->translate('title');
+    }
+
+    public function getDescription()
+    {
+        return $this->translate('description');
+    }
     public function personels()
     {
         return $this->hasMany(ActivityBusiness::class, 'activity_id', 'id')->where('status', 1);
@@ -29,8 +40,18 @@ class Activity extends Model
         return $this->hasMany(ActivityImages::class, 'activity_id', 'id')->latest();
     }
 
-    public function citys()
+    public function city()
     {
-        return $this->hasOne(City::class, 'id', 'city');
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
+
+    protected static function booted()
+    {
+        static::deleted(function ($activity) {
+            $activity->personels()->delete();
+            $activity->sponsors()->delete();
+            $activity->images()->delete();
+            $activity->sliders()->delete();
+        });
     }
 }

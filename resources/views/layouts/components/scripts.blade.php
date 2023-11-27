@@ -95,6 +95,15 @@
 
     }
 </style>
-
+<script>
+    function updateFileCount(input) {
+        var fileCountSpan = input.parentElement.querySelector('.file-count');
+        if (input.files && input.files.length > 0) {
+            fileCountSpan.textContent = input.files.length + ' dosya seçildi';
+        } else {
+            fileCountSpan.textContent = '0 dosya seçildi';
+        }
+    }
+</script>
 
 @yield('scripts')

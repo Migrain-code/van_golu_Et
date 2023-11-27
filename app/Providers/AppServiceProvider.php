@@ -35,11 +35,7 @@ class AppServiceProvider extends ServiceProvider
         foreach (Setting::all() as $item) {
             $settings[$item->name] = $item->value;
         }
-        $sections = [];
-        foreach (ForBusiness::all() as $item) {
-            $sections[$item->name] = $item->value;
-        }
-        \Config::set('sections', $sections);
+
         \Config::set('settings', $settings);
 
         $cities = City::all();

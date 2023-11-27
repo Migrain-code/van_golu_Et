@@ -30,6 +30,9 @@ class Ads extends Model
         5 => [
             'name' => "Etkinlik Reklamları"
         ],
+        6 => [
+            'name' => "Giriş Reklamları"
+        ],
     ];
 
     public function type()

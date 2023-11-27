@@ -12,10 +12,10 @@ class CustomerNotificationMobileController extends Controller
     {
         $customerNotification = new CustomerNotificationMobile();
         $customerNotification->title = $request->input('title');
-        $customerNotification->slug = Str::slug($request->input('title'));
+        $customerNotification->slug = Str::uuid();
         $customerNotification->customer_id = $request->input('customer_id');
         $customerNotification->content = $request->input('notification_text');
-        $customerNotification->image = $request->input('notification_icon');
+        $customerNotification->notification_id = $request->input('notification_icon');
         if ($request->input('is_push') == 1) {
             // Burada push notification gönderilme kodu yazılacak
         }

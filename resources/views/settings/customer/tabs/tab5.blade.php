@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active" id="kt_ecommerce_settings_contact_info" role="tabpanel">
+<div class="tab-pane fade" id="kt_ecommerce_settings_contact_info" role="tabpanel">
     <form enctype="multipart/form-data" class="form" action="{{route('admin.settings.update')}}" method="post">
         @csrf
         <!--begin::Modal body-->

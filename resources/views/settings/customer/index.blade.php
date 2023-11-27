@@ -71,6 +71,7 @@
                             <!--end::Svg Icon-->Footer Ayarları
                         </a>
                     </li>
+
                 </ul>
                 <!--end:::Tabs-->
                 <!--begin:::Tab content-->
@@ -80,7 +81,6 @@
                     @include('settings.customer.tabs.tab3')
                     @include('settings.customer.tabs.tab4')
                     @include('settings.customer.tabs.tab5')
-
                     <!--end:::Tab pane-->
                 </div>
                 <!--end:::Tab content-->
