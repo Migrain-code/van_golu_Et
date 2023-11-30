@@ -41,7 +41,7 @@ class AjaxController extends Controller
         else{
             return response()->json([
                 'status' => 'warning',
-                'message' => 'Bir Hata Sebebiyle '. $request->input('content'). "Silinemedi"
+                'message' => 'Bir Hata Sebebiyle '. $request->input('title'). "Silinemedi"
             ]);
         }
     }

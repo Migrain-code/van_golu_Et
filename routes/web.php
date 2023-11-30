@@ -11,6 +11,7 @@ use \App\Http\Controllers\MainPageController;
 use App\Http\Controllers\CustomerBlogController;
 use \App\Http\Controllers\AjaxController;
 use \App\Http\Controllers\ActivityController;
+use \App\Http\Controllers\ActivitySponsorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('mainPage', MainPageController::class);
     Route::resource('customerBlog', CustomerBlogController::class);
     Route::resource('activity', ActivityController::class);
+    Route::resource('activitySponsor', ActivitySponsorController::class);
 
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
         Route::post('/update-featured', 'updateFeatured')->name('updateFeatured');

@@ -75,6 +75,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
+        \Session::put('activity_id', $activity->id);
         return view('activity.detail.edit', compact('activity'));
     }
 

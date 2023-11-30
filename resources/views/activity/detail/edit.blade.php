@@ -56,10 +56,7 @@
                         <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_personal_list">Katılımcılar</button>
                         <!--end::Add customer-->
                         <!--begin::Add customer-->
-                        <button type="button" class="btn btn-info me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_sponsor_list">Sponsorlar</button>
-                        <!--end::Add customer-->
-                        <!--begin::Add customer-->
-                        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_add_sponsor">Sponsor Ekle</button>
+                        <button type="button" class="btn btn-info me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_activity_sponsor_list">Sponsorlar</button>
                         <!--end::Add customer-->
                     </div>
 
@@ -68,51 +65,52 @@
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.activity.update', $activity->id)}}" method="post" id="kt_modal_add_customer_form" enctype="multipart/form-data" data-kt-redirect="">
-                    <!--begin::Modal body-->
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body py-10 px-lg-17">
-                        <!--begin::Scroll-->
-                        <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#kt_tab_pane_1">Başlıklar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_2">Açıklamalar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_3">Görseller</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_4">Yer ve Zaman</a>
-                            </li>
-                        </ul>
+                    <form class="form" action="{{route('admin.activity.update', $activity->id)}}" method="post" id="kt_modal_add_customer_form" enctype="multipart/form-data" data-kt-redirect="">
+                        <!--begin::Modal body-->
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body py-10 px-lg-17">
+                            <!--begin::Scroll-->
+                            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#kt_tab_pane_1">Başlıklar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_2">Açıklamalar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_3">Görseller</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_4">Yer ve Zaman</a>
+                                </li>
+                            </ul>
 
-                        <div class="tab-content" id="myTabContent">
-                            @include('activity.detail.tabs.tab1')
-                            @include('activity.detail.tabs.tab2')
-                            @include('activity.detail.tabs.tab3')
-                            @include('activity.detail.tabs.tab4')
+                            <div class="tab-content" id="myTabContent">
+                                @include('activity.detail.tabs.tab1')
+                                @include('activity.detail.tabs.tab2')
+                                @include('activity.detail.tabs.tab3')
+                                @include('activity.detail.tabs.tab4')
+                            </div>
+                            <!--end::Scroll-->
                         </div>
-                        <!--end::Scroll-->
-                    </div>
-                    <!--end::Modal body-->
-                    <!--begin::Modal footer-->
-                    <div class="modal-footer flex-center">
-                        <!--begin::Button-->
-                        <button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
-                        <!--end::Button-->
-                        <!--begin::Button-->
-                        <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-                            <span class="indicator-label">Submit</span>
-                            <span class="indicator-progress">Please wait...
-															<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                        </button>
-                        <!--end::Button-->
-                    </div>
-                    <!--end::Modal footer-->
-                </form>
+                        <!--end::Modal body-->
+                        <!--begin::Modal footer-->
+                        <div class="modal-footer flex-center">
+                            <!--begin::Button-->
+                            <button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
+                            <!--end::Button-->
+                            <!--begin::Button-->
+                            <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                            <!--end::Button-->
+                        </div>
+                        <!--end::Modal footer-->
+                    </form>
+            </div>
 
             </div>
             <!--end::Card body-->
@@ -126,6 +124,23 @@
 @endsection
 
 @section('scripts')
+
+    <script>
+        let DATA_URL = "{{route('admin.activitySponsor.datatable')}}";
+        let DATA_COLUMNS = [
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'link'},
+            {data: 'status'},
+            {data: 'created_at'},
+            {data: 'action'}
+        ];
+
+    </script>
+
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/project/activity/sponsor/listing.js"></script>
+    <script src="/assets/js/project/activity/sponsor/add.js"></script>
     <script>
         $("#kt_daterangepicker_2").daterangepicker({
             timePicker: true,
@@ -146,5 +161,17 @@
         CKEDITOR.replace('kt_docs_ckeditor_classic_fr');
         CKEDITOR.replace('kt_docs_ckeditor_classic_it');
 
+    </script>
+    <script>
+        $('#kt_modal_add_sponsor_box').on('change', function () {
+            let checkbox = $(this);
+            if (checkbox.prop('checked')) {
+                $('#sponsor_text').css('display', 'none');
+                checkbox.val('1');
+            } else {
+                $('#sponsor_text').css('display', 'block');
+                checkbox.val('0');
+            }
+        });
     </script>
 @endsection
