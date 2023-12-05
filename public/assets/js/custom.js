@@ -34,8 +34,17 @@ $(document).on('click', '.delete-btn', function () {
                     })
                     if ($('#datatable').length > 0 && $.fn.DataTable.isDataTable('#datatable')) {
                         $('#datatable').DataTable().ajax.reload();
-                    } else{
-                        window.location.reload();
+                        if ($('#datatablePersonal').length > 0 && $.fn.DataTable.isDataTable('#datatablePersonal')) {
+                            console.log('tablea girdi');
+                            $('#datatablePersonal').DataTable().ajax.reload();
+                        }
+                    }
+                    else{
+                        if ($('#datatablePersonal').length > 0 && $.fn.DataTable.isDataTable('#datatablePersonal')) {
+                            $('#datatablePersonal').DataTable().ajax.reload();
+                        } else{
+                            window.location.reload();
+                        }
                     }
                 }
             });
@@ -112,6 +121,16 @@ $(document).on('click', '[data-kt-customer-table-select="delete_selected"]', fun
                     })
                     if ($.fn.DataTable.isDataTable('#datatable')) {
                         $('#datatable').DataTable().ajax.reload();
+                        if ($('#datatablePersonal').length > 0 && $.fn.DataTable.isDataTable('#datatablePersonal')) {
+                            $('#datatablePersonal').DataTable().ajax.reload();
+                        }
+                    } else{
+                        if ($('#datatablePersonal').length > 0 && $.fn.DataTable.isDataTable('#datatablePersonal')) {
+                            $('#datatablePersonal').DataTable().ajax.reload();
+                        }
+                        else{
+                            window.location.reload();
+                        }
                     }
                 }
             });

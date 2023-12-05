@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessComment;
+use App\Models\CustomerFaqCategory;
 use App\Models\CustomerNotificationPermission;
 use App\Models\District;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -70,4 +72,61 @@ class AjaxController extends Controller
         return $districts;
     }
 
+    public function updateServiceCategoryOrder(Request $request)
+    {
+        $serviceCategory = ServiceCategory::find($request->category_id);
+        if ($serviceCategory){
+            $findOrderNumber = ServiceCategory::where('order_number', $request->after_order)->first();
+            $findOrderNumber->order_number = $request->before_order;
+
+            if ($findOrderNumber->save()){
+                $serviceCategory->order_number = $request->after_order;
+                $serviceCategory->save();
+                return response()->json([
+                   'status' => "success",
+                   'message' => "Kategori Sırası Güncellendi",
+                ]);
+            }
+        }
+        else {
+            return response()->json([
+                'status' => "warning",
+                'message' => "Hizmet Kategorisi Bulunamadı",
+            ]);
+        }
+    }
+
+    public function updateCustomerFaqCategoryOrder(Request $request)
+    {
+
+        $customerFaq = CustomerFaqCategory::find($request->category_id);
+        if ($customerFaq){
+            $findOrderNumber = CustomerFaqCategory::where('order_number', $request->after_order)->first();
+
+            if ($findOrderNumber){
+                $findOrderNumber->order_number = $request->before_order;
+
+                if ($findOrderNumber->save()){
+                    $customerFaq->order_number = $request->after_order;
+                    $customerFaq->save();
+                    return response()->json([
+                        'status' => "success",
+                        'message' => "Kategori Sırası Güncellendi",
+                    ]);
+                }
+            }
+            else{
+                return response()->json([
+                    'status' => "warning",
+                    'message' => "SSS Kategorisi Bulunamadı",
+                ]);
+            }
+        }
+        else {
+            return response()->json([
+                'status' => "warning",
+                'message' => "SSS Kategorisi Bulunamadı",
+            ]);
+        }
+    }
 }

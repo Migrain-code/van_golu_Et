@@ -37,6 +37,29 @@ class ActivitySponsorController extends Controller
     {
         return view('activity.sponsor.edit', compact('activitySponsor'));
     }
+
+    public function update(ActivitySponsor $activitySponsor,Request $request)
+    {
+        $activitySponsor->name = $request->input('name');
+        $activitySponsor->link = $request->input('link');
+        if ($request->hasFile('sponsor_image')){
+            $response = UploadFile::uploadFile($request->file('sponsor_image'), 'activities_sponsors');
+            $activitySponsor->image = $response["image"]["way"];
+        }
+        $activitySponsor->status = $request->input('is_main_sponsor');
+        $activitySponsor->text = $request->input('sponsor_text');
+        if ($activitySponsor->save()){
+            return to_route('admin.activity.edit', $activitySponsor->activity_id)->with('response',[
+                'status' => "success",
+                'message' => "Sponsor Güncellendi"
+            ]);
+        }
+        return to_route('admin.activity.edit', $activitySponsor->activity_id)->with('response',[
+            'status' => "error",
+            'message' => "Sponsor Bir Hata Sebebi İle Güncellenemedi"
+        ]);
+    }
+
     public function datatable()
     {
         $activity_id = \Session::get('activity_id');

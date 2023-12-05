@@ -10,6 +10,17 @@
 <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 <link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
-
+<style>
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background: #0095e8;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track{
+        background: #1e1e2d;
+    }
+</style>
 <!--end::Global Stylesheets Bundle-->
 @yield('styles')

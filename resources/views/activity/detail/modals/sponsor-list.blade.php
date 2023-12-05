@@ -18,7 +18,7 @@
 														</svg>
 													</span>
                         <!--end::Svg Icon-->
-                        <input type="text" data-kt-sponsor-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Customers" />
+                        <input type="text" data-kt-sponsor-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Sponsor" />
                     </div>
                     <!--end::Search-->
                 </div>

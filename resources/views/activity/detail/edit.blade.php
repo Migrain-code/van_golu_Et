@@ -135,11 +135,20 @@
             {data: 'created_at'},
             {data: 'action'}
         ];
-
+        let DATA_URL_PERSONAL = "{{route('admin.activityPersonal.datatable')}}";
+        let DATA_COLUMNS_PERSONAL = [
+            {data: 'id'},
+            {data: 'image'},
+            {data: 'name'},
+            {data: 'status'},
+            {data: 'created_at'},
+            {data: 'action'}
+        ];
     </script>
 
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/project/activity/sponsor/listing.js"></script>
+    <script src="/assets/js/project/activity/personal/listing.js"></script>
     <script src="/assets/js/project/activity/sponsor/add.js"></script>
     <script>
         $("#kt_daterangepicker_2").daterangepicker({
