@@ -42,7 +42,7 @@
 
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="kt_tab_pane_3" role="tabpanel">
-                                <input type="hidden" name="category_id" value="{{$customerFaqCategory->id}}">
+                                <input type="hidden" name="category_id" value="{{$businessFaqCategory->id}}">
                                 <div class="fv-row mb-7">
                                     <!--begin::Label-->
                                     <label class="required fs-6 fw-semibold mb-2">Soru (Türkçe)</label>

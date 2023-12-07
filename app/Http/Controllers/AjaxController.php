@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessComment;
+use App\Models\BusinessFaqCategory;
 use App\Models\CustomerFaqCategory;
 use App\Models\CustomerNotificationPermission;
 use App\Models\District;
@@ -102,6 +103,40 @@ class AjaxController extends Controller
         $customerFaq = CustomerFaqCategory::find($request->category_id);
         if ($customerFaq){
             $findOrderNumber = CustomerFaqCategory::where('order_number', $request->after_order)->first();
+
+            if ($findOrderNumber){
+                $findOrderNumber->order_number = $request->before_order;
+
+                if ($findOrderNumber->save()){
+                    $customerFaq->order_number = $request->after_order;
+                    $customerFaq->save();
+                    return response()->json([
+                        'status' => "success",
+                        'message' => "Kategori Sırası Güncellendi",
+                    ]);
+                }
+            }
+            else{
+                return response()->json([
+                    'status' => "warning",
+                    'message' => "SSS Kategorisi Bulunamadı",
+                ]);
+            }
+        }
+        else {
+            return response()->json([
+                'status' => "warning",
+                'message' => "SSS Kategorisi Bulunamadı",
+            ]);
+        }
+    }
+
+    public function updateBusinessFaqCategoryOrder(Request $request)
+    {
+
+        $customerFaq = BusinessFaqCategory::find($request->category_id);
+        if ($customerFaq){
+            $findOrderNumber = BusinessFaqCategory::where('order_number', $request->after_order)->first();
 
             if ($findOrderNumber){
                 $findOrderNumber->order_number = $request->before_order;

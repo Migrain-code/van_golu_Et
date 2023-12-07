@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'SSS Kategorisi Düzenle')
+@section('title', 'İşletme SSS Kategorisi Düzenle')
 @section('styles')
     <style>
         .nav-line-tabs .nav-item .nav-link {
@@ -16,7 +16,7 @@
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">SSS Kategorileri</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">İşletme SSS Kategorileri</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.customerFaqCategory.index')}}" class="text-muted text-hover-primary">Müşteri SSS Kategorileri</a>
+            <a href="{{route('admin.businessFaqCategory.index')}}" class="text-muted text-hover-primary">İşletme SSS Kategorileri</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -52,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-            Müşteri SSS Kategorisi Düzenle
+            İşletme SSS Kategorisi Düzenle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -71,7 +71,7 @@
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.customerFaqCategory.update', $customerFaqCategory->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.businessFaqCategory.update', $businessFaqCategory->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
                     @method('PUT')
@@ -86,7 +86,7 @@
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
-                                @include('category.customer-faq-category.detail.tabs.tab1')
+                                @include('category.business-faq-category.detail.tabs.tab1')
                             </div>
 
                         </div>
@@ -113,7 +113,7 @@
         <div class="card mt-5">
             <!--begin::Card header-->
 
-            @include('category.customer-faq-category.detail.modals.toolbar')
+            @include('category.business-faq-category.detail.modals.toolbar')
 
             <!--end::Card header-->
             <!--begin::Card body-->
@@ -146,23 +146,23 @@
             <!--end::Card body-->
         </div>
 
-        @include('category.customer-faq-category.detail.modals.add-faq')
+        @include('category.business-faq-category.detail.modals.add-faq')
     </div>
 
 @endsection
 
 @section('scripts')
     <script>
-        let DATA_URL = "{{route('admin.customerFaq.datatable')}}";
+        let DATA_URL = "{{route('admin.businessFaq.datatable')}}";
         let DATA_COLUMNS = [
             {data: 'id'},
             {data: 'question'},
             {data: 'created_at'},
             {data: 'action'}
         ];
-        let addUrl = "{{route('admin.customerFaq.store')}}"
+        let addUrl = "{{route('admin.businessFaq.store')}}"
     </script>
     <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/category/customer-faq-category/detail/listing.js"></script>
-    <script src="/assets/js/project/category/customer-faq-category/detail/add.js"></script>
+    <script src="/assets/js/project/category/business-faq-category/detail/listing.js"></script>
+    <script src="/assets/js/project/category/business-faq-category/detail/add.js"></script>
 @endsection

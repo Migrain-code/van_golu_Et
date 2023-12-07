@@ -18,7 +18,6 @@ class ProductCategoryController extends Controller
         return view('category.product-category.index');
     }
 
-
     /**
      * Store a newly created resource in storage.
      */

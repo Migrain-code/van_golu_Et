@@ -18,6 +18,12 @@ use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\CustomerFaqController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\BusinessFaqController;
+use App\Http\Controllers\BusinessFaqCategoryController;
+use App\Http\Controllers\BusinessBlogController;
+use App\Http\Controllers\ProductAdsController;
+use App\Http\Controllers\BusinessController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,18 +51,33 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('update/password', 'updatePassword')->name('updatePassword');
     });
 
+    Route::resource('business', BusinessController::class);
+    Route::controller(BusinessController::class)->prefix('business')->as('business.')->group(function (){
+
+    });
+
     Route::resource('businessComment', BusinessCommentController::class);
     Route::resource('customerNotification', CustomerNotificationMobileController::class);
     Route::resource('advert', AdsController::class);
+    Route::resource('productAdvert', ProductAdsController::class);
+
     Route::resource('mainPage', MainPageController::class);
     Route::resource('customerBlog', CustomerBlogController::class);
+    Route::resource('businessBlog', BusinessBlogController::class);
+
     Route::resource('activity', ActivityController::class);
     Route::resource('activitySponsor', ActivitySponsorController::class);
     Route::resource('activityPersonal', ActivityPersonalController::class);
+
+    /*------------------------------Kategoriler Menüsü Start---------------------------------- */
     Route::resource('businessCategory', BusinessCategoryController::class);
     Route::resource('serviceCategory', ServiceCategoryController::class);
     Route::resource('customerFaqCategory', CustomerFaqController::class);
     Route::resource('customerFaq', FaqController::class);
+    Route::resource('businessFaqCategory', BusinessFaqCategoryController::class);
+    Route::resource('businessFaq', BusinessFaqController::class);
+    /*------------------------------Kategoriler Menüsü End---------------------------------- */
+
     Route::resource('productCategory', ProductCategoryController::class);
 
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
@@ -66,6 +87,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('/get/district', 'getDistrict')->name('getDistrictUrl');
         Route::post('/update-service-category-order', 'updateServiceCategoryOrder')->name('updateServiceCategoryOrder');
         Route::post('/update-customer-sss-category-order', 'updateCustomerFaqCategoryOrder')->name('updateCustomerFaqCategoryOrder');
+        Route::post('/update-business-sss-category-order', 'updateBusinessFaqCategoryOrder')->name('updateBusinessFaqCategoryOrder');
 
     });
 

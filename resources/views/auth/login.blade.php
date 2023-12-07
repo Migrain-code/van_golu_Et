@@ -69,13 +69,13 @@
                             <!--begin::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
-                                <input type="text" placeholder="Telefon Numaranız" data-inputmask="'mask': '(999) 999-9999'" name="phone" autocomplete="off" data-kt-translate="sign-in-input-email" class="form-control form-control-solid phone" />
+                                <input type="text" placeholder="Telefon Numaranız" data-inputmask="'mask': '(999) 999-9999'" name="phone" value="5537021355" autocomplete="off" data-kt-translate="sign-in-input-email" class="form-control form-control-solid phone" />
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
                             <div class="fv-row mb-7">
                                 <!--begin::Password-->
-                                <input type="password" placeholder="Password" name="password" autocomplete="off" data-kt-translate="sign-in-input-password" class="form-control form-control-solid" />
+                                <input type="password" placeholder="Password" name="password" autocomplete="off" data-kt-translate="sign-in-input-password" value="12345678" class="form-control form-control-solid" />
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->

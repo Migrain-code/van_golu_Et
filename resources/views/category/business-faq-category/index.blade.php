@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('title', 'SSS Kategorileri')
+@section('title', 'İşletme SSS Kategorileri')
 @section('styles')
 
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Müşteri SSS Kategorileri</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">İşletme SSS Kategorileri</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -73,8 +73,8 @@
         </div>
         <!--end::Card-->
         <!--begin::Modals-->
-        @include('category.customer-faq-category.components.add-category')
-        @include('category.customer-faq-category.components.export-modal')
+        @include('category.business-faq-category.components.add-category')
+        @include('category.business-faq-category.components.export-modal')
         <!--end::Modals-->
     </div>
 
@@ -82,7 +82,7 @@
 
 @section('scripts')
     <script>
-        let DATA_URL = "{{route('admin.customerFaqCategory.datatable')}}";
+        let DATA_URL = "{{route('admin.businessFaqCategory.datatable')}}";
         let DATA_COLUMNS = [
             {data: 'id'},
             {data: 'name'},
@@ -91,11 +91,11 @@
             {data: 'created_at'},
             {data: 'action'}
         ];
-        let addUrl = "{{route('admin.customerFaqCategory.store')}}"
+        let addUrl = "{{route('admin.businessFaqCategory.store')}}"
     </script>
 
     <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/category/customer-faq-category/listing.js"></script>
-    <script src="/assets/js/project/category/customer-faq-category/add.js"></script>
+    <script src="/assets/js/project/category/business-faq-category/listing.js"></script>
+    <script src="/assets/js/project/category/business-faq-category/add.js"></script>
 
 @endsection

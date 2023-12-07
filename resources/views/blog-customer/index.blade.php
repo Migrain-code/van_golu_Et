@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Anasayfa Ayarları')
+@section('title', 'Müşteri Blog İşlemleri')
 @section('styles')
     <style>
         .image-input .image-input-wrapper {
@@ -95,7 +95,7 @@
         let DATA_COLUMNS = [
             {data: 'id'},
             {data: 'titles'},
-            {data: 'meta_title'},
+            {data: 'meta_titles'},
             {data: 'status'},
             {data: 'category_id'},
             {data: 'created_at'},

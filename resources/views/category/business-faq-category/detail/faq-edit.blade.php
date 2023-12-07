@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'SSS Kategorisi Düzenle')
+@section('title', 'SSS Düzenle')
 @section('styles')
     <style>
         .nav-line-tabs .nav-item .nav-link {
@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.customerFaqCategory.index')}}" class="text-muted text-hover-primary">Müşteri SSS Kategorileri</a>
+            <a href="{{route('admin.businessFaqCategory.index')}}" class="text-muted text-hover-primary">İşletme SSS Kategorileri</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -52,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-            Müşteri SSS Düzenle
+            İşletme SSS Düzenle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -70,7 +70,7 @@
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.customerFaq.update', $customerFaq->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.businessFaq.update', $businessFaq->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
                     @method('PUT')
@@ -97,7 +97,7 @@
 
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="kt_tab_pane_3" role="tabpanel">
-                                                <input type="hidden" name="category_id" value="{{$customerFaq->category_id}}">
+                                                <input type="hidden" name="category_id" value="{{$businessFaq->category_id}}">
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
                                                     <label class="required fs-6 fw-semibold mb-2">Soru (Türkçe)</label>

@@ -4,7 +4,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Türkçe)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[tr]" value="{{$customerFaqCategory->getTranslation('name', 'tr')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[tr]" value="{{$businessFaqCategory->getTranslation('name', 'tr')}}" />
         <!--end::Input-->
     </div>
     <div class="fv-row mb-7">
@@ -12,7 +12,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İngilizce)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[en]" value="{{$customerFaqCategory->getTranslation('name', 'en')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[en]" value="{{$businessFaqCategory->getTranslation('name', 'en')}}" />
         <!--end::Input-->
     </div>
     <div class="fv-row mb-7">
@@ -20,7 +20,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Almanca)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[de]" value="{{$customerFaqCategory->getTranslation('name', 'de')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[de]" value="{{$businessFaqCategory->getTranslation('name', 'de')}}" />
         <!--end::Input-->
     </div>
 
@@ -29,7 +29,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İspanyolca)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[es]" value="{{$customerFaqCategory->getTranslation('name', 'es')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[es]" value="{{$businessFaqCategory->getTranslation('name', 'es')}}" />
         <!--end::Input-->
     </div>
 
@@ -38,7 +38,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Fransızca)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[fr]" value="{{$customerFaqCategory->getTranslation('name', 'fr')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[fr]" value="{{$businessFaqCategory->getTranslation('name', 'fr')}}" />
         <!--end::Input-->
     </div>
 
@@ -47,7 +47,7 @@
         <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İtalyanca)</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[it]" value="{{$customerFaqCategory->getTranslation('name', 'it')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name[it]" value="{{$businessFaqCategory->getTranslation('name', 'it')}}" />
         <!--end::Input-->
     </div>
 </div>

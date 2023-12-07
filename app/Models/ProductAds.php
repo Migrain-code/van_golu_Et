@@ -21,4 +21,9 @@ class ProductAds extends Model
     {
         return $this->translate('price');
     }
+
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class, 'id', 'category_id');
+    }
 }

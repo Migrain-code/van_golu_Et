@@ -36,7 +36,7 @@ class CustomerBlogController extends Controller
             ->setTranslation('slug', 'tr', Str::slug($request->title['tr']));
 
         if ($request->hasFile('image')) {
-            $response = UploadFile::uploadFile($request->file('image'), 'main_page_images');
+            $response = UploadFile::uploadFile($request->file('image'), 'businessBlogImages');
             $blogCustomer->image = $response["image"]["way"];
         }
         if ($blogCustomer->save()) {
@@ -79,7 +79,7 @@ class CustomerBlogController extends Controller
             ->setTranslation('slug', 'tr', Str::slug($request->title['tr']));
 
         if ($request->hasFile('image')) {
-            $response = UploadFile::uploadFile($request->file('image'), 'main_page_images');
+            $response = UploadFile::uploadFile($request->file('image'), 'businessBlogImages');
             $customerBlog->image = $response["image"]["way"];
         }
         if ($customerBlog->save()) {
@@ -109,7 +109,7 @@ class CustomerBlogController extends Controller
             ->editColumn('titles', function ($q) {
                 return $q->getTitle();
             })
-            ->editColumn('meta_title', function ($q) {
+            ->editColumn('meta_titles', function ($q) {
                 return $q->getMetaTitle();
             })
             ->editColumn('category_id', function ($q) {
