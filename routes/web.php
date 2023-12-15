@@ -23,7 +23,7 @@ use App\Http\Controllers\BusinessFaqCategoryController;
 use App\Http\Controllers\BusinessBlogController;
 use App\Http\Controllers\ProductAdsController;
 use App\Http\Controllers\BusinessController;
-
+use App\Http\Controllers\SupportRequestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +69,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('activitySponsor', ActivitySponsorController::class);
     Route::resource('activityPersonal', ActivityPersonalController::class);
 
+    Route::resource('supportRequest', SupportRequestController::class);
     /*------------------------------Kategoriler Menüsü Start---------------------------------- */
     Route::resource('businessCategory', BusinessCategoryController::class);
     Route::resource('serviceCategory', ServiceCategoryController::class);

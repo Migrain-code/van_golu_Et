@@ -14,7 +14,9 @@ class BusinessOfficial extends Authenticatable
 
     public function business()
     {
-        return $this->hasOne(Business::class, 'id', 'business_id');
+        return $this->hasOne(Business::class, 'id', 'business_id')->withDefault([
+            'name' => "İşletme Bulunamadı"
+        ]);
     }
 
 }

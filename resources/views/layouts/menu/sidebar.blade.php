@@ -883,7 +883,7 @@
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="../apps/support-center/tickets/view.html">
+                                    <a class="menu-link" href="{{route('admin.supportRequest.index')}}">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
