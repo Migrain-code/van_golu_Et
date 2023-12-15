@@ -53,7 +53,7 @@
                             </div>
                         </th>
                         <th class="min-w-50px">Görsel</th>
-                        <th class="min-w-125px">Kategori Adı</th>
+                        <th class="min-w-125px">Hizmet Adı</th>
                         <th class="min-w-125px">Sıra Numarası</th>
                         <th class="min-w-125px">Created Date</th>
                         <th class="text-end min-w-70px">Actions</th>
