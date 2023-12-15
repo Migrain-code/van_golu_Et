@@ -37,7 +37,7 @@
         <!--begin::Card-->
         <div class="card">
             <!--begin::Card header-->
-            @include('category.service-category.components.toolbar')
+            @include('service.components.toolbar')
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
