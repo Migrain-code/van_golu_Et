@@ -24,6 +24,7 @@ use App\Http\Controllers\BusinessBlogController;
 use App\Http\Controllers\ProductAdsController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\SupportRequestController;
+use \App\Http\Controllers\ServiceSubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +71,9 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('activityPersonal', ActivityPersonalController::class);
 
     Route::resource('supportRequest', SupportRequestController::class);
+
+    Route::resource('serviceSubCategory', ServiceSubCategoryController::class);
+
     /*------------------------------Kategoriler Menüsü Start---------------------------------- */
     Route::resource('businessCategory', BusinessCategoryController::class);
     Route::resource('serviceCategory', ServiceCategoryController::class);
