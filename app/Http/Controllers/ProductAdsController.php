@@ -65,8 +65,8 @@ class ProductAdsController extends Controller
         $productAdvert->price = $request->price;
         $productAdvert->link = $request->input('link');
         $productAdvert->category_id = $request->input('category_id');
-        if ($request->hasFile('image')) {
-            $response = UploadFile::uploadFile($request->file('image'), 'productAdsImages');
+        if ($request->hasFile('ads_image')) {
+            $response = UploadFile::uploadFile($request->file('ads_image'), 'productAdsImages');
             $productAdvert->image = $response["image"]["way"];
         }
         if ($productAdvert->save()){
