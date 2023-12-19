@@ -60,10 +60,12 @@ var KTAppInboxReply = function () {
         submitButton.addEventListener("click", function () {
             // Activate indicator
             submitButton.setAttribute("data-kt-indicator", "on");
+            const form = document.querySelector('#kt_inbox_reply_form');
 
             // Disable indicator after 3 seconds
             setTimeout(function () {
                 submitButton.removeAttribute("data-kt-indicator");
+                form.submit();
             }, 3000);
         });
     }

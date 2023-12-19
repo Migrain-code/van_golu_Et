@@ -273,4 +273,16 @@
             }
         });
     </script>
+    <script>
+        $('[name="send_sms"]').on('change', function () {
+            let checkbox = $(this);
+            if (checkbox.prop('checked')) {
+                $('#customerSendSms').text("Evet");
+                checkbox.val('1');
+            } else {
+                $('#customerSendSms').text("Hayır");
+                checkbox.val('0');
+            }
+        });
+    </script>
 @endsection

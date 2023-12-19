@@ -204,78 +204,68 @@
                                         <div class="py-3">
                                             {!! $response->question !!}
                                         </div>
-                                        <div class="py-2">
-                                            <form id="kt_inbox_reply_form" class="rounded border mt-10">
-                                                <!--begin::Body-->
-                                                <div class="d-block">
-                                                    <!--begin::Message-->
-                                                    <div id="kt_inbox_form_editor" class="border-0 h-250px px-3"></div>
-                                                    <!--end::Message-->
-                                                    <!--begin::Attachments-->
-                                                    <div class="dropzone dropzone-queue px-8 py-4" id="kt_inbox_reply_attachments" data-kt-inbox-form="dropzone">
-                                                        <div class="dropzone-items">
-                                                            <div class="dropzone-item" style="display:none">
-                                                                <!--begin::Dropzone filename-->
-                                                                <div class="dropzone-file">
-                                                                    <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                                                        <span data-dz-name="">some_image_file_name.jpg</span>
-                                                                        <strong>(
-                                                                            <span data-dz-size="">340kb</span>)</strong>
+                                        @if($response->status == 0)
+                                            <div class="py-2">
+                                                <form id="kt_inbox_reply_form" method="post" action="{{route('admin.supportRequest.reply')}}" class="rounded border mt-10">
+                                                    @csrf
+                                                    <input type="hidden" name="response_id" value="{{$response->id}}">
+                                                    <!--begin::Body-->
+                                                    <div class="d-block">
+                                                        <!--begin::Message-->
+                                                        <div id="kt_inbox_form_editor" class="border-0 h-250px px-3"></div>
+                                                        <!--end::Message-->
+                                                        <!--begin::Attachments-->
+                                                        <div class="dropzone dropzone-queue px-8 py-4" id="kt_inbox_reply_attachments" data-kt-inbox-form="dropzone">
+                                                            <div class="dropzone-items">
+                                                                <div class="dropzone-item" style="display:none">
+                                                                    <!--begin::Dropzone filename-->
+                                                                    <div class="dropzone-file">
+                                                                        <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                                                            <span data-dz-name="">some_image_file_name.jpg</span>
+                                                                            <strong>(
+                                                                                <span data-dz-size="">340kb</span>)</strong>
+                                                                        </div>
+                                                                        <div class="dropzone-error" data-dz-errormessage=""></div>
                                                                     </div>
-                                                                    <div class="dropzone-error" data-dz-errormessage=""></div>
-                                                                </div>
-                                                                <!--end::Dropzone filename-->
-                                                                <!--begin::Dropzone progress-->
-                                                                <div class="dropzone-progress">
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+                                                                    <!--end::Dropzone filename-->
+                                                                    <!--begin::Dropzone progress-->
+                                                                    <div class="dropzone-progress">
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <!--end::Dropzone progress-->
-                                                                <!--begin::Dropzone toolbar-->
-                                                                <div class="dropzone-toolbar">
+                                                                    <!--end::Dropzone progress-->
+                                                                    <!--begin::Dropzone toolbar-->
+                                                                    <div class="dropzone-toolbar">
 																			<span class="dropzone-delete" data-dz-remove="">
 																				<i class="bi bi-x fs-1"></i>
 																			</span>
+                                                                    </div>
+                                                                    <!--end::Dropzone toolbar-->
                                                                 </div>
-                                                                <!--end::Dropzone toolbar-->
                                                             </div>
                                                         </div>
+                                                        <!--end::Attachments-->
                                                     </div>
-                                                    <!--end::Attachments-->
-                                                </div>
-                                                <!--end::Body-->
-                                                <!--begin::Footer-->
-                                                <div class="d-flex flex-stack flex-wrap gap-2 py-5 ps-8 pe-5 border-top">
-                                                    <!--begin::Actions-->
-                                                    <div class="d-flex align-items-center me-3">
-                                                        <!--begin::Send-->
-                                                        <div class="btn-group me-4">
-                                                            <!--begin::Submit-->
-                                                            <span class="btn btn-primary fs-bold px-6" data-kt-inbox-form="send">
+                                                    <!--end::Body-->
+                                                    <!--begin::Footer-->
+                                                    <div class="d-flex flex-stack flex-wrap gap-2 py-5 ps-8 pe-5 border-top">
+                                                        <!--begin::Actions-->
+                                                        <div class="d-flex align-items-center me-3">
+                                                            <!--begin::Send-->
+                                                            <div class="btn-group me-4">
+                                                                <!--begin::Submit-->
+                                                                <span class="btn btn-primary fs-bold px-6" data-kt-inbox-form="send">
 																		<span class="indicator-label">Send</span>
 																		<span class="indicator-progress">Please wait...
 																		<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 																	</span>
-                                                            <!--end::Submit-->
-                                                            <!--begin::Send options-->
-                                                            <span class="btn btn-primary btn-icon fs-bold" role="button">
-																		<span class="btn btn-icon" data-kt-menu-trigger="click" data-kt-menu-placement="top-start">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																			<span class="svg-icon svg-icon-2 m-0">
-																				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																					<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor" />
-																				</svg>
-																			</span>
-                                                                            <!--end::Svg Icon-->
-																		</span>
-                                                                <!--end::Menu-->
-																	</span>
-                                                            <!--end::Send options-->
-                                                        </div>
-                                                        <!--end::Send-->
-                                                        <!--begin::Upload attachement-->
-                                                        <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary me-2" id="kt_inbox_reply_attachments_select" data-kt-inbox-form="dropzone_upload">
+                                                                <!--end::Submit-->
+
+                                                            </div>
+                                                            <!--end::Send-->
+                                                            <!--begin::Upload attachement-->
+                                                            <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary me-2" id="kt_inbox_reply_attachments_select" data-kt-inbox-form="dropzone_upload">
 																	<!--begin::Svg Icon | path: icons/duotune/communication/com008.svg-->
 																	<span class="svg-icon svg-icon-2 m-0">
 																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -283,11 +273,11 @@
 																			<path d="M9.32499 15.625C8.12499 14.425 8.12499 12.625 9.32499 11.425L14.225 6.52498C14.625 6.12498 15.225 6.12498 15.625 6.52498C16.025 6.92498 16.025 7.525 15.625 7.925L10.725 12.8249C10.325 13.2249 10.325 13.8249 10.725 14.2249C11.125 14.6249 11.725 14.6249 12.125 14.2249L19.125 7.22493C19.525 6.82493 19.725 6.425 19.725 5.925C19.725 5.325 19.525 4.825 19.125 4.425C18.725 4.025 18.725 3.42498 19.125 3.02498C19.525 2.62498 20.125 2.62498 20.525 3.02498C21.325 3.82498 21.725 4.825 21.725 5.925C21.725 6.925 21.325 7.82498 20.525 8.52498L13.525 15.525C12.325 16.725 10.525 16.725 9.32499 15.625Z" fill="currentColor" />
 																		</svg>
 																	</span>
-                                                            <!--end::Svg Icon-->
+                                                                <!--end::Svg Icon-->
 																</span>
-                                                        <!--end::Upload attachement-->
-                                                        <!--begin::Pin-->
-                                                        <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary">
+                                                            <!--end::Upload attachement-->
+                                                            <!--begin::Pin-->
+                                                            <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary">
 																	<!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
 																	<span class="svg-icon svg-icon-2 m-0">
 																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -295,24 +285,25 @@
 																			<path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="currentColor" />
 																		</svg>
 																	</span>
-                                                            <!--end::Svg Icon-->
+                                                                <!--end::Svg Icon-->
 																</span>
-                                                        <!--end::Pin-->
-                                                    </div>
-                                                    <!--end::Actions-->
-                                                    <!--begin::Toolbar-->
-                                                    <div class="d-flex align-items-center">
-                                                        <!--begin::Dismiss reply-->
-                                                        <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
+                                                            <!--end::Pin-->
+                                                        </div>
+                                                        <!--end::Actions-->
+                                                        <!--begin::Toolbar-->
+                                                        <div class="d-flex align-items-center">
+                                                            <!--begin::Dismiss reply-->
+                                                            <span class="btn btn-icon btn-sm btn-clean btn-active-light-primary" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
 
                                                         </span>
-                                                        <!--end::Dismiss reply-->
+                                                            <!--end::Dismiss reply-->
+                                                        </div>
+                                                        <!--end::Toolbar-->
                                                     </div>
-                                                    <!--end::Toolbar-->
-                                                </div>
-                                                <!--end::Footer-->
-                                            </form>
-                                        </div>
+                                                    <!--end::Footer-->
+                                                </form>
+                                            </div>
+                                        @endif
                                     </div>
                                     <!--end::Message content-->
                                 </div>

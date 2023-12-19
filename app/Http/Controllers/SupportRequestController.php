@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SupportRequest;
+use App\Models\SupportResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -22,7 +23,7 @@ class SupportRequestController extends Controller
     {
 
 
-        if (/*$customerFaqCategory->save()*/true){
+        if (/*$customerFaqCategory->save()*/ true) {
             return response()->json([
                 'status' => "success",
                 'message' => "SSS Kategorisi Eklendi"
@@ -44,6 +45,27 @@ class SupportRequestController extends Controller
     public function update(Request $request, SupportRequest $supportRequest)
     {
 
+    }
+
+    public function reply(Request $request)
+    {
+        $request->dd();
+        $response = SupportResponse::find($request->response_id);
+        if ($response) {
+            $response->status = 1;
+            $response->anwer = $request->answer;
+            if ($response->save()) {
+                return back()->with('response', [
+                    'status' => "success",
+                    'message' => "Talep Cevaplandı"
+                ]);
+            }
+        } else {
+            return back()->with('response', [
+                'status' => "error",
+                'message' => "Talep Bulunamadı"
+            ]);
+        }
     }
 
     public function datatable()
@@ -71,7 +93,7 @@ class SupportRequestController extends Controller
 
                 return $html;
             })
-            ->rawColumns(['id', 'action','status', 'created_at'])
+            ->rawColumns(['id', 'action', 'status', 'created_at'])
             ->make(true);
     }
 }

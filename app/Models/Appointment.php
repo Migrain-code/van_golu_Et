@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
-    protected $fillable=['comment_status'];
-    const STATUS_LIST=[
+
+    protected $dates = ['start_time', 'end_time'];
+    protected $fillable = ['comment_status'];
+    const STATUS_LIST = [
         0 => [
             'html' => '<span class="badge badge-light-warning">Onay Bekliyor</span>',
             'text' => 'Onay Bekliyor'
@@ -36,14 +38,17 @@ class Appointment extends Model
         ],
 
     ];
+
     public function status($type)
     {
         return self::STATUS_LIST[$this->status][$type] ?? null;
     }
+
     public function customer()
     {
         return $this->hasOne(Customer::class, 'id', 'customer_id');
     }
+
     public function services()
     {
         return $this->hasMany(AppointmentServices::class, 'appointment_id', 'id');

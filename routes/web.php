@@ -25,6 +25,8 @@ use App\Http\Controllers\ProductAdsController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\SupportRequestController;
 use \App\Http\Controllers\ServiceSubCategoryController;
+use App\Http\Controllers\BusinessServiceController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +56,14 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
 
     Route::resource('business', BusinessController::class);
     Route::controller(BusinessController::class)->prefix('business')->as('business.')->group(function (){
+        Route::get('{business}/settings', 'settings')->name('settings');
+        Route::post('/change-official-phone', 'changeOfficialPhone');
+        Route::post('/change-official-password', 'changeOfficialPassword');
+        Route::post('/deactive-account', 'changeBusinessStatus');
+    });
+    Route::resource('businessService', BusinessServiceController::class);
+    Route::controller(BusinessServiceController::class)->prefix('businessService')->as('businessService.')->group(function (){
+        Route::post('service-get', 'serviceGet')->name("serviceGet");
 
     });
 
@@ -71,6 +81,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('activityPersonal', ActivityPersonalController::class);
 
     Route::resource('supportRequest', SupportRequestController::class);
+    Route::post('supportRequest/reply', [SupportRequestController::class, 'reply'])->name('supportRequest.reply');
 
     Route::resource('serviceSubCategory', ServiceSubCategoryController::class);
 
