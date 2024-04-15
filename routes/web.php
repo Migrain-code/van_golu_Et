@@ -26,6 +26,7 @@ use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\SupportRequestController;
 use \App\Http\Controllers\ServiceSubCategoryController;
 use App\Http\Controllers\BusinessServiceController;
+use App\Http\Controllers\PersonelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,46 +55,6 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('update/password', 'updatePassword')->name('updatePassword');
     });
 
-    Route::resource('business', BusinessController::class);
-    Route::controller(BusinessController::class)->prefix('business')->as('business.')->group(function (){
-        Route::get('{business}/settings', 'settings')->name('settings');
-        Route::post('/change-official-phone', 'changeOfficialPhone');
-        Route::post('/change-official-password', 'changeOfficialPassword');
-        Route::post('/deactive-account', 'changeBusinessStatus');
-    });
-    Route::resource('businessService', BusinessServiceController::class);
-    Route::controller(BusinessServiceController::class)->prefix('businessService')->as('businessService.')->group(function (){
-        Route::post('service-get', 'serviceGet')->name("serviceGet");
-
-    });
-
-    Route::resource('businessComment', BusinessCommentController::class);
-    Route::resource('customerNotification', CustomerNotificationMobileController::class);
-    Route::resource('advert', AdsController::class);
-    Route::resource('productAdvert', ProductAdsController::class);
-
-    Route::resource('mainPage', MainPageController::class);
-    Route::resource('customerBlog', CustomerBlogController::class);
-    Route::resource('businessBlog', BusinessBlogController::class);
-
-    Route::resource('activity', ActivityController::class);
-    Route::resource('activitySponsor', ActivitySponsorController::class);
-    Route::resource('activityPersonal', ActivityPersonalController::class);
-
-    Route::resource('supportRequest', SupportRequestController::class);
-    Route::post('supportRequest/reply', [SupportRequestController::class, 'reply'])->name('supportRequest.reply');
-
-    Route::resource('serviceSubCategory', ServiceSubCategoryController::class);
-
-    /*------------------------------Kategoriler Menüsü Start---------------------------------- */
-    Route::resource('businessCategory', BusinessCategoryController::class);
-    Route::resource('serviceCategory', ServiceCategoryController::class);
-    Route::resource('customerFaqCategory', CustomerFaqController::class);
-    Route::resource('customerFaq', FaqController::class);
-    Route::resource('businessFaqCategory', BusinessFaqCategoryController::class);
-    Route::resource('businessFaq', BusinessFaqController::class);
-    /*------------------------------Kategoriler Menüsü End---------------------------------- */
-
     Route::resource('productCategory', ProductCategoryController::class);
 
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
@@ -101,15 +62,10 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('/delete/object', 'deleteFeatured')->name('deleteFeatured');
         Route::post('/delete/all/object', 'deleteAllFeatured')->name('deleteAllFeatured');
         Route::post('/get/district', 'getDistrict')->name('getDistrictUrl');
-        Route::post('/update-service-category-order', 'updateServiceCategoryOrder')->name('updateServiceCategoryOrder');
-        Route::post('/update-customer-sss-category-order', 'updateCustomerFaqCategoryOrder')->name('updateCustomerFaqCategoryOrder');
-        Route::post('/update-business-sss-category-order', 'updateBusinessFaqCategoryOrder')->name('updateBusinessFaqCategoryOrder');
-
     });
 
     Route::controller(SettingController::class)->prefix('settings')->as('settings.')->group(function (){
         Route::get('/customer', [SettingController::class, 'customer'])->name('customer');
-        Route::get('/business', [SettingController::class, 'business'])->name('business');
         Route::post('update/main', [SettingController::class, 'updateMain'])->name('updateMain');
         Route::post('/', [SettingController::class, 'update'])->name('update');
     });

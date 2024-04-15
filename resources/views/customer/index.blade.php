@@ -97,7 +97,7 @@
             {data: 'name'},
             {data: 'phone'},
             {data: 'status'},
-            {data: 'city_id'},
+            {data: 'email'},
             {data: 'created_at'},
             {data: 'action'}
         ];

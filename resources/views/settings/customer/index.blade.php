@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Müşteri Projesi Ayarları')
+@section('title', 'Müşteriler')
 @section('styles')
 
 @endsection

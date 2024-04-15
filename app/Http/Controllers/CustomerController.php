@@ -49,11 +49,10 @@ class CustomerController extends Controller
         $customer->gender = $request->input('gender');
         $customer->status = 0;
         if ($request->hasFile('profilePhoto')) {
-            $response = UploadFile::uploadFile($request->file('profilePhoto'));
-            $customer->image = $response["image"]["way"];
+            $customer->image = $request->file('profilePhoto')->store('customerImages');
         }
         if ($request->input('send_sms') == "1") {
-            Sms::send($customer->phone, 'Hızlı Randevu Sistemine İçin Giriş Şifreniz : ' . $request->input('password'));
+            Sms::send($customer->phone, setting('speed_site_title').' Sistemine İçin Giriş Şifreniz : ' . $request->input('password'));
         }
         if ($customer->save()) {
             $this->addPermission($customer->id);
@@ -227,8 +226,8 @@ class CustomerController extends Controller
             ->editColumn('status', function ($q) {
                 return create_switch($q->id, $q->status == 1 ? true : false, 'Customer', 'status');
             })
-            ->editColumn('city_id', function ($q) {
-                return $q->city->name . "," . $q->district->name;
+            ->editColumn('email', function ($q) {
+                return $q->email;
             })
             ->editColumn('created_at', function ($q) {
                 return $q->created_at->format('d.m.Y H:i:s');

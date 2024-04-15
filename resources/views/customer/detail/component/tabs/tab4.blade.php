@@ -14,7 +14,8 @@
         <!--begin::Card body-->
         <div id="kt_ecommerce_customer_comments" class="card-body pt-0 pb-5">
             <!--begin::Addresses-->
-            @forelse($customer->comments as $comment)
+            {{--
+                @forelse($customer->comments as $comment)
                 <!--begin::Address Item-->
                 <div class="py-0">
                     <!--begin::Header-->
@@ -90,6 +91,7 @@
             @empty
                 @include('layouts.components.alerts.empty-alert')
             @endforelse
+            --}}
 
 
             <!--end::Addresses-->

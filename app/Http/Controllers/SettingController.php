@@ -22,8 +22,7 @@ class SettingController extends Controller
     {
         foreach ($request->except('_token') as $key => $item) {
             if ($request->hasFile($key)) {
-                $response = UploadFile::uploadFile($request->file($key));
-                $item = $response["image"]["way"];
+                $item = $request->file($key)->store('settings');
             }
 
             $query = Setting::query()->whereName($key)->first();

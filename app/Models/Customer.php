@@ -11,11 +11,6 @@ class Customer extends Model
 {
     use HasFactory;
 
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class, 'customer_id', 'id');
-    }
-
     public function device()
     {
         return $this->hasOne(Device::class, 'customer_id', 'id');
@@ -39,18 +34,13 @@ class Customer extends Model
     {
         return $this->hasMany(CustomerFavorite::class, 'customer_id', 'id');
     }
-    public function orders()
+    public function orders()//siparişleri gelecek
     {
-        return $this->hasMany(ProductSales::class, 'customer_id', 'id');
+        return $this->hasMany(CustomerFavorite::class, 'customer_id', 'id');
     }
-
     public function comments()
     {
-        return $this->hasMany(BusinessComment::class, 'customer_id', 'id');
-    }
-    public function packets()
-    {
-        return $this->hasMany(PackageSale::class, 'customer_id', 'id');
+       // return $this->hasMany(BusinessComment::class, 'customer_id', 'id');
     }
     public function city()
     {

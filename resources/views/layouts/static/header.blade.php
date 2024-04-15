@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Hizli Randevu{{" | "}}@yield('title')</title>
+    <title>{{setting('speed_site_title')." | "}}@yield('title')</title>
     <meta charset="utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />

@@ -283,7 +283,7 @@ class BusinessController extends Controller
                 return create_switch($q->id, $q->status == 1 ? true : false, 'Business', 'status');
             })
             ->editColumn('city_id', function ($q) {
-                return $q->cities->name . "," . $q->districts->name;
+                return isset($q->cities) ? $q->cities->name . "," . $q->districts->name : "Konum Bulunamadı";
             })
             ->editColumn('created_at', function ($q) {
                 return $q->created_at->format('d.m.Y H:i:s');

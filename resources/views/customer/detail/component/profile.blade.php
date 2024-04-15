@@ -19,23 +19,26 @@
                 <!--end::Email-->
             </div>
             <!--end::Summary-->
-            <!--begin::Details toggle-->
-            <div class="d-flex flex-stack fs-4 py-3">
-                <div class="fw-bold">Detaylar</div>
-                <!--begin::Badge-->
-                <div class="badge badge-light-info d-inline">Premium user</div>
-                <!--begin::Badge-->
-            </div>
+            @if($customer->type_id == 1)
+                <!--begin::Details toggle-->
+                <div class="d-flex flex-stack fs-4 py-3">
+                    <div class="fw-bold">Detaylar</div>
+                    <!--begin::Badge-->
+                    <div class="badge badge-light-info d-inline">Bayi Kullanıcısı</div>
+                    <!--begin::Badge-->
+                </div>
+            @endif
+
             <!--end::Details toggle-->
             <div class="separator separator-dashed my-3"></div>
             <!--begin::Details content-->
             <div class="pb-5 fs-6">
                 <!--begin::Details item-->
-                <div class="fw-bold mt-5">Account ID</div>
+                <div class="fw-bold mt-5">Hesap ID</div>
                 <div class="text-gray-600">ID-{{$customer->id}}</div>
                 <!--begin::Details item-->
                 <!--begin::Details item-->
-                <div class="fw-bold mt-5">Billing Email</div>
+                <div class="fw-bold mt-5">Fatura Email</div>
                 <div class="text-gray-600">
                     <a href="mailto:{{$customer->email}}" class="text-gray-600 text-hover-primary">{{$customer->email}}</a>
                 </div>
@@ -47,9 +50,9 @@
                     <br />{{$customer->district->name}}</div>
                 <!--begin::Details item-->
 
-                <div class="fw-bold mt-5">Randevu Sayısı</div>
+                <div class="fw-bold mt-5">Sipariş Sayısı</div>
                 <div class="text-gray-600">
-                    <a href="#" class="text-gray-600 text-hover-primary">{{$customer->appointments->count()}}</a>
+                    <a href="#" class="text-gray-600 text-hover-primary">{{$customer->orders->count()}}</a>
                 </div>
                 <!--begin::Details item-->
             </div>

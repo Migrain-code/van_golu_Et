@@ -47,8 +47,8 @@
 																		</svg>
 																	</span>
                     <!--end::Svg Icon-->
-                    <div class="text-white fw-bold fs-2 mt-5">Randevu Alındı</div>
-                    <div class="fw-semibold text-white">Bugüne Kadar Alınan Randevu Sayısı: <b>{{$customer->appointments->count()}}</b></div>
+                    <div class="text-white fw-bold fs-2 mt-5">Sipariş Verdi</div>
+                    <div class="fw-semibold text-white">Bugüne Kadar Yapılan Sipariş Sayısı: <b>{{$customer->orders->count()}}</b></div>
                 </div>
                 <!--end::Body-->
             </a>
@@ -61,7 +61,7 @@
         <div class="card-header border-0">
             <!--begin::Card title-->
             <div class="card-title">
-                <h2>Randevu Geçmişi</h2>
+                <h2>Sipariş Geçmişi</h2>
             </div>
             <!--end::Card title-->
         </div>
@@ -74,8 +74,8 @@
                 <thead class="border-bottom border-gray-200 fs-7 fw-bold">
                 <!--begin::Table row-->
                 <tr class="text-start text-muted text-uppercase gs-0">
-                    <th class="min-w-100px">Rand No.</th>
-                    <th class="min-w-100px">İşletme</th>
+                    <th class="min-w-100px">Sipariş No.</th>
+                    <th class="min-w-100px">Ürün</th>
                     <th>Status</th>
                     <th>Fiyat</th>
                     <th class="min-w-100px">Tarih</th>
@@ -85,29 +85,29 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fs-6 fw-semibold text-gray-600">
-                    @forelse($customer->appointments as $appointment)
+                    @forelse($customer->orders as $order)
                         <tr>
                             <!--begin::order=-->
                             <td>
-                                <a href="../sales/details.html" class="text-gray-600 text-hover-primary mb-1">#{{$appointment->id}}</a>
+                                <a href="../sales/details.html" class="text-gray-600 text-hover-primary mb-1">#234234</a>
                             </td>
                             <!--end::order=-->
                             <!--begin::Business=-->
                             <td>
-                                <a href="../sales/details.html" class="text-gray-600 text-hover-primary mb-1">#{{$appointment->business->name}}</a>
+                                <a href="" class="text-gray-600 text-hover-primary mb-1">#Şapka</a>
                             </td>
                             <!--end::Business=-->
                             <!--begin::Status=-->
                             <td>
-                                {!! $appointment->status("html") !!}
+                                564
                             </td>
                             <!--end::Status=-->
                             <!--begin::Amount=-->
-                            <td>₺{{number_format(calculateTotal($appointment->services), 2)}}</td>
+                            <td>1</td>
                             <!--end::Amount=-->
 
                             <!--begin::Date=-->
-                            <td>{{\Illuminate\Support\Carbon::parse($appointment->services->first()->start_time)->translatedFormat('d.m.Y, H:i')}}</td>
+                            <td>654</td>
                             <!--end::Date=-->
                         </tr>
                     @empty

@@ -4,7 +4,6 @@
         <!--begin::Modal body-->
         <div class="modal-body py-5 px-lg-17">
             <!--begin::Scroll-->
-            <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
                 <!--begin::Input group-->
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
@@ -32,36 +31,29 @@
                 <!--end::Input group-->
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
-                    <label class="required fs-6 fw-semibold mb-2">Logo (Beyaz Yazılı) <a href="{{image(setting('speed_logo_white'))}}" target="_blank">Görüntüle</a></label>
+                    <label class="required fs-6 fw-semibold mb-2">Logo</label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <input type="file" class="form-control form-control-solid" placeholder="" name="speed_logo_white" value="" />
+                    <input type="file" class="form-control form-control-solid" placeholder="" name="logo" value="" />
                     <!--end::Input-->
-                </div>
-                <!--end::Input group-->
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label class="required fs-6 fw-semibold mb-2">Logo (Siyah Yazılı) <a href="{{image(setting('speed_logo_dark'))}}" target="_blank">Görüntüle</a></label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="file" class="form-control form-control-solid" placeholder="" name="speed_logo_dark" value="" />
-                    <!--end::Input-->
+                    <img src="{{image(setting('logo'))}}" style="width: 250px; height: 100px">
                 </div>
 
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
-                    <label class="required fs-6 fw-semibold mb-2">Favicon <a href="{{image(setting('speed_favicon'))}}" target="_blank">Görüntüle</a></label>
+                    <label class="required fs-6 fw-semibold mb-2">Favicon <a href="{{image(setting('favicon'))}}" target="_blank">Görüntüle</a></label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <input type="file" class="form-control form-control-solid" placeholder="" name="speed_favicon" value="" />
+                    <input type="file" class="form-control form-control-solid" placeholder="" name="favicon" value="" />
                     <!--end::Input-->
+                    <img src="{{image(setting('favicon'))}}" style="width: 250px; height: 100px">
                 </div>
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
                     <label class="required fs-6 fw-semibold mb-2">Sayfalama Sayısı</label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <input type="number" class="form-control form-control-solid" placeholder="" name="speed_pagination_number" value="{{setting('speed_pagination_number')}}" />
+                    <input type="number" class="form-control form-control-solid" placeholder="" name="pagination_number" value="{{setting('pagination_number')}}" />
                     <!--end::Input-->
                 </div>
                 <div class="fv-row mb-7">
@@ -92,7 +84,6 @@
                 </div>
                 <!--end::Input group-->
 
-            </div>
             <!--end::Scroll-->
         </div>
         <!--end::Modal body-->
