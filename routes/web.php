@@ -3,30 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\CustomerController;
-use \App\Http\Controllers\BusinessCommentController;
-use App\Http\Controllers\CustomerNotificationMobileController;
 use App\Http\Controllers\SettingController;
-use \App\Http\Controllers\AdsController;
-use \App\Http\Controllers\MainPageController;
-use App\Http\Controllers\CustomerBlogController;
 use \App\Http\Controllers\AjaxController;
-use \App\Http\Controllers\ActivityController;
-use \App\Http\Controllers\ActivitySponsorController;
-use App\Http\Controllers\ActivityPersonalController;
-use App\Http\Controllers\BusinessCategoryController;
-use App\Http\Controllers\ServiceCategoryController;
-use App\Http\Controllers\CustomerFaqController;
-use App\Http\Controllers\FaqController;
-use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\BusinessFaqController;
-use App\Http\Controllers\BusinessFaqCategoryController;
-use App\Http\Controllers\BusinessBlogController;
-use App\Http\Controllers\ProductAdsController;
-use App\Http\Controllers\BusinessController;
-use App\Http\Controllers\SupportRequestController;
-use \App\Http\Controllers\ServiceSubCategoryController;
-use App\Http\Controllers\BusinessServiceController;
-use App\Http\Controllers\PersonelController;
+use \App\Http\Controllers\MainCategoryController;
+use \App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +35,9 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('update/password', 'updatePassword')->name('updatePassword');
     });
 
-    Route::resource('productCategory', ProductCategoryController::class);
+    Route::resource('mainCategory', MainCategoryController::class);
+    Route::resource('subCategory', SubCategoryController::class);
+    Route::resource('subCategoryProduct', \App\Http\Controllers\SubCategoryProductController::class);
 
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
         Route::post('/update-featured', 'updateFeatured')->name('updateFeatured');

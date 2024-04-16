@@ -39,6 +39,21 @@
 
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="kt_tab_pane_1" role="tabpanel">
+                                <div class="d-flex flex-column mb-7 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-6 fw-semibold mb-2">
+                                        <span class="required">Ana Kategori</span>
+                                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Kategori, Hangi kategorinin altında görüntülenecek"></i>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <select name="category_id" id="city_select" aria-label="Ana Kategori Seçiniz" data-control="select2" data-placeholder="Ana Kategori Seçiniz..." data-dropdown-parent="#kt_modal_add_customer" class="form-select form-select-solid fw-bold">
+                                        <option value="">Ana Kategori Seçiniz</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="fv-row mb-7">
                                     <!--begin::Label-->
                                     <label class="required fs-6 fw-semibold mb-2">Kategori Adı</label>

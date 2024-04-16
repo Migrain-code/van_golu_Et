@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.mainCategory.index')}}" class="text-muted text-hover-primary">Kategoriler</a>
+            <a href="{{route('admin.subCategory.index')}}" class="text-muted text-hover-primary">Kategoriler</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -52,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-            Ürün Kategorisi Düzenle
+            Kategori Düzenle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -71,7 +71,7 @@
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.mainCategory.update', $mainCategory->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.subCategory.update', $subCategory->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
                     @method('PUT')
@@ -86,7 +86,7 @@
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
-                                @include('category.product-category.detail.tabs.tab1')
+                                @include('category.sub-category.detail.tabs.tab1')
                             </div>
 
                         </div>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SubCategory extends Model
 {
     use HasFactory;
+
+    public function topCategory()
+    {
+        return $this->hasOne(MainCategory::class, 'id', 'category_id');
+    }
 }

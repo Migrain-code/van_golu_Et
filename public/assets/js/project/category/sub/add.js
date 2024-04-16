@@ -23,20 +23,27 @@ var KTModalCustomersAdd = function () {
 							}
 						}
 					},
-                    'category_icon': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Hizmet Görseli alanı gereklidir'
-                            }
-                        }
-                    },
+                    'meta_title': {
+						validators: {
+							notEmpty: {
+								message: 'Meta Başlık alanı gereklidir'
+							}
+						}
+					},
+                    'meta_description': {
+						validators: {
+							notEmpty: {
+								message: 'Meta Açıklama alanı gereklidir'
+							}
+						}
+					},
                     'category_id': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Hizmet Kategorisi alanı gereklidir'
-                            }
-                        }
-                    },
+						validators: {
+							notEmpty: {
+								message: 'Ana Kategori alanı gereklidir'
+							}
+						}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -68,19 +75,12 @@ var KTModalCustomersAdd = function () {
                             var formData = new FormData();
                             formData.append("_token", csrf_token);
 
-                            formData.append("name[de]", $('[name="name[de]"]').val());
-                            formData.append("name[en]", $('[name="name[en]"]').val());
-                            formData.append("name[es]", $('[name="name[es]"]').val());
-                            formData.append("name[fr]", $('[name="name[fr]"]').val());
-                            formData.append("name[it]", $('[name="name[it]"]').val());
-                            formData.append("name[tr]", $('[name="name[tr]"]').val());
+                            formData.append("name", $('[name="name"]').val());
+                            formData.append("meta_title", $('[name="meta_title"]').val());
+                            formData.append("meta_description", $('[name="meta_description"]').val());
                             formData.append("category_id", $('[name="category_id"]').val());
-
-                            formData.append("category_icon", $('[name="category_icon"]')[0].files[0]);
-                            //formData.append("cover_image", $('[name="cover_image"]')[0].files[0]);
-
                             $.ajax({
-                                url: '/dashboard/serviceSubCategory',
+                                url: '/dashboard/subCategoryProduct',
                                 type: "POST",
                                 data: formData,
                                 processData: false,
@@ -89,26 +89,22 @@ var KTModalCustomersAdd = function () {
                                 success: function (res) {
 
                                         Swal.fire({
-                                            text: "Hizmet Başarılı Bir Şekilde Kayıt Edildi!",
-                                            icon: "success",
+                                            text: res.message,
+                                            icon: res.status,
                                             buttonsStyling: false,
-                                            confirmButtonText: "Ok, got it!",
+                                            confirmButtonText: "Tamam!",
                                             customClass: {
                                                 confirmButton: "btn btn-primary"
                                             }
                                         }).then(function (result) {
-                                            form.reset(); // Reset form
-                                            modal.hide(); // Hide modal
+
                                             submitButton.disabled = false;
-                                            if ($.fn.DataTable.isDataTable('#datatable')) {
-                                                $('#datatable').DataTable().ajax.reload();
-                                            }
-                                            if (result.isConfirmed) {
-
-                                                // Enable submit button after loading
-
-                                                // Redirect to customers list page
-                                                //window.location = form.getAttribute("data-kt-redirect");
+                                            if (res.status === "success"){
+                                                form.reset(); // Reset form
+                                                modal.hide(); // Hide modal
+                                                if ($.fn.DataTable.isDataTable('#datatable')) {
+                                                    $('#datatable').DataTable().ajax.reload();
+                                                }
                                             }
                                         });
 

@@ -1,7 +1,7 @@
 "use strict";
 
 // Class definition
-var KTModalFaqAdd = function () {
+var KTModalCustomersAdd = function () {
     var submitButton;
     var cancelButton;
 	var closeButton;
@@ -16,92 +16,34 @@ var KTModalFaqAdd = function () {
 			form,
 			{
 				fields: {
-					'question[de]': {
+					'name': {
 						validators: {
 							notEmpty: {
-								message: 'Soru (de) alanı gereklidir'
+								message: 'Ad alanı gereklidir'
 							}
 						}
 					},
-                    'question[en]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Soru (en) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'question[es]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Soru (es) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'question[fr]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Soru (fr) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'question[it]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Soru (it) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'question[tr]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Soru (tr) alanı gereklidir'
-                            }
-                        }
-                    },
-
-                    'answer[de]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (de) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'answer[en]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (en) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'answer[es]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (es) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'answer[fr]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (fr) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'answer[it]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (it) alanı gereklidir'
-                            }
-                        }
-                    },
-                    'answer[tr]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Cevap (tr) alanı gereklidir'
-                            }
-                        }
-                    },
-
+                    'meta_title': {
+						validators: {
+							notEmpty: {
+								message: 'Meta Başlık alanı gereklidir'
+							}
+						}
+					},
+                    'meta_description': {
+						validators: {
+							notEmpty: {
+								message: 'Meta Açıklama alanı gereklidir'
+							}
+						}
+					},
+                    'category_id': {
+						validators: {
+							notEmpty: {
+								message: 'Ana Kategori alanı gereklidir'
+							}
+						}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -133,51 +75,36 @@ var KTModalFaqAdd = function () {
                             var formData = new FormData();
                             formData.append("_token", csrf_token);
 
-                            formData.append("question[de]", $('[name="question[de]"]').val());
-                            formData.append("question[en]", $('[name="question[en]"]').val());
-                            formData.append("question[es]", $('[name="question[es]"]').val());
-                            formData.append("question[fr]", $('[name="question[fr]"]').val());
-                            formData.append("question[it]", $('[name="question[it]"]').val());
-                            formData.append("question[tr]", $('[name="question[tr]"]').val());
-
-                            formData.append("answer[de]", $('[name="answer[de]"]').val());
-                            formData.append("answer[en]", $('[name="answer[en]"]').val());
-                            formData.append("answer[es]", $('[name="answer[es]"]').val());
-                            formData.append("answer[fr]", $('[name="answer[fr]"]').val());
-                            formData.append("answer[it]", $('[name="answer[it]"]').val());
-                            formData.append("answer[tr]", $('[name="answer[tr]"]').val());
-
+                            formData.append("name", $('[name="name"]').val());
+                            formData.append("meta_title", $('[name="meta_title"]').val());
+                            formData.append("meta_description", $('[name="meta_description"]').val());
                             formData.append("category_id", $('[name="category_id"]').val());
-
                             $.ajax({
-                                url: '/dashboard/businessFaq',
+                                url: '/dashboard/subCategory',
                                 type: "POST",
                                 data: formData,
                                 processData: false,
                                 contentType: false,
                                 dataType: "JSON",
                                 success: function (res) {
+
                                         Swal.fire({
-                                            text: "SSS Başarılı Bir Şekilde Kayıt Edildi!",
-                                            icon: "success",
+                                            text: res.message,
+                                            icon: res.status,
                                             buttonsStyling: false,
-                                            confirmButtonText: "Ok, got it!",
+                                            confirmButtonText: "Tamam!",
                                             customClass: {
                                                 confirmButton: "btn btn-primary"
                                             }
                                         }).then(function (result) {
-                                            form.reset(); // Reset form
-                                            modal.hide(); // Hide modal
+
                                             submitButton.disabled = false;
-                                            if ($.fn.DataTable.isDataTable('#datatable')) {
-                                                $('#datatable').DataTable().ajax.reload();
-                                            }
-                                            if (result.isConfirmed) {
-
-                                                // Enable submit button after loading
-
-                                                // Redirect to customers list page
-                                                //window.location = form.getAttribute("data-kt-redirect");
+                                            if (res.status === "success"){
+                                                form.reset(); // Reset form
+                                                modal.hide(); // Hide modal
+                                                if ($.fn.DataTable.isDataTable('#datatable')) {
+                                                    $('#datatable').DataTable().ajax.reload();
+                                                }
                                             }
                                         });
 
@@ -290,9 +217,9 @@ var KTModalFaqAdd = function () {
             modal = new bootstrap.Modal(document.querySelector('#kt_modal_add_customer'));
 
             form = document.querySelector('#kt_modal_add_customer_form');
-            submitButton = document.querySelector('#kt_modal_add_customer_submit');
-            cancelButton = document.querySelector('#kt_modal_add_customer_cancel');
-			closeButton = document.querySelector('#kt_modal_add_customer_close');
+            submitButton = form.querySelector('#kt_modal_add_customer_submit');
+            cancelButton = form.querySelector('#kt_modal_add_customer_cancel');
+			closeButton = form.querySelector('#kt_modal_add_customer_close');
 
             handleForm();
         }
@@ -301,5 +228,5 @@ var KTModalFaqAdd = function () {
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-	KTModalFaqAdd.init();
+	KTModalCustomersAdd.init();
 });

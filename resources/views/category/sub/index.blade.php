@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('title', 'Ana Kategoriler')
+@section('title', 'Alt Kategoriler')
 @section('styles')
 
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Ana Kategoriler</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Alt Kategoriler</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -27,7 +27,7 @@
         </li>
         <!--end::Item-->
         <!--begin::Item-->
-        <li class="breadcrumb-item text-muted">Ana Kategoriler</li>
+        <li class="breadcrumb-item text-muted">Alt Kategoriler</li>
         <!--end::Item-->
     </ul>
     <!--end::Breadcrumb-->
@@ -52,6 +52,7 @@
                                 <input class="form-check-input delete" type="checkbox" data-kt-check="true" data-kt-check-target="#datatable .delete" value="1" />
                             </div>
                         </th>
+                        <th class="min-w-125px">Üst Kategori Adı</th>
                         <th class="min-w-125px">Kategori Adı</th>
                         <th class="min-w-125px">Status</th>
                         <th class="min-w-125px">Seo Başlık</th>
@@ -73,8 +74,8 @@
         </div>
         <!--end::Card-->
         <!--begin::Modals-->
-        @include('category.product-category.components.add-category')
-        @include('category.product-category.components.export-modal')
+        @include('category.sub.components.add-category')
+        @include('category.sub.components.export-modal')
         <!--end::Modals-->
     </div>
 
@@ -82,20 +83,21 @@
 
 @section('scripts')
     <script>
-        let DATA_URL = "{{route('admin.mainCategory.datatable')}}";
+        let DATA_URL = "{{route('admin.subCategoryProduct.datatable')}}";
         let DATA_COLUMNS = [
             {data: 'id'},
+            {data: 'topCategory'},
             {data: 'name'},
             {data: 'status'},
             {data: 'meta_title'},
             {data: 'created_at'},
             {data: 'action'}
         ];
-        let addUrl = "{{route('admin.mainCategory.store')}}"
+        let addUrl = "{{route('admin.subCategoryProduct.store')}}"
     </script>
 
     <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/category/product-category/listing.js"></script>
-    <script src="/assets/js/project/category/product-category/add.js"></script>
+    <script src="/assets/js/project/category/sub/listing.js"></script>
+    <script src="/assets/js/project/category/sub/add.js"></script>
 
 @endsection

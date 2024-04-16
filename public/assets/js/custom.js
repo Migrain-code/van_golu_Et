@@ -11,7 +11,8 @@ $(document).on('click', '.delete-btn', function () {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Evet, Sil!",
+        cancelButtonText: "Hayır, Silme"
     }).then((result) => {
         if (result.isConfirmed) {
 
@@ -99,7 +100,8 @@ $(document).on('click', '[data-kt-customer-table-select="delete_selected"]', fun
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Evet, Sil!",
+        cancelButtonText: "Hayır, Silme"
     }).then((result) => {
         if (result.isConfirmed) {
 

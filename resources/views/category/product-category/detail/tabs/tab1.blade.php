@@ -1,53 +1,27 @@
 <div class="tab-pane fade show active" id="kt_tab_pane_1" role="tabpanel">
-    <div class="fv-row mb-7">
-        <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Türkçe)</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[tr]" value="{{$productCategory->getTranslation('name', 'tr')}}" />
-        <!--end::Input-->
-    </div>
-    <div class="fv-row mb-7">
-        <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İngilizce)</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[en]" value="{{$productCategory->getTranslation('name', 'en')}}" />
-        <!--end::Input-->
-    </div>
-    <div class="fv-row mb-7">
-        <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Almanca)</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[de]" value="{{$productCategory->getTranslation('name', 'de')}}" />
-        <!--end::Input-->
-    </div>
 
     <div class="fv-row mb-7">
         <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İspanyolca)</label>
+        <label class="required fs-6 fw-semibold mb-2">Kategori Adı</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[es]" value="{{$productCategory->getTranslation('name', 'es')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="{{$mainCategory->name}}" />
         <!--end::Input-->
     </div>
-
     <div class="fv-row mb-7">
         <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (Fransızca)</label>
+        <label class="required fs-6 fw-semibold mb-2">Meta Başlık</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[fr]" value="{{$productCategory->getTranslation('name', 'fr')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="meta_title" value="{{$mainCategory->meta_title}}" />
         <!--end::Input-->
     </div>
-
     <div class="fv-row mb-7">
         <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Kategori Adı (İtalyanca)</label>
+        <label class="required fs-6 fw-semibold mb-2">Meta Açıklama</label>
         <!--end::Label-->
         <!--begin::Input-->
-        <input type="text" class="form-control form-control-solid" placeholder="" name="name[it]" value="{{$productCategory->getTranslation('name', 'it')}}" />
+        <input type="text" class="form-control form-control-solid" placeholder="" name="meta_description" value="{{$mainCategory->meta_description}}" />
         <!--end::Input-->
     </div>
 </div>

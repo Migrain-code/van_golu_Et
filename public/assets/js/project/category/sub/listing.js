@@ -24,49 +24,20 @@ var KTBusinessCategoryList = function () {
             },
             serverSide: true,
             processing : true,
-            rowReorder: {
-                selector: 'td:not(.no-reorder)'
-            },
             columns: DATA_COLUMNS,
             responsive: true,
             "info": false,
             'order': [],
             'columnDefs': [
                 { orderable: false,className: 'no-reorder', targets: 0 }, // Disable ordering on column 0 (checkbox)
+                { orderable: false,className: 'no-reorder', targets: 2 }, // Disable ordering on column 6 (actions)
                 { orderable: false,className: 'no-reorder', targets: 5 }, // Disable ordering on column 6 (actions)
             ],
             ajax: {
                 url: DATA_URL,
             },
         });
-        datatable.on('row-reorder', function (e, diff, edit) {
 
-            var categoryId = $(diff[0].node).find('input[type="checkbox"]').val();//kategori id si
-            var beforeOrderNumber = diff[0] ? diff[0].oldPosition : null; // önceki sırası
-            var afterOrderNumber = diff[0] ? diff[0].newPosition : null; // yeni sırası
-
-            $.ajax({
-                method: 'POST',
-                url: '/dashboard/ajax/update-service-category-order',
-                data: {
-                    category_id: categoryId,
-                    before_order: beforeOrderNumber,
-                    after_order: afterOrderNumber,
-                    _token: csrf_token,
-                },
-                success: function (response) {
-                    if (response.status == "success"){
-                        Swal.fire({
-                            text: "Kategori Sırası Bir Şekilde Güncellendi!",
-                            icon: "success",
-                        });
-                    }
-                },
-                error: function (error) {
-                    console.error(error);
-                }
-            });
-        });
         // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
         datatable.on('draw', function () {
             initToggleToolbar();

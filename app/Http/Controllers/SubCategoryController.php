@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MainCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class SubCategoryController extends Controller
 {
@@ -12,15 +15,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $categories = MainCategory::all();
+        return view('category.sub-category.index', compact('categories'));
     }
 
     /**
@@ -28,23 +24,23 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subCategory = new SubCategory();
+
+        $this->extracted($request, $subCategory);
+        return response()->json([
+            'status' => "success",
+            'message' => "Kategori Eklendi"
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(SubCategory $subCategory)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        $categories = MainCategory::all();
+        return view('category.sub-category.detail.edit', compact('subCategory', 'categories'));
     }
 
     /**
@@ -52,14 +48,53 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, SubCategory $subCategory)
     {
-        //
+        $this->extracted($request, $subCategory);
+        return to_route('admin.subCategory.index')->with('response',[
+            'status' => "success",
+            'message' => "Kategori Güncellendi"
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SubCategory $subCategory)
+    public function extracted($request, $mainCategory)
     {
-        //
+        $mainCategory->name = $request->input('name');
+        $mainCategory->category_id = $request->input('category_id');
+        $mainCategory->slug = Str::slug($request->input('name'));
+        $mainCategory->meta_title= $request->input('meta_title');
+        $mainCategory->meta_description = $request->input('meta_description');
+        $mainCategory->save();
+        return $mainCategory;
+    }
+
+    public function datatable()
+    {
+        $productCategories = SubCategory::latest();
+
+        return DataTables::of($productCategories)
+            ->editColumn('id', function ($q) {
+                return createCheckbox($q->id, 'SubCategory', 'Üst Kategorileri');
+            })
+            ->editColumn('name', function ($q) {
+                return $q->name;
+            })
+            ->addColumn('mainCategory', function ($q) {
+                return $q->topCategory->name;
+            })
+            ->editColumn('created_at', function ($q) {
+                return $q->created_at->format('d.m.Y H:i:s');
+            })
+            ->editColumn('status', function ($q) {
+                return create_switch($q->id, $q->status == 1 ? true : false, 'SubCategory', 'status');
+            })
+            ->addColumn('action', function ($q) {
+                $html = '<div class="d-flex justify-content-center align-items-center">';
+                $html .= create_edit_button(route('admin.subCategory.edit', $q->id));
+                $html .= create_delete_button('SubCategory', $q->id, 'Kategori', 'Kategori Kaydını Silmek İstediğinize Eminmisiniz?');
+                $html .= '</div>';
+
+                return $html;
+            })
+            ->rawColumns(['id', 'action', 'created_at'])
+            ->make(true);
     }
 }
