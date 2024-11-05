@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\AjaxController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\MainCategoryController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Frontend\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use \Illuminate\Support\Facades\Auth;
-use \App\Http\Controllers\CustomerController;
-use App\Http\Controllers\SettingController;
-use \App\Http\Controllers\AjaxController;
-use \App\Http\Controllers\MainCategoryController;
-use \App\Http\Controllers\SubCategoryController;
-
+use \App\Http\Controllers\Admin\Language\LanguageController;
+use App\Http\Controllers\Admin\Slider\SliderController;
+use App\Http\Controllers\Admin\SubCategoryProductController;
+use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,13 +23,13 @@ use \App\Http\Controllers\SubCategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
 
 Auth::routes();
+
 Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
     /*------------------------------Customer Routes-----------------------------------*/
     Route::resource('customer', CustomerController::class);
@@ -34,16 +38,20 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('update/phone/verify', 'verifyPhone')->name('verifyPhone');
         Route::post('update/password', 'updatePassword')->name('updatePassword');
     });
+    Route::resource('product', ProductController::class);
+    Route::resource('slider', SliderController::class);
+    Route::resource('language', LanguageController::class);
 
     Route::resource('mainCategory', MainCategoryController::class);
     Route::resource('subCategory', SubCategoryController::class);
-    Route::resource('subCategoryProduct', \App\Http\Controllers\SubCategoryProductController::class);
+    Route::resource('subCategoryProduct', SubCategoryProductController::class);
 
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
         Route::post('/update-featured', 'updateFeatured')->name('updateFeatured');
         Route::post('/delete/object', 'deleteFeatured')->name('deleteFeatured');
         Route::post('/delete/all/object', 'deleteAllFeatured')->name('deleteAllFeatured');
         Route::post('/get/district', 'getDistrict')->name('getDistrictUrl');
+        Route::post('/variant/option', 'getVariantOption')->name('getVariantOption');
     });
 
     Route::controller(SettingController::class)->prefix('settings')->as('settings.')->group(function (){

@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Core\CustomResourceRegistrar;
 use App\Models\City;
 use App\Models\ForBusiness;
+use App\Models\Language;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
         $registrar = new CustomResourceRegistrar($this->app['router']);
 
         $this->app->bind('Illuminate\Routing\ResourceRegistrar', function () use ($registrar) {
@@ -38,7 +41,10 @@ class AppServiceProvider extends ServiceProvider
 
         \Config::set('settings', $settings);
 
-        $cities = City::all();
-        View::share('cities', $cities);
+        /*$cities = City::all();
+        View::share('cities', $cities);*/
+
+        $languages = Language::all();
+        View::share('languages', $languages);
     }
 }

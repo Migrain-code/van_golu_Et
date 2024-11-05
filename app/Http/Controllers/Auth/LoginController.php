@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -44,7 +41,7 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'phone';
+        return 'email';
     }
 
     protected function guard()
@@ -52,23 +49,8 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
-    public function login(Request $request)
+    public function showLoginForm()
     {
-        $this->validateLogin($request);
-
-        $admin = User::where('phone', clearPhone($request->input('phone')))->first();
-
-        if ($admin && Hash::check($request->input('password'), $admin->password)) {
-            Auth::guard('admin')->loginUsingId($admin->id);
-            return to_route('admin.home')->with('response', [
-                'status' => "success",
-                'message' => "Yönetim Sistemine Hoşgeldiniz"
-            ]);
-        } else {
-            return to_route('login')->with('response', [
-                'status' => "error",
-                'message' => "Telefon Numarası veya Şifre Hatalı"
-            ]);
-        }
+        return view('admin.auth.login');
     }
 }
