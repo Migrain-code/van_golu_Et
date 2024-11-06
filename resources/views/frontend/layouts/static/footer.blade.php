@@ -28,9 +28,9 @@
                 <div class="col-6 col-sm-6 col-lg-3">
                     <h6 class="font-small fw-medium uppercase">{{ __('Contact Info') }}</h6>
                     <ul class="list-unstyled">
-                        <li>121 King St, Melbourne VIC 3000</li>
-                        <li>contact@example.com</li>
-                        <li>+(123) 456 789 01</li>
+                        <li>{{setting('speed_address')}}</li>
+                        <li>{{setting('speed_phone')}}</li>
+                        <li>{{setting('speed_email')}}</li>
                     </ul>
                 </div>
             </div><!-- end row -->
@@ -40,14 +40,13 @@
         <div class="container">
             <div class="row align-items-center g-2 g-lg-3">
                 <div class="col-12 col-md-6 text-center text-md-start">
-                    <p>&copy; 2024 FlaTheme, All Rights Reserved.</p>
+                    <p>&copy; {{now()->year}} {{setting('speed_site_title')}}, {{__('Tüm hakları saklıdır.')}}</p>
                 </div>
                 <div class="col-12 col-md-6 text-center text-md-end">
                     <ul class="list-inline-sm">
-                        <li><a class="button-circle button-circle-sm button-circle-social-facebook" href="#"><i class="bi bi-facebook"></i></a></li>
-                        <li><a class="button-circle button-circle-sm button-circle-social-twitter" href="#"><i class="bi bi-twitter-x"></i></a></li>
-                        <li><a class="button-circle button-circle-sm button-circle-social-pinterest" href="#"><i class="bi bi-pinterest"></i></a></li>
-                        <li><a class="button-circle button-circle-sm button-circle-social-instagram" href="#"><i class="bi bi-instagram"></i></a></li>
+                        <li><a class="button-circle button-circle-sm button-circle-social-facebook" href="{{setting('speed_facebook_url')}}"><i class="bi bi-facebook"></i></a></li>
+                        <li><a class="button-circle button-circle-sm button-circle-social-twitter" href="{{setting('speed_twitter_url')}}"><i class="bi bi-twitter-x"></i></a></li>
+                        <li><a class="button-circle button-circle-sm button-circle-social-instagram" href="{{setting('speed_instagram_url')}}"><i class="bi bi-instagram"></i></a></li>
                     </ul>
                 </div>
             </div><!-- end row -->
