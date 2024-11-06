@@ -3,28 +3,28 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h3 class="uppercase letter-spacing-1">mono</h3>
+                    <h3 class="uppercase letter-spacing-1">{{ __('mono') }}</h3>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">Useful Links</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('Useful Links') }}</h6>
                     <ul class="list-dash animate-links">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Prices</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">{{ __('About us') }}</a></li>
+                        <li><a href="#">{{ __('Team') }}</a></li>
+                        <li><a href="#">{{ __('Prices') }}</a></li>
+                        <li><a href="#">{{ __('Contact') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">Additional Links</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('Additional Links') }}</h6>
                     <ul class="list-dash animate-links">
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Process</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">{{ __('Services') }}</a></li>
+                        <li><a href="#">{{ __('Process') }}</a></li>
+                        <li><a href="#">{{ __('FAQ') }}</a></li>
+                        <li><a href="#">{{ __('Careers') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">Contact Info</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('Contact Info') }}</h6>
                     <ul class="list-unstyled">
                         <li>121 King St, Melbourne VIC 3000</li>
                         <li>contact@example.com</li>

@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
-@section('title', 'Ana Kategoriler')
+@section('title', 'Sliderlar')
 @section('styles')
 
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Ana Kategoriler</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Sliderlar</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -27,7 +27,7 @@
         </li>
         <!--end::Item-->
         <!--begin::Item-->
-        <li class="breadcrumb-item text-muted">Ana Kategoriler</li>
+        <li class="breadcrumb-item text-muted">Sliderlar</li>
         <!--end::Item-->
     </ul>
     <!--end::Breadcrumb-->
@@ -52,9 +52,9 @@
                                 <input class="form-check-input delete" type="checkbox" data-kt-check="true" data-kt-check-target="#datatable .delete" value="1" />
                             </div>
                         </th>
-                        <th class="min-w-125px">Kategori Adı</th>
-                        <th class="min-w-125px">Status</th>
-                        <th class="min-w-125px">Seo Başlık</th>
+                        <th class="min-w-125px">Başlık</th>
+                        <th class="min-w-125px">Durum</th>
+                        <th class="min-w-125px">Buton</th>
                         <th class="min-w-125px">Created Date</th>
                         <th class="text-end min-w-70px">Actions</th>
                     </tr>
@@ -72,9 +72,7 @@
             <!--end::Card body-->
         </div>
         <!--end::Card-->
-        <!--begin::Modals-->
-        @include('admin.category.product-category.components.export-modal')
-        <!--end::Modals-->
+
     </div>
 
 @endsection
@@ -84,15 +82,14 @@
         let DATA_URL = "{{route('admin.slider.datatable')}}";
         let DATA_COLUMNS = [
             {data: 'id'},
-            {data: 'name'},
-            {data: 'status'},
-            {data: 'meta_title'},
+            {data: 'title'},
+            {data: 'isActive'},
+            {data: 'btn_text'},
             {data: 'created_at'},
             {data: 'action'}
         ];
     </script>
 
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/category/product-category/listing.js"></script>
+    <script src="/assets/js/project/slider/listing.js"></script>
 
 @endsection

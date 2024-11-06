@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Language;
+use App\Models\MainPage;
+use App\Models\Slider;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.home.index');
+        $sliders = Slider::where("isActive", 1)->get();
+        $parts = MainPage::where('status', 1)->get();
+        return view('frontend.home.index', compact('sliders', 'parts'));
     }
 
     public function changeLanguage(Language $language)
@@ -18,13 +23,9 @@ class HomeController extends Controller
 
         // Dil değişikliğini uygulamak için Laravel'in yerel dilini ayarla
         app()->setLocale($locale);
-
         // Kullanıcının seçimini oturuma kaydet
         session(['locale' => $locale]);
 
-        return redirect()->back()->with('response', [
-            'status' => "success",
-            'message' => trans('Dil Başarılı Bir Şekilde Değiştirildi.'),
-        ]);
+        return redirect()->back();
     }
 }

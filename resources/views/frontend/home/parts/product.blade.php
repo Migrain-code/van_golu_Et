@@ -27,10 +27,10 @@
                     <div class="hoverbox-4 bottom border-radius">
                         <img src="/frontend/assets/images/sample/product/1.jpg" style="min-height: 315px;object-fit: cover" alt="">
                         <div class="content">
-                            <h5>Korkuluklar</h5>
+                            <h5>{{ __('Korkuluklar') }}</h5>
                         </div>
                         <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">Bilgi Al</a>
+                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <h5>Yapısal Dış Cephe Sistemleri</h5>
                         </div>
                         <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">Bilgi Al</a>
+                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             <h5>Işıklık Sistemler</h5>
                         </div>
                         <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">Bilgi Al</a>
+                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                             <h5>Aluminyum Güneş Kırıcılar</h5>
                         </div>
                         <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">Bilgi Al</a>
+                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
                         </div>
                     </div>
                 </div>

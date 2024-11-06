@@ -7,7 +7,7 @@
                     <h2 class="m-0">Boglarımız</h2>
                 </div>
                 <div class="col-12 col-sm-6 text-sm-end">
-                    <a class="button-text-1" href="#">Tüm Bloglar</a>
+                    <a class="button-text-1" href="#">{{ __('Tüm Bloglar') }}</a>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     </p>
                 </div>
                 <div class="hover-content">
-                    <a class="button button-lg button-outline-white button-rounded" href="#">İncele</a>
+                    <a class="button button-lg button-outline-white button-rounded" href="#">{{ __('İncele') }}</a>
                 </div>
             </div>
             <!-- Blog post 2 -->
@@ -37,7 +37,7 @@
                     </p>
                 </div>
                 <div class="hover-content">
-                    <a class="button button-lg button-outline-white button-rounded" href="#">İncele</a>
+                    <a class="button button-lg button-outline-white button-rounded" href="#">{{ __('İncele') }}</a>
                 </div>
             </div>
             <!-- Blog post 3 -->
@@ -50,7 +50,7 @@
                     </p>
                 </div>
                 <div class="hover-content">
-                    <a class="button button-lg button-outline-white button-rounded" href="#">İncele</a>
+                    <a class="button button-lg button-outline-white button-rounded" href="#">{{ __('İncele') }}</a>
                 </div>
             </div>
         </div><!-- end owl-carousel -->

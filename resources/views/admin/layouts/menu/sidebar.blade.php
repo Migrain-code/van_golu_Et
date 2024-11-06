@@ -212,7 +212,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Üst Ekle</span>
+                                <span class="menu-title">Ürün Ekle</span>
                             </a>
                             <!--end:Menu link-->
                         </div>
@@ -230,6 +230,26 @@
                             <i class="bi bi-gear"></i>
                         </span>
                         <span class="menu-title">Site Ayarları</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{route('admin.slider.index')}}">
+                        <span class="menu-icon">
+                            <i class="bi bi-sliders"></i>
+                        </span>
+                        <span class="menu-title">Sliderlar</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{route('admin.main-page.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span class="menu-title">Anasayfa Bölümleri</span>
                     </a>
                     <!--end:Menu link-->
                 </div>

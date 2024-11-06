@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Slider Ekle')
+@section('title', 'Bölüm Ekle')
 @section('styles')
     <style>
         .nav-line-tabs .nav-item .nav-link {
@@ -16,7 +16,7 @@
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Slider Ekle</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Bölüm Ekle</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.slider.index')}}" class="text-muted text-hover-primary">Slider</a>
+            <a href="{{route('admin.main-page.index')}}" class="text-muted text-hover-primary">Bölümler</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -52,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-           Slider Ekle
+           Bölüm Ekle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -65,13 +65,12 @@
         <div class="card">
             <!--begin::Card header-->
             <div class="card-header">
-                <div class="card-title">Slider Ekle</div>
-
+                <div class="card-title">Bölüm Ekle</div>
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.slider.store')}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.main-page.store')}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
                     <div class="modal-body py-10 px-lg-17">
@@ -80,7 +79,7 @@
                             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
                                 @foreach($languages as $row)
                                     <li class="nav-item">
-                                        <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">Slider Bilgileri ({{$row->name}})</a>
+                                        <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">Bölüm Bilgileri ({{$row->name}})</a>
                                     </li>
                                 @endforeach
                                 <li class="nav-item">
@@ -90,9 +89,9 @@
 
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $row)
-                                    @include('admin.slider.create.tabs.tab')
+                                    @include('admin.main-page.create.tabs.tab')
                                 @endforeach
-                                @include('admin.slider.create.tabs.other')
+                                @include('admin.main-page.create.tabs.other')
 
                             </div>
 
@@ -121,5 +120,22 @@
 @endsection
 
 @section('scripts')
+    <script src="/assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+    <script>
+        $('#kt_docs_repeater_basic').repeater({
+            initEmpty: false,
 
+            defaultValues: {
+                'text-input': 'foo'
+            },
+
+            show: function () {
+                $(this).slideDown();
+            },
+
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
+        });
+    </script>
 @endsection

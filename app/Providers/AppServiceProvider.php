@@ -7,7 +7,9 @@ use App\Models\City;
 use App\Models\ForBusiness;
 use App\Models\Language;
 use App\Models\Setting;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,11 +42,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         \Config::set('settings', $settings);
-
         /*$cities = City::all();
         View::share('cities', $cities);*/
 
-        $languages = Language::all();
+        $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
     }
 }

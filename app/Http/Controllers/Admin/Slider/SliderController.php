@@ -31,47 +31,57 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        //$request->dd();
+        $slider = new Slider();
+        $slider->title = $request->title;
+        $slider->btn_text = $request->btn_text;
+        $slider->btn_link = $request->btn_link;
+        $slider->description = $request->descriptions;
+        if ($request->hasFile('image')) {
+            $slider->image = $request->file('image')->store('slider');
+        }
+        if ($slider->save()){
+            return redirect()->route('admin.slider.index')->with('response', [
+                'status' => "success",
+                'message' => 'Slider Added Successfully'
+            ]);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ads $ads)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ads $advert)
+    public function edit(Slider $slider)
     {
-
+        return view('admin.slider.edit.index', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ads $advert)
+    public function update(Request $request, Slider $slider)
     {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Ads $advert)
-    {
-        //
+        $slider->title = $request->title;
+        $slider->btn_text = $request->btn_text;
+        $slider->btn_link = $request->btn_link;
+        $slider->description = $request->descriptions;
+        if ($request->hasFile('image')) {
+            $slider->image = $request->file('image')->store('slider');
+        }
+        if ($slider->save()){
+            return redirect()->route('admin.slider.index')->with('response', [
+                'status' => "success",
+                'message' => 'Slider Updated Successfully'
+            ]);
+        }
     }
 
     public function datatable()
     {
-        $ads = Slider::latest();
+        $sliders = Slider::latest();
 
-        return DataTables::of($ads)
+        return DataTables::of($sliders)
             ->editColumn('id', function ($q) {
                 return createCheckbox($q->id, 'Slider', 'Sliderları');
             })
@@ -79,10 +89,10 @@ class SliderController extends Controller
                 return $q->getTitle();
             })
             ->editColumn('btn_text', function ($q) {
-                return $q->btn_text;
+                return $q->getButtonText();
             })
-            ->editColumn('status', function ($q) {
-                return create_switch($q->id, $q->status == 1 ? true : false, 'Ads', 'status');
+            ->editColumn('isActive', function ($q) {
+                return create_switch($q->id, $q->isActive == 1 ? true : false, 'Slider', 'isActive');
             })
             ->editColumn('created_at', function ($q) {
                 return $q->created_at->format('d.m.Y H:i:s');

@@ -8,10 +8,11 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\Admin\Language\LanguageController;
+use App\Http\Controllers\Admin\Language\LanguageController;
 use App\Http\Controllers\Admin\Slider\SliderController;
 use App\Http\Controllers\Admin\SubCategoryProductController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\MainPage\MainPageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,8 @@ use App\Http\Controllers\Admin\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
@@ -41,6 +41,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('product', ProductController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('language', LanguageController::class);
+    Route::resource('main-page',MainPageController::class);
 
     Route::resource('mainCategory', MainCategoryController::class);
     Route::resource('subCategory', SubCategoryController::class);

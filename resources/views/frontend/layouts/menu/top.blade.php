@@ -13,52 +13,52 @@
         <div class="header-menu">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kurumsal</a>
+                    <a class="nav-link" href="#">{{ __('Kurumsal') }}</a>
                     <ul class="nav-dropdown">
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
-                                Hakkımızda
+                                {{__("Hakkımızda")}}
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
-                                Yönetim Kurulu
+                                {{__("Yönetim Kurulu")}}
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
-                                İş Başvuru Formu
+                                {{__("İş Başvuru Formu")}}
                             </a>
                         </li>
 
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
-                                Videolar
+                                {{__("Videolar")}}
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
-                                Kvkk
+                                {{__("Kvkk")}}
                             </a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Üretim</a>
+                    <a class="nav-link" href="#">{{__('Üretim')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ürünler</a>
+                    <a class="nav-link" href="#">{{__("Ürünler")}}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Basında Biz</a>
+                    <a class="nav-link" href="#">{{__("Basında Biz")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">S.S.S</a>
+                    <a class="nav-link" href="#">{{__("S.S.S")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">İletişim</a>
+                    <a class="nav-link" href="#">{{ __('İletişim') }}</a>
                 </li>
 
             </ul>
@@ -69,7 +69,7 @@
                 <input type="checkbox" id="dropdown">
 
                 <label class="dropdown__face" for="dropdown">
-                    <div class="dropdown__text">Dil Seçiniz</div>
+                    <div class="dropdown__text">{{ __('Dil Seçiniz') }}</div>
 
                     <div class="dropdown__arrow"></div>
                 </label>
