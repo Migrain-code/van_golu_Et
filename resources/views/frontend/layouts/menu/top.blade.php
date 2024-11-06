@@ -55,7 +55,7 @@
                     <a class="nav-link" href="#">{{__("Basında Biz")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__("S.S.S")}}</a>
+                    <a class="nav-link" href="#">{{__("Referanslar")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('İletişim') }}</a>

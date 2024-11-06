@@ -1,4 +1,4 @@
-<link href="/frontend/assets/images/favicon.png" rel="shortcut icon">
+<link href="{{image(setting('favicon'))}}" rel="shortcut icon">
 <!-- CSS -->
 <link href="/frontend/assets/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="/frontend/assets/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">

@@ -22,8 +22,8 @@
 
         </div>
         <div class="img-box-icon border-radius-1 box-shadow">
-            <a class="lightbox-media-box border-radius icon-xl" href="https://www.youtube.com/watch?v=W-j4QGAgNu8">
-                <img src="/frontend/assets/images/about-short.jpg" alt="">
+            <a class="lightbox-media-box border-radius icon-xl" href="{{setting('main_page_video_link')}}">
+                <img src="{{image(setting('main_page_video_cover_image'))}}" alt="">
                 <i class="bi bi-play"></i>
             </a>
         </div>
