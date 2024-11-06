@@ -4,7 +4,7 @@
         <div class="mb-5">
             <div class="row align-items-end">
                 <div class="col-12 col-sm-6">
-                    <h2 class="m-0">Boglarımız</h2>
+                    <h2 class="m-0">{{__('Bloglarımız')}}</h2>
                 </div>
                 <div class="col-12 col-sm-6 text-sm-end">
                     <a class="button-text-1" href="#">{{ __('Tüm Bloglar') }}</a>

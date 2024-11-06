@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h3 class="uppercase letter-spacing-1">{{ __('mono') }}</h3>
+                    <div class="d-flex justify-content-center align-items-center p-5">
+                        <img src="{{image(setting('logo'))}}" style="">
+                    </div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
                     <h6 class="font-small fw-medium uppercase">{{ __('Useful Links') }}</h6>

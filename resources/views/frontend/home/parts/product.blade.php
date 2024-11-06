@@ -7,14 +7,14 @@
                     <h6 class="d-inline-block bg-gray border-radius
 								 px-3 py-2 line-height-140 font-small uppercase letter-spacing-1 mb-3">
 									<span class="text-color-theme">
-										Ürünler
+										{{__("Ürünler")}}
 									</span>
                     </h6>
                     <h2 class="fw-bold mb-1">
-                        Geniş Ürün Yelpazesi
+                        {{__('Anasayfa Ürünler Başlık')}}
                     </h2>
                     <p class="">
-                        İhtiyaçlarınıza özel alüminyum çözümleri sunuyoruz.
+                        {{__('Anasayfa Ürünler Açıklama')}}
                     </p>
                 </div>
 

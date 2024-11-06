@@ -7,14 +7,14 @@
                     <h6 class="d-inline-block bg-gray border-radius
 								 px-3 py-2 line-height-140 font-small uppercase letter-spacing-1 mb-3">
 									<span class="text-color-theme">
-										Video
+										{{__("Video")}}
 									</span>
                     </h6>
                     <h2 class="fw-bold mb-1">
-                        Alüminyumun Gücüyle Yenilikçi Çözümler
+                        {{__("Anasayfa Video Başlığı")}}
                     </h2>
                     <p class="">
-                        Estetik ve dayanıklılığı bir araya getiren projelerimizi izleyin.
+                        {{__("Anasayfa Video Açıklaması")}}
                     </p>
                 </div>
 

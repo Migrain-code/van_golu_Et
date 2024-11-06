@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Müşteriler')
+@section('title', 'Ayarlar')
 @section('styles')
 
 @endsection
@@ -35,6 +35,7 @@
                             <!--end::Svg Icon-->Görüntüleme Ayarları
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link text-active-primary" data-bs-toggle="tab" href="#kt_ecommerce_settings_contact">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm005.svg-->
