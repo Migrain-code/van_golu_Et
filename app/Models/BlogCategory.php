@@ -12,6 +12,11 @@ class BlogCategory extends Model
 
     public $translatable = ['name', 'slug', 'meta_title', 'meta_description'];
 
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'category_id', 'id')->where('status', 1);
+    }
+
     public function getName()
     {
         return $this->translate('name');

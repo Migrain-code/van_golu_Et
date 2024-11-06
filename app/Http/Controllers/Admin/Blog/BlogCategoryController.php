@@ -83,9 +83,9 @@ class BlogCategoryController extends Controller
 
     public function datatable()
     {
-        $sliders = BlogCategory::latest();
+        $data = BlogCategory::latest();
 
-        return DataTables::of($sliders)
+        return DataTables::of($data)
             ->editColumn('id', function ($q) {
                 return createCheckbox($q->id, 'BlogCategory', 'Kategorileri');
             })

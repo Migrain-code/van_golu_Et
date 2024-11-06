@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\ForBusiness;
 use App\Models\Language;
 use App\Models\Setting;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
@@ -47,5 +48,7 @@ class AppServiceProvider extends ServiceProvider
 
         $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
+
+        Paginator::useBootstrap();
     }
 }

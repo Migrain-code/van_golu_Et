@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Language;
 use App\Models\MainPage;
 use App\Models\Slider;
@@ -14,7 +15,8 @@ class HomeController extends Controller
     {
         $sliders = Slider::where("isActive", 1)->get();
         $parts = MainPage::where('status', 1)->get();
-        return view('frontend.home.index', compact('sliders', 'parts'));
+        $blogs = Blog::where('status', 1)->where('is_main_page', 1)->get();
+        return view('frontend.home.index', compact('sliders', 'parts', 'blogs'));
     }
 
     public function changeLanguage(Language $language)

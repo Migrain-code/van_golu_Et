@@ -10,32 +10,34 @@ class Blog extends Model
 {
     use HasFactory, HasTranslations;
 
-    protected $translatable = ['titles', 'descriptions', 'meta_titles', 'slug'];
-
-    public function getTitle()
-    {
-        return $this->translate('titles');
-    }
-    public function getDescription()
-    {
-        return $this->translate('descriptions');
-    }
-    public function getMetaTitle()
-    {
-        return $this->translate('meta_titles');
-    }
-    public function comments()
-    {
-        return $this->hasMany(BlogComment::class, 'blog_id', 'id')->where('status', 1);
-    }
+    public $translatable = ['name', 'slug', 'meta_title', 'meta_description', 'content'];
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->belongsTo(BlogCategory::class);
+    }
+    public function getName()
+    {
+        return $this->translate('name');
     }
 
-    public function social()
+    public function getSlug()
     {
-        return $this->hasOne(BlogSocial::class, 'blog_id', 'id');
+        return $this->translate('slug');
+    }
+
+    public function getMetaTitle()
+    {
+        return $this->translate('meta_title');
+    }
+
+    public function getMetaDescription()
+    {
+        return $this->translate('meta_description');
+    }
+
+    public function getContent()
+    {
+        return $this->translate('content');
     }
 }
