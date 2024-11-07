@@ -43,20 +43,55 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__('Üretim')}}</a>
+                    <a class="nav-link" href="#">{{ __('Üretim') }}</a>
+                    <ul class="nav-dropdown">
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("Cam")}}
+                            </a>
+                        </li>
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("Alüminyum")}}
+                            </a>
+                        </li>
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("PVC")}}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{__("Ürünler")}}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__("Basında Biz")}}</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">{{__("Referanslar")}}</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ __('Medya') }}</a>
+                    <ul class="nav-dropdown">
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("Basında Biz")}}
+                            </a>
+                        </li>
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("Videolar")}}
+                            </a>
+                        </li>
+                        <li class="nav-dropdown-item">
+                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                                {{__("Blog")}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contact.index')}}">{{ __('İletişim') }}</a>
                 </li>

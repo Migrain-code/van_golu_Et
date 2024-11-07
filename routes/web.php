@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\FrontEnd\Blog\FBlogController;
 use App\Http\Controllers\Admin\Blog\BlogCommentController;
 use App\Http\Controllers\Frontend\FContactController;
+use App\Http\Controllers\Admin\Contact\ContactRequestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::prefix('blog')->as('blog.')->group(function () {
 
 Route::prefix('contact')->as('contact.')->group(function () {
    Route::get('/', [FContactController::class, 'index'])->name('index');
+   Route::post('/form', [FContactController::class, 'store'])->name('sendForm')->middleware('throttle:1,5');
 });
 
 Auth::routes();
@@ -56,6 +58,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('slider', SliderController::class); // Sliderlar
     Route::resource('language', LanguageController::class);// Diller
     Route::resource('main-page',MainPageController::class);//Anasayfa Bölümleri
+    Route::resource('contact-request',ContactRequestController::class);//Anasayfa Bölümleri
 
     /*------------------------------Bloglar-----------------------------------*/
     Route::resource('blog-category', BlogCategoryController::class);

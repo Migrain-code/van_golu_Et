@@ -95,6 +95,18 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.blog-comment.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Blog Yorumları</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
                     </div>
                     <!--end:Menu Müşteriler-->
 
@@ -245,6 +257,19 @@
                             <i class="fa fa-home"></i>
                         </span>
                         <span class="menu-title">Anasayfa Bölümleri</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{route('admin.contact-request.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-message"></i>
+                        </span>
+                        <span class="menu-title justify-content-between">
+                            İletişim Talepleri
+                            <span class="badge badge-circle badge-danger">{{auth('admin')->user()->contactRequestCount()}}</span>
+                        </span>
                     </a>
                     <!--end:Menu link-->
                 </div>

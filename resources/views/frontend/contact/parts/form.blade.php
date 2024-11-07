@@ -16,7 +16,9 @@
             <div class="col-8">
                 <div class="contact-form border w-100 p-3">
                     <h1 class="text-center">{{__('Bizimle İletişime Geçin')}}</h1>
-                    <form method="post" id="contactform">
+                    <form method="post" action="{{route('contact.sendForm')}}">
+                        @csrf
+
                         <div class="row gx-3 gy-0">
                             <div class="col-12 col-sm-6">
                                 <input type="text" id="name" name="name" placeholder="{{__('Ad Soyad')}}" required="">
@@ -27,7 +29,10 @@
                         </div>
                         <input type="text" id="subject" name="subject" placeholder="{{__('Konu')}}" required="">
                         <textarea name="message" id="message" placeholder="{{__('Mesajınız')}}"></textarea>
+                        <div class="g-recaptcha" data-sitekey="6LdDK3gqAAAAANS6rXO2fn9uLGROtZI22EryeKky"></div>
+                        <br/>
                         <div class="d-flex text-end">
+
                             <button class="button button-lg button-rounded button-outline-dark ms-auto" type="submit">{{__('Mesaj Gönder')}}</button>
 
                         </div>
