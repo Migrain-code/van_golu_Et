@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Blog\BlogCategoryController;
 use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\FrontEnd\Blog\FBlogController;
+use App\Http\Controllers\Admin\Blog\BlogCommentController;
+use App\Http\Controllers\Frontend\FContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::prefix('blog')->as('blog.')->group(function () {
     Route::get('/', [FBlogController::class, 'index'])->name('index');
     Route::get('/{slug}', [FBlogController::class, 'detail'])->name('detail');
     Route::get('/category/{slug}', [FBlogController::class, 'category'])->name('category');
+});
+
+Route::prefix('contact')->as('contact.')->group(function () {
+   Route::get('/', [FContactController::class, 'index'])->name('index');
 });
 
 Auth::routes();
@@ -53,6 +59,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
 
     /*------------------------------Bloglar-----------------------------------*/
     Route::resource('blog-category', BlogCategoryController::class);
+    Route::resource('blog-comment', BlogCommentController::class);
     Route::resource('blog', BlogController::class);
 
 

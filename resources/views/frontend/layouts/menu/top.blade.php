@@ -58,7 +58,7 @@
                     <a class="nav-link" href="#">{{__("Referanslar")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('İletişim') }}</a>
+                    <a class="nav-link" href="{{route('contact.index')}}">{{ __('İletişim') }}</a>
                 </li>
 
             </ul>

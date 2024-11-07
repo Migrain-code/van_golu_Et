@@ -4,7 +4,13 @@
     <div class="section-xl bg-image parallax section-divider-curve-bottom" data-bg-src="/frontend/assets/images/sample/slider/1.jpg">
         <div class="bg-dark-06">
             <div class="container text-center">
-                <h1 class="fw-normal m-0">{{__('Bloglar')}}</h1>
+                <h1 class="fw-normal m-0">{{__('Tüm Bloglar')}}</h1>
+                <ul class="list-inline-dash">
+                    <li><a href="#">{{$blogs->count()}} {{__('Blog')}}</a></li>
+                    @if(isset($category))
+                        <li><a href="#">{{$category->getName()}}</a></li>
+                    @endif
+                </ul>
             </div><!-- end container -->
         </div>
     </div>

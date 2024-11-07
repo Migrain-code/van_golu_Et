@@ -16,6 +16,11 @@ class Blog extends Model
     {
         return $this->belongsTo(BlogCategory::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(BlogComment::class, 'blog_id', 'id')->where('status', 1);
+    }
+
     public function getName()
     {
         return $this->translate('name');
