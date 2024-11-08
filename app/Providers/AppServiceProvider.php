@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Core\CustomResourceRegistrar;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\ForBusiness;
 use App\Models\Language;
@@ -45,7 +46,8 @@ class AppServiceProvider extends ServiceProvider
         \Config::set('settings', $settings);
         $cities = City::all();
         View::share('cities', $cities);
-
+        $categories = Category::where('status', 1)->get();
+        View::share('categories', $categories);
         $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
 

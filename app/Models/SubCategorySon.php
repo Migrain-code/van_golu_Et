@@ -10,7 +10,7 @@ class SubCategorySon extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['name', 'slug'];
+    public $translatable = ['name', 'slug', 'meta_title', 'meta_description'];
 
     public function series()
     {
@@ -25,5 +25,15 @@ class SubCategorySon extends Model
     public function getSlug()
     {
         return $this->translate('slug');
+    }
+
+    public function getMetaTitle()
+    {
+        return $this->translate('meta_title');
+    }
+
+    public function getMetaDescription()
+    {
+        return $this->translate('meta_description');
     }
 }

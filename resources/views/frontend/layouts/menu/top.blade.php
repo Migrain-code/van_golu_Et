@@ -46,21 +46,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('Ürünler') }}</a>
                     <ul class="nav-dropdown">
-                        <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
-                                {{__("Cam")}}
-                            </a>
-                        </li>
-                        <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
-                                {{__("Alüminyum")}}
-                            </a>
-                        </li>
-                        <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
-                                {{__("PVC")}}
-                            </a>
-                        </li>
+                        @foreach($categories as $category)
+                            <li class="nav-dropdown-item">
+                                <a class="nav-dropdown-link" href="{{route('search.category', $category->getSlug())}}">
+                                   {{$category->getName()}}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="nav-item">
