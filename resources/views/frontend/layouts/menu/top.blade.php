@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Üretim') }}</a>
+                    <a class="nav-link" href="#">{{ __('Ürünler') }}</a>
                     <ul class="nav-dropdown">
                         <li class="nav-dropdown-item">
                             <a class="nav-dropdown-link" href="../blocks/about.html">
@@ -64,7 +64,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__("Ürünler")}}</a>
+                    <a class="nav-link" href="#">{{__("Üretim")}}</a>
                 </li>
 
                 <li class="nav-item">

@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variant_options', function (Blueprint $table) {
+        Schema::create('sub_category_sons', function (Blueprint $table) {
             $table->id();
-            $table->integer('variant_id');
-            $table->string('name');
+            $table->json('name')->nullable();
+            $table->json('slug')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variant_options');
+        Schema::dropIfExists('sub_category_sons');
     }
 };

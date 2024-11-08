@@ -2,20 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class SubCategory extends Model
+class Series extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['name', 'slug'];
+    public $translatable = ['name', 'slug', 'description'];
 
-    public function subCategroies()
-    {
-        return $this->hasMany(SubCategorySon::class, 'category_id', 'id');
-    }
     public function getName()
     {
         return $this->translate('name');
@@ -24,5 +19,10 @@ class SubCategory extends Model
     public function getSlug()
     {
         return $this->translate('slug');
+    }
+
+    public function getDescription()
+    {
+        return $this->translate('description');
     }
 }

@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_templates', function (Blueprint $table) {
+        Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name')->nullable();
+            $table->json('slug')->nullable();
+            $table->json('description')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_templates');
+        Schema::dropIfExists('series');
     }
 };

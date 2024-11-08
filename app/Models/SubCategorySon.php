@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class ProductCategory extends Model
+class SubCategorySon extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasTranslations;
 
     public $translatable = ['name', 'slug'];
 
-    public function products()
+    public function series()
     {
-        return $this->hasMany(ProductAds::class, 'category_id', 'id');
+        return $this->hasMany(Series::class, 'category_id', 'id');
     }
 
     public function getName()

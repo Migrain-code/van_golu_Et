@@ -3,13 +3,9 @@
 use App\Http\Controllers\Admin\AjaxController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\Language\LanguageController;
-use App\Http\Controllers\Admin\MainCategoryController;
 use App\Http\Controllers\Admin\MainPage\MainPageController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\Slider\SliderController;
-use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\Admin\SubCategoryProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +50,6 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
         Route::post('update/phone/verify', 'verifyPhone')->name('verifyPhone');
         Route::post('update/password', 'updatePassword')->name('updatePassword');
     });
-    Route::resource('product', ProductController::class); // Ürünler
     Route::resource('slider', SliderController::class); // Sliderlar
     Route::resource('language', LanguageController::class);// Diller
     Route::resource('main-page',MainPageController::class);//Anasayfa Bölümleri
@@ -66,9 +61,6 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('blog', BlogController::class);
 
 
-    Route::resource('mainCategory', MainCategoryController::class);
-    Route::resource('subCategory', SubCategoryController::class);
-    Route::resource('subCategoryProduct', SubCategoryProductController::class);
 
     /*------------------------------Ajax Commands-----------------------------------*/
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
