@@ -113,7 +113,96 @@
 
                 </div>
                 <!--end:Menu item-->
+                <!--begin:Menu Kategoriler-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.category.*') || request()->routeIs('admin.subcategory.*') || request()->routeIs('admin.subCategorySon.*')) hover show @endif">
+                    <!--begin:Menu Müşteriler-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor"></rect>
+                                </svg>
+							</span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Kategoriler</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu Müşteriler-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.category.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Ana Kategoriler</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.subcategory.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Üst Kategoriler</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link @if(request()->routeIs('admin.subCategorySon.*')) active @endif" href="{{route('admin.subCategorySon.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Alt Kategoriler</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link @if(request()->routeIs('admin.series.*')) active @endif" href="{{route('admin.series.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Ürün Grupları</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link @if(request()->routeIs('admin.reference-category.*')) active @endif" href="{{route('admin.reference-category.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Referans Kategorileri</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu Müşteriler-->
 
+
+                </div>
+                <!--end:Menu Kategoriler-->
+
+                <!--end:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
                     <a class="menu-link" href="{{route('admin.settings.customer')}}">

@@ -17,7 +17,9 @@
         <select class="form-control form-control-solid"  name="category_id">
             <option value="">Kategori Seçiniz</option>
             @foreach($categories as $category)
-                <option value="{{$category->id}}" @selected($subCategory->category_id == $category->id)>{{$category->name}}</option>
+                <option value="{{$category->id}}" @selected($subCategory->category_id == $category->id)>
+                    {{$category->getName()}}
+                </option>
             @endforeach
         </select>
         <!--end::Input-->

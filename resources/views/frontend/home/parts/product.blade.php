@@ -23,53 +23,21 @@
         </div>
         <div class="mb-0">
             <div class="row g-3 g-lg-4">
-                <div class="col-12 col-lg-3">
-                    <div class="hoverbox-4 bottom border-radius">
-                        <img src="/frontend/assets/images/sample/product/1.jpg" style="min-height: 315px;object-fit: cover" alt="">
-                        <div class="content">
-                            <h5>{{ __('Korkuluklar') }}</h5>
-                        </div>
-                        <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
+                @foreach($productCategories as $pCategory)
+                    <div class="col-12 col-lg-4">
+                        <div class="hoverbox-4 bottom border-radius">
+                            <img src="{{image($pCategory->image)}}" style="object-fit: cover" alt="">
+                            <div class="content">
+                                <h5>{{$pCategory->getName() }}</h5>
+                            </div>
+                            <div class="hover-content">
+                                <a class="button button-md button-radius button-outline-white" href="{{route('search.category', $pCategory->getSlug())}}">{{ __('Bilgi Al') }}</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-3">
-                    <div class="hoverbox-4 bottom border-radius">
-                        <img src="/frontend/assets/images/sample/product/4.jpg" style="min-height: 315px;object-fit: cover" alt="">
+                @endforeach
 
-                        <div class="content">
-                            <h5>Yapısal Dış Cephe Sistemleri</h5>
-                        </div>
-                        <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3">
-                    <div class="hoverbox-4 bottom border-radius">
-                        <img src="/frontend/assets/images/sample/product/5.jpg" style="min-height: 315px;object-fit: cover" alt="">
 
-                        <div class="content">
-                            <h5>Işıklık Sistemler</h5>
-                        </div>
-                        <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-3">
-                    <div class="hoverbox-4 bottom border-radius">
-                        <img src="/frontend/assets/images/sample/product/6.jpg" style="min-height: 315px;object-fit: cover" alt="">
-
-                        <div class="content">
-                            <h5>Aluminyum Güneş Kırıcılar</h5>
-                        </div>
-                        <div class="hover-content">
-                            <a class="button button-md button-radius button-outline-white" href="#">{{ __('Bilgi Al') }}</a>
-                        </div>
-                    </div>
-                </div>
 
             </div><!-- end row -->
         </div>

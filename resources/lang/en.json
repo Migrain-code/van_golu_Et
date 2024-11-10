@@ -3,6 +3,7 @@
     "Konu": "Subject",
     "Kvkk": "Terms",
     "Adres": "Address",
+    "Medya": "Media",
     "S.S.S": "FAQ",
     "Yorum": "Comment",
     "E-posta": "Email",
@@ -28,10 +29,14 @@
     "Hakk\u0131m\u0131zda": "About",
     "T\u00fcm Bloglar": "All Blogs",
     "Bloglar\u0131m\u0131z": "Our Blogs",
+    "H\u0131zl\u0131 Men\u00fc": "Quick Menu",
     "Mesaj G\u00f6nder": "Send Message",
     "\u0130hracat Ofisi": "Export Office",
     "Y\u00f6netim Kurulu": "Board of Directors",
+    "Benzer \u00dcr\u00fcnler": "Similar Products",
     "Pop\u00fcler Bloglar": "Popular Blogs",
+    "T\u00fcm Referanslar": "All References",
+    "Teknik \u00d6zellikler": "Technical Specifications",
     "\u0130\u015f Ba\u015fvuru Formu": "Job Application Form",
     "T\u00fcm haklar\u0131 sakl\u0131d\u0131r.": "All rights reserved.",
     "Anasayfa Video Ba\u015fl\u0131\u011f\u0131": "Innovative Solutions with the Power of Aluminum",
@@ -40,5 +45,5 @@
     "Anasayfa Video A\u00e7\u0131klamas\u0131": "Watch our projects that combine aesthetics and durability.",
     "Anasayfa \u00dcr\u00fcnler A\u00e7\u0131klama": "We offer aluminum solutions tailored to your needs.",
     "Mesaj\u0131n\u0131z ba\u015far\u0131yla g\u00f6nderildi": "Your message has been sent successfully",
-    "Medya": "Media"
+    "Detay": "Detail"
 }

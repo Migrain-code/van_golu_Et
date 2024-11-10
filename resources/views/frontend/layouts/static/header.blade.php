@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
     <title>{{setting('speed_site_title')." | "}}@yield('title', trans('Anasayfa'))</title>
+    <meta name="description" content="@yield('description', trans(setting('speed_meta_descriptions')))">
 
     <!-- Favicon -->
     @include('frontend.layouts.components.styles')

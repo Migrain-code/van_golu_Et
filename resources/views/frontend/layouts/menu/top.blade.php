@@ -46,10 +46,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('Ürünler') }}</a>
                     <ul class="nav-dropdown">
-                        @foreach($categories as $category)
+                        @foreach($productCategories as $pCategory)
                             <li class="nav-dropdown-item">
-                                <a class="nav-dropdown-link" href="{{route('search.category', $category->getSlug())}}">
-                                   {{$category->getName()}}
+                                <a class="nav-dropdown-link" href="{{route('search.category', $pCategory->getSlug())}}">
+                                   {{$pCategory->getName()}}
                                 </a>
                             </li>
                         @endforeach
@@ -60,7 +60,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__("Referanslar")}}</a>
+                    <a class="nav-link" href="{{route('reference.index')}}">{{__("Referanslar")}}</a>
                 </li>
 
                 <li class="nav-item">

@@ -12,7 +12,12 @@ class SubCategory extends Model
 
     public $translatable = ['name', 'slug', 'meta_title', 'meta_description'];
 
-    public function subCategroies()
+    public function parent()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function subCategories()
     {
         return $this->hasMany(SubCategorySon::class, 'category_id', 'id');
     }

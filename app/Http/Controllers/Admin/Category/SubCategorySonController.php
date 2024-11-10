@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\SubCategorySon;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class SubCategorySonController extends Controller
      */
     public function create()
     {
-        $categories = SubCategory::where('status', 1)->get();
+        $categories = Category::where('status', 1)->get();
         return view('admin.category.subcategoryson.create.index', compact('categories'));
     }
 
@@ -60,7 +61,7 @@ class SubCategorySonController extends Controller
      */
     public function edit(SubCategorySon $subCategorySon)
     {
-        $categories = SubCategory::where('status', 1)->get();
+        $categories = Category::where('status', 1)->get();
         return view('admin.category.subcategoryson.edit.index', compact('categories', 'subCategorySon'));
     }
 

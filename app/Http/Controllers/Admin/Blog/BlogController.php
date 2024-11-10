@@ -33,7 +33,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->dd();
         $blog = new Blog();
         $blog->name = $request->title;
         $blog->meta_title = $request->meta_title;

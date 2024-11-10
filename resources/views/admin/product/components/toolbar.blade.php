@@ -11,7 +11,8 @@
 														</svg>
 													</span>
             <!--end::Svg Icon-->
-            <input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Kategori Ara" />
+            <input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15"
+                   placeholder="Ürünlerde Ara" />
         </div>
         <!--end::Search-->
     </div>
@@ -36,7 +37,7 @@
             <!--end::Filter-->
 
             <!--begin::Add customer-->
-            <a href="{{route('admin.product.create')}}" type="button" class="btn btn-primary">Ürün Ekle</a>
+            <a type="button" href="{{route('admin.product.create')}}" class="btn btn-primary">Ürün Ekle</a>
             <!--end::Add customer-->
         </div>
         <!--end::Toolbar-->

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Language;
 use App\Models\MainPage;
+use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Support\Facades\App;
 
@@ -16,6 +17,7 @@ class HomeController extends Controller
         $sliders = Slider::where("isActive", 1)->get();
         $parts = MainPage::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->where('is_main_page', 1)->get();
+
         return view('frontend.home.index', compact('sliders', 'parts', 'blogs'));
     }
 
@@ -28,6 +30,6 @@ class HomeController extends Controller
         // Kullanıcının seçimini oturuma kaydet
         session(['locale' => $locale]);
 
-        return redirect()->back();
+        return to_route('home');
     }
 }

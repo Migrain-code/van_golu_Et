@@ -46,8 +46,10 @@ class AppServiceProvider extends ServiceProvider
         \Config::set('settings', $settings);
         $cities = City::all();
         View::share('cities', $cities);
-        $categories = Category::where('status', 1)->get();
-        View::share('categories', $categories);
+
+        $productCategories = Category::where('status', 1)->get();
+        View::share('productCategories', $productCategories);
+
         $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
 

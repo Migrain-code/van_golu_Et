@@ -10,4 +10,17 @@
 <!-- Fonts/Icons -->
 <link href="/frontend/assets/plugins/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 <link href="/frontend/assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+<style>
+    ::-webkit-scrollbar{
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background: #6667ab;
+    }
+    ::-webkit-scrollbar-track{
+        background: #0b0e18;
+    }
+</style>
 @yield('styles')

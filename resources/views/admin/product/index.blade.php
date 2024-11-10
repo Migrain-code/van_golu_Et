@@ -52,11 +52,10 @@
                                 <input class="form-check-input delete" type="checkbox" data-kt-check="true" data-kt-check-target="#datatable .delete" value="1" />
                             </div>
                         </th>
-                        <th class="min-w-125px">Ürün</th>
-                        <th class="min-w-125px">Barkod</th>
-                        <th class="min-w-125px">Adet</th>
-                        <th class="min-w-125px">Fiyat</th>
+                        <th class="min-w-125px">Ürün Adı</th>
                         <th class="min-w-125px">Durum</th>
+                        <th class="min-w-125px">Seo Başlığı</th>
+                        <th class="min-w-125px">Created Date</th>
                         <th class="text-end min-w-70px">Actions</th>
                     </tr>
                     <!--end::Table row-->
@@ -73,9 +72,7 @@
             <!--end::Card body-->
         </div>
         <!--end::Card-->
-        <!--begin::Modals-->
-        @include('admin.category.product-category.components.export-modal')
-        <!--end::Modals-->
+
     </div>
 
 @endsection
@@ -86,17 +83,13 @@
         let DATA_COLUMNS = [
             {data: 'id'},
             {data: 'name'},
-            {data: 'barcode'},
-            {data: 'piece'},
-            {data: 'price'},
             {data: 'status'},
+            {data: 'meta_title'},
+            {data: 'created_at'},
             {data: 'action'}
         ];
-        let addUrl = "{{route('admin.product.store')}}"
     </script>
 
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/category/product-category/listing.js"></script>
-    <script src="/assets/js/project/category/product-category/add.js"></script>
+    <script src="/assets/js/project/slider/listing.js"></script>
 
 @endsection

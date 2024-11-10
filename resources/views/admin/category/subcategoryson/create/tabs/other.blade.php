@@ -16,7 +16,13 @@
         <select class="form-control form-control-solid"  name="category_id">
             <option value="">Kategori Seçiniz</option>
             @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->getName()}}</option>
+                <optgroup label="{{ $category->getName() }}">
+                    @foreach($category->subCategories as $pCategory)
+                        <option value="{{ $pCategory->id }}">
+                            {{$pCategory->getName() }}
+                        </option>
+                    @endforeach
+                </optgroup>
             @endforeach
         </select>
         <!--end::Input-->

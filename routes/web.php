@@ -19,6 +19,11 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\SubCategoryController;
 use App\Http\Controllers\Admin\Category\SubCategorySonController;
 use App\Http\Controllers\SearchProductController;
+use App\Http\Controllers\Admin\Category\SeriesController;
+use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\Reference\ReferenceCategoryController;
+use App\Http\Controllers\Admin\Reference\ReferenceController;
+use App\Http\Controllers\FReferenceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +50,14 @@ Route::prefix('contact')->as('contact.')->group(function () {
 Route::prefix('search')->as('search.')->group(function () {
     Route::get('/{slug}', [SearchProductController::class, 'category'])->name('category');
     Route::get('/{slug}/category/{subCategory}', [SearchProductController::class, 'subCategory'])->name('subCategory');
+    Route::get('/{slug}/category/{subCategory}/sub-category/{subCategorySon}', [SearchProductController::class, 'subCategorySon'])->name('subCategorySon');
+    Route::get('/{slug}/category/{subCategory}/sub-category/{subCategorySon}/product/{product}', [SearchProductController::class, 'subCategoryProduct'])->name('subCategoryProduct');
+});
+
+Route::prefix('reference')->as('reference.')->group(function () {
+    Route::get('/', [FReferenceController::class, 'index'])->name('index');
+    Route::get('/category/{category}', [FReferenceController::class, 'category'])->name('category');
+    Route::get('/category/{category}/{slug}', [FReferenceController::class, 'detail'])->name('detail');
 });
 
 Auth::routes();
@@ -63,6 +76,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('language', LanguageController::class);// Diller
     Route::resource('main-page',MainPageController::class);//Anasayfa Bölümleri
     Route::resource('contact-request',ContactRequestController::class);//Anasayfa Bölümleri
+    Route::resource('reference', ReferenceController::class); //referanslar
 
     /*------------------------------Bloglar-----------------------------------*/
     Route::resource('blog-category', BlogCategoryController::class);
@@ -73,6 +87,9 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubCategoryController::class);
     Route::resource('subCategorySon', SubCategorySonController::class);
+    Route::resource('series', SeriesController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('reference-category', ReferenceCategoryController::class);
 
     /*------------------------------Ajax Commands-----------------------------------*/
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
