@@ -1,29 +1,34 @@
 <?php
 
+use App\Http\Controllers\Admin\About\AboutController;
 use App\Http\Controllers\Admin\AjaxController;
+use App\Http\Controllers\Admin\Blog\BlogCategoryController;
+use App\Http\Controllers\Admin\Blog\BlogCommentController;
+use App\Http\Controllers\Admin\Blog\BlogController;
+use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Category\SeriesController;
+use App\Http\Controllers\Admin\Category\SubCategoryController;
+use App\Http\Controllers\Admin\Category\SubCategorySonController;
+use App\Http\Controllers\Admin\Contact\ContactRequestController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\Language\LanguageController;
 use App\Http\Controllers\Admin\MainPage\MainPageController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\Slider\SliderController;
-use App\Http\Controllers\Frontend\HomeController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Blog\BlogCategoryController;
-use App\Http\Controllers\Admin\Blog\BlogController;
-use App\Http\Controllers\FrontEnd\Blog\FBlogController;
-use App\Http\Controllers\Admin\Blog\BlogCommentController;
-use App\Http\Controllers\Frontend\FContactController;
-use App\Http\Controllers\Admin\Contact\ContactRequestController;
-use App\Http\Controllers\Admin\Category\CategoryController;
-use App\Http\Controllers\Admin\Category\SubCategoryController;
-use App\Http\Controllers\Admin\Category\SubCategorySonController;
-use App\Http\Controllers\SearchProductController;
-use App\Http\Controllers\Admin\Category\SeriesController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Reference\ReferenceCategoryController;
 use App\Http\Controllers\Admin\Reference\ReferenceController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\Slider\SliderController;
+use App\Http\Controllers\FAboutController;
 use App\Http\Controllers\FReferenceController;
+use App\Http\Controllers\FrontEnd\Blog\FBlogController;
+use App\Http\Controllers\Frontend\FContactController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\SearchProductController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\About\DownloadableContentController;
+use App\Http\Controllers\Admin\About\AboutGalleryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +50,10 @@ Route::prefix('blog')->as('blog.')->group(function () {
 Route::prefix('contact')->as('contact.')->group(function () {
    Route::get('/', [FContactController::class, 'index'])->name('index');
    Route::post('/form', [FContactController::class, 'store'])->name('sendForm')->middleware('throttle:1,5');
+});
+
+Route::prefix('about')->as('about.')->group(function () {
+    Route::get('/', [FAboutController::class, 'index'])->name('index');
 });
 
 Route::prefix('search')->as('search.')->group(function () {
@@ -83,6 +92,10 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('blog-comment', BlogCommentController::class);
     Route::resource('blog', BlogController::class);
 
+    /*------------------------------Hakkımızda-----------------------------------*/
+    Route::resource('about', AboutController::class);
+    Route::resource('about-gallery', AboutGalleryController::class);
+    Route::resource('downloadable-content', DownloadableContentController::class);
     /*------------------------------Kategoriler-----------------------------------*/
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubCategoryController::class);

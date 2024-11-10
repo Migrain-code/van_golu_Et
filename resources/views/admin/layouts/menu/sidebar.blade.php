@@ -113,6 +113,63 @@
 
                 </div>
                 <!--end:Menu item-->
+                <!--begin:Menu Hakkımızda-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu Müşteriler-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+                            <i class="bi bi-blockquote-left"></i>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Hakkımızda</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu Müşteriler-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.about.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Hakkımızda Ayarları</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.about-gallery.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Hakkımızda Görselleri</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="{{route('admin.downloadable-content.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">İndirilebilir İçerikler</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                    </div>
+                    <!--end:Menu Müşteriler-->
+
+
+                </div>
+                <!--end:Menu Hakkımızda-->
                 <!--begin:Menu Kategoriler-->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.category.*') || request()->routeIs('admin.subcategory.*') || request()->routeIs('admin.subCategorySon.*')) hover show @endif">
                     <!--begin:Menu Müşteriler-->
@@ -230,6 +287,26 @@
                             <i class="fa fa-home"></i>
                         </span>
                         <span class="menu-title">Anasayfa Bölümleri</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{route('admin.product.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-ticket"></i>
+                        </span>
+                        <span class="menu-title">Ürünler</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{route('admin.reference.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-toolbox"></i>
+                        </span>
+                        <span class="menu-title">Referanslar</span>
                     </a>
                     <!--end:Menu link-->
                 </div>

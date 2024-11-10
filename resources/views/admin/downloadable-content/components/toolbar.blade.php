@@ -11,7 +11,8 @@
 														</svg>
 													</span>
             <!--end::Svg Icon-->
-            <input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Customers" />
+            <input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15"
+                   placeholder="İçeriklerde Ara" />
         </div>
         <!--end::Search-->
     </div>
@@ -36,15 +37,15 @@
             <!--end::Filter-->
 
             <!--begin::Add customer-->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Hizmet Oluştur</button>
+            <a type="button" href="{{route('admin.downloadable-content.create')}}" class="btn btn-primary">İndirilebilir İçerik Ekle</a>
             <!--end::Add customer-->
         </div>
         <!--end::Toolbar-->
         <!--begin::Group actions-->
         <div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
             <div class="fw-bold me-5">
-                <span class="me-2" data-kt-customer-table-select="selected_count"></span>Selected</div>
-            <button type="button" class="btn btn-danger" data-kt-customer-table-select="delete_selected">Delete Selected</button>
+                <span class="me-2" data-kt-customer-table-select="selected_count"></span>Seçildi</div>
+            <button type="button" class="btn btn-danger" data-kt-customer-table-select="delete_selected">Seçilenleri Sil</button>
         </div>
         <!--end::Group actions-->
     </div>

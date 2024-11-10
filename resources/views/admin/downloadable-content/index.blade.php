@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
-@section('title', 'Hizmet Listesi')
+@section('title', 'Kategoriler')
 @section('styles')
 
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Hizmet Listesi</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Kategoriler</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -27,7 +27,7 @@
         </li>
         <!--end::Item-->
         <!--begin::Item-->
-        <li class="breadcrumb-item text-muted">Hizmet Listesi</li>
+        <li class="breadcrumb-item text-muted">Kategoriler</li>
         <!--end::Item-->
     </ul>
     <!--end::Breadcrumb-->
@@ -37,7 +37,7 @@
         <!--begin::Card-->
         <div class="card">
             <!--begin::Card header-->
-            @include('admin.service.components.toolbar')
+            @include('admin.downloadable-content.components.toolbar')
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
@@ -52,9 +52,9 @@
                                 <input class="form-check-input delete" type="checkbox" data-kt-check="true" data-kt-check-target="#datatable .delete" value="1" />
                             </div>
                         </th>
-                        <th class="min-w-50px">Görsel</th>
-                        <th class="min-w-125px">Hizmet Adı</th>
-                        <th class="min-w-125px">Sıra Numarası</th>
+                        <th class="min-w-125px">Kategori Adı</th>
+                        <th class="min-w-125px">Durum</th>
+                        <th class="min-w-125px">Seo Başlık</th>
                         <th class="min-w-125px">Created Date</th>
                         <th class="text-end min-w-70px">Actions</th>
                     </tr>
@@ -72,30 +72,24 @@
             <!--end::Card body-->
         </div>
         <!--end::Card-->
-        <!--begin::Modals-->
-        @include('admin.service.components.add-service')
-        @include('admin.service.components.export-modal')
-        <!--end::Modals-->
+
     </div>
 
 @endsection
 
 @section('scripts')
     <script>
-        let DATA_URL = "{{route('admin.serviceSubCategory.datatable')}}";
+        let DATA_URL = "{{route('admin.downloadable-content.datatable')}}";
         let DATA_COLUMNS = [
             {data: 'id'},
-            {data: 'image'},
             {data: 'name'},
-            {data: 'order_number'},
+            {data: 'status'},
+            {data: 'image'},
             {data: 'created_at'},
             {data: 'action'}
         ];
-        let addUrl = "{{route('admin.serviceSubCategory.store')}}"
     </script>
 
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/project/service/listing.js"></script>
-    <script src="/assets/js/project/service/add.js"></script>
+    <script src="/assets/js/project/slider/listing.js"></script>
 
 @endsection

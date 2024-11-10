@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#">{{ __('Kurumsal') }}</a>
                     <ul class="nav-dropdown">
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('about.index')}}">
                                 {{__("Hakkımızda")}}
                             </a>
                         </li>
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('blog.index')}}">
                                 {{__("Blog")}}
                             </a>
                         </li>

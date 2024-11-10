@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Hizmet Düzenle')
+@section('title', 'İçerik Ekle')
 @section('styles')
     <style>
         .nav-line-tabs .nav-item .nav-link {
@@ -16,7 +16,7 @@
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Hizmet Düzenle</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">İçerik Ekle</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.serviceSubCategory.index')}}" class="text-muted text-hover-primary">Hizmet Listesi</a>
+            <a href="{{route('admin.downloadable-content.index')}}" class="text-muted text-hover-primary">İçerikler</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -52,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-            Hizmet Düzenle
+           İçerik Ekle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -65,45 +65,45 @@
         <div class="card">
             <!--begin::Card header-->
             <div class="card-header">
-                <div class="card-title">Hizmet Düzenle</div>
+                <div class="card-title">İçerik Ekle</div>
+
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.serviceSubCategory.update', $serviceSubCategory->id)}}" method="post" id="kt_modal_add_customer_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.downloadable-content.store')}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
-                    @method('PUT')
                     <div class="modal-body py-10 px-lg-17">
                         <!--begin::Scroll-->
-                        <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
                             <!--begin::Input group-->
                             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
+                                @foreach($languages as $row)
+                                    <li class="nav-item">
+                                        <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">
+                                            İçerik Bilgileri ({{$row->name}})
+                                        </a>
+                                    </li>
+                                @endforeach
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#kt_tab_pane_1">Hizmet Adları</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_2">Diğer Bilgiler</a>
+                                    <a class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_other">Diğer</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
-                                @include('admin.service.detail.tabs.tab1')
-                                @include('admin.service.detail.tabs.tab2')
+                                @foreach($languages as $row)
+                                    @include('admin.downloadable-content.create.tabs.tab')
+                                @endforeach
 
                             </div>
 
-                        </div>
                         <!--end::Scroll-->
                     </div>
                     <!--end::Modal body-->
                     <!--begin::Modal footer-->
                     <div class="modal-footer flex-center">
                         <!--begin::Button-->
-                        <button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
-                        <!--end::Button-->
-                        <!--begin::Button-->
-                        <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
+                        <button type="submit" id="kt_modal_add_faq_submit" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
 															<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -117,7 +117,6 @@
             <!--end::Card body-->
         </div>
         <!--end::Card-->
-
     </div>
 
 @endsection
