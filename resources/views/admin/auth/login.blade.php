@@ -4,20 +4,26 @@
 <!--begin::Head-->
 
 <head>
-    <title>Hızlı Randevu Yönetim Paneli</title>
+    <title>{{setting('speed_site_title')." | "}}@yield('title', trans('Anasayfa'))</title>
+    <meta name="description" content="@yield('description', trans(setting('speed_meta_descriptions')))">
+
     <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="shortcut icon" href="/assets/media/logos/favicon.ico" />
+    <link href="{{image(setting('favicon'))}}" rel="shortcut icon">
+
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Global Stylesheets Bundle-->
-    <!--Begin::Google Tag Manager -->
-    <!--End::Google Tag Manager -->
+    <style>
+        #kt_body, #kt_app_root {
+            min-height: 100vh;
+        }
+
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -26,15 +32,9 @@
 <script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-theme-mode")) { themeMode = document.documentElement.getAttribute("data-theme-mode"); } else { if ( localStorage.getItem("data-theme") !== null ) { themeMode = localStorage.getItem("data-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", themeMode); }</script>
 
 
-<div class="d-flex flex-column flex-root" id="kt_app_root">
+<div class="d-flex flex-column flex-root bg-dark" id="kt_app_root">
     <!--begin::Authentication - Sign-in -->
     <div class="d-flex flex-column flex-lg-row flex-column-fluid">
-        <!--begin::Logo-->
-        <a href="/index.html" class="d-block d-lg-none mx-auto py-20">
-            <img alt="Logo" src="/assets/media/logos/default.svg" class="theme-light-show h-25px" />
-            <img alt="Logo" src="/assets/media/logos/default-dark.svg" class="theme-dark-show h-25px" />
-        </a>
-        <!--end::Logo-->
         <!--begin::Aside-->
         <div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10">
             <!--begin::Wrapper-->
@@ -42,20 +42,20 @@
                 <!--begin::Header-->
                 <div class="d-flex flex-stack py-2"></div>
                 <!--end::Header-->
-                <!--begin::Body-->
-                <div class="py-20">
+
                     <!--begin::Form-->
-                    <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="#" method="post" action="{{route('login')}}">
+                    <form class="form w-100 bg-white" style="border-radius: 15px;padding: 30px" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="#" method="post" action="{{route('login')}}">
+                        <img alt="Logo" src="{{image(setting('logo'))}}" class="h-25px" />
                         @csrf
                         <!--begin::Body-->
                         <div class="card-body">
                             <!--begin::Heading-->
                             <div class="text-start mb-10">
                                 <!--begin::Title-->
-                                <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Sign In</h1>
+                                <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Admin Panel</h1>
                                 <!--end::Title-->
                                 <!--begin::Text-->
-                                <div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">HizliRandevu Yönetim Paneli</div>
+                                <div class="text-gray-400 fw-semibold fs-6" data-kt-translate="general-desc">{{setting('speed_site_title')}} Yönetim Paneli</div>
                                 <!--end::Link-->
                             </div>
                             <!--begin::Heading-->
@@ -94,20 +94,16 @@
                         <!--begin::Body-->
                     </form>
                     <!--end::Form-->
-                </div>
-                <!--end::Body-->
                 <!--begin::Footer-->
-                <div class="m-0">
-
+                <div class="d-flex justify-content-center">
+                    <img alt="Logo" src="{{image(setting('logo'))}}" class="theme-light-show h-25px" />
                 </div>
                 <!--end::Footer-->
             </div>
             <!--end::Wrapper-->
         </div>
         <!--end::Aside-->
-        <!--begin::Body-->
-        <div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat" style="background-image: url(../../../assets/media/auth/bg11.png)"></div>
-        <!--begin::Body-->
+
     </div>
     <!--end::Authentication - Sign-in-->
 </div>
