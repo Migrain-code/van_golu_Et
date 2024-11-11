@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="tr">
 
 <head>
     <title>{{setting('speed_site_title')." | "}}@yield('title')</title>
@@ -12,7 +12,6 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="" />
     <meta property="og:url" content="" />
-    <meta property="og:site_name" content="HizliRandevu | Admin" />
     <link rel="canonical" href="" />
     @include('admin.layouts.components.styles')
 
