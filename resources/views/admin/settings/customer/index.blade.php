@@ -23,7 +23,8 @@
                         </a>
                     </li>
                     <!--begin:::Tab item-->
-                    <li class="nav-item">
+                    {{--
+                        <li class="nav-item">
                         <a class="nav-link text-active-primary" data-bs-toggle="tab" href="#kt_ecommerce_settings_products">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm005.svg-->
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,6 +36,7 @@
                             <!--end::Svg Icon-->Görüntüleme Ayarları
                         </a>
                     </li>
+                    --}}
 
                     <li class="nav-item">
                         <a class="nav-link text-active-primary" data-bs-toggle="tab" href="#kt_ecommerce_settings_contact">
@@ -78,7 +80,9 @@
                 <!--begin:::Tab content-->
                 <div class="tab-content" id="myTabContent">
                     @include('admin.settings.customer.tabs.tab1')
-                    @include('admin.settings.customer.tabs.tab2')
+                   {{--
+                     @include('admin.settings.customer.tabs.tab2')
+                   --}}
                     @include('admin.settings.customer.tabs.tab3')
                     @include('admin.settings.customer.tabs.tab4')
                     @include('admin.settings.customer.tabs.tab5')
