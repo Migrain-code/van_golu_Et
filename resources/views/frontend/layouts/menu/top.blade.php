@@ -110,10 +110,12 @@
 
                 <ul class="dropdown__items">
                     @foreach($languages as $language)
-                        <li style="border-bottom: 1px solid rgb(220 220 220 / 50%);">
+                        <li @class(['active' => $language->code == app()->getLocale()]) style="border-bottom: 1px solid rgb(220 220 220 / 50%);">
                             <a href="{{route('changeLanguage', $language->id)}}" class="d-flex gap-2">
                                 <img src="{{image($language->flag)}}">
-                                <span style="color: black">{{__($language->name)}}</span>
+                                <span @class(['activesp' => $language->code == app()->getLocale(), 'langSpan' => $language->code != app()->getLocale()])>
+                                    {{ __($language->name) }}
+                                </span>
                             </a>
                         </li>
                     @endforeach
