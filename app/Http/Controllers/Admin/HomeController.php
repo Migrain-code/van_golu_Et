@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('admin.home.index');
     }
+
+    public function kvkk()
+    {
+        return view('admin.home.kvkk');
+    }
 }

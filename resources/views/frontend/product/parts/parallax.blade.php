@@ -1,22 +1,28 @@
-<div class="section-xl bg-image parallax" data-bg-src="/frontend/assets/images/sample/slider/1.jpg">
+@php
+    $title = "";
+    $image = "/frontend/assets/images/sample/slider/1.jpg";
+    if (isset($category)){
+        $title = $category->getName();
+        $image = $category->image;
+    }
+    if (isset($subCategory)){
+        $title = $subCategory->getName();
+         $image = $subCategory->image;
+    }
+    if (isset($subCategorySon)){
+        $title = $subCategorySon->getName();
+         $image = $subCategorySon->image;
+    }
+    if (isset($product)){
+        $title = $product->getName();
+         $image = $product->image;
+    }
+
+@endphp
+<div class="section-xl bg-image parallax" data-bg-src="{{image($image)}}">
     <div class="bg-dark-06">
         <div class="container text-center">
-            @php
-                $title = "";
-                if (isset($category)){
-                    $title = $category->getName();
-                }
-                if (isset($subCategory)){
-                    $title = $subCategory->getName();
-                }
-                if (isset($subCategorySon)){
-                    $title = $subCategorySon->getName();
-                }
-                if (isset($product)){
-                    $title = $product->getName();
-                }
 
-            @endphp
             <h1 class="fw-normal m-0">{{$title}}</h1>
             <ul class="list-inline-dash">
                 <li><a href="/">{{__('Anasayfa')}}</a></li>

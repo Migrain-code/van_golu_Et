@@ -8,7 +8,7 @@
             <div class="container text-center">
                 <h1 class="fw-normal m-0">{{__('Hakkımızda')}}</h1>
                 <ul class="list-inline-dash">
-                    <li><a href="/">{{__("Anasafya")}}</a></li>
+                    <li><a href="/">{{__("Anasayfa")}}</a></li>
                     <li><a href="{{route('about.index')}}">{{__("Hakkımızda")}}</a></li>
                 </ul>
             </div><!-- end container -->

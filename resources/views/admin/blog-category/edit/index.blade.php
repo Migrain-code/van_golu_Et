@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.slider.index')}}" class="text-muted text-hover-primary">Slider</a>
+            <a href="{{route('admin.blog-category.index')}}" class="text-muted text-hover-primary">Blog Kategorileri</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -84,13 +84,16 @@
                                         <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">Kategori Bilgileri ({{$row->name}})</a>
                                     </li>
                                 @endforeach
+                                    <li class="nav-item">
+                                        <a class="nav-link " data-bs-toggle="tab" href="#kt_tab_pane_other">Diğer Bilgileri</a>
+                                    </li>
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $row)
                                     @include('admin.blog-category.edit.tabs.tab')
                                 @endforeach
-
+                                    @include('admin.blog-category.edit.tabs.other')
                             </div>
 
                         <!--end::Scroll-->

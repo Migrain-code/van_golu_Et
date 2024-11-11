@@ -43,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.language.index')}}" class="text-muted text-hover-primary">Dil</a>
+            <a href="{{route('admin.language.index')}}" class="text-muted text-hover-primary">Diller</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->

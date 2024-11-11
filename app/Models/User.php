@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return ContactRequest::where('status', 0)->count();
     }
+
+    public function jobRequestCount()
+    {
+        return JobRequestForm::where('status', 0)->count();
+    }
 }

@@ -2,7 +2,7 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                     <h1>{{__('İletişim')}}</h1>
                     <div class="mb-4">
                         <h5 class="fw-medium mb-1" style="border-bottom: 1px solid rgb(219 215 215 / 45%)">{{__('Fabrika')}}:</h5>
@@ -13,7 +13,7 @@
                         <p class="p-3">{{setting('speed_contact_address_2')}}</p>
                     </div>
             </div>
-            <div class="col-8">
+            <div class="col-12 col-lg-8">
                 <div class="contact-form border w-100 p-3">
                     <h1 class="text-center">{{__('Bizimle İletişime Geçin')}}</h1>
                     <form method="post" action="{{route('contact.sendForm')}}">
@@ -39,6 +39,10 @@
                     </form>
                     <!-- Submit result -->
                 </div><!-- end contact-form -->
+            </div>
+
+            <div class="col-12 mt-5">
+                {!! setting('speed_address_map') !!}
             </div>
         </div>
 

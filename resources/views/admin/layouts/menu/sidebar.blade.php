@@ -57,7 +57,7 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu Bloglar-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.blog.*') || request()->routeIs('admin.blog-category.*') || request()->routeIs('admin.blog-comment.*')) hover show @endif">
                     <!--begin:Menu Müşteriler-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -74,7 +74,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.blog.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.blog.*')) active @endif" href="{{route('admin.blog.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -86,7 +86,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.blog-category.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.blog-category.*')) active @endif" href="{{route('admin.blog-category.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -98,7 +98,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.blog-comment.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.blog-comment.*')) active @endif" href="{{route('admin.blog-comment.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -114,7 +114,7 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu Hakkımızda-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.about.*') || request()->routeIs('admin.about.*') || request()->routeIs('admin.about-gallery.*')|| request()->routeIs('admin.downloadable-content.*')) hover show @endif">
                     <!--begin:Menu Müşteriler-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -131,7 +131,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.about.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.about.*')) active @endif" href="{{route('admin.about.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -141,9 +141,9 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div class="menu-item">
+                        <div class="menu-item ">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.about-gallery.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.about-gallery.*')) active @endif" href="{{route('admin.about-gallery.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -153,9 +153,9 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div class="menu-item">
+                        <div class="menu-item ">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="{{route('admin.downloadable-content.index')}}">
+                            <a class="menu-link @if(request()->routeIs('admin.downloadable-content.*')) active @endif" href="{{route('admin.downloadable-content.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -171,7 +171,14 @@
                 </div>
                 <!--end:Menu Hakkımızda-->
                 <!--begin:Menu Kategoriler-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs('admin.category.*') || request()->routeIs('admin.subcategory.*') || request()->routeIs('admin.subCategorySon.*')) hover show @endif">
+                <div data-kt-menu-trigger="click"
+                     class="menu-item menu-accordion
+                     @if(request()->routeIs('admin.category.*') ||
+                        request()->routeIs('admin.subcategory.*')
+                        || request()->routeIs('admin.subCategorySon.*') ||
+                         request()->routeIs('admin.series.*')||
+                         request()->routeIs('admin.reference-category.*')||
+                         request()->routeIs('admin.productionCategory.*')) hover show @endif">
                     <!--begin:Menu Müşteriler-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -252,6 +259,18 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link @if(request()->routeIs('admin.productionCategory.*')) active @endif" href="{{route('admin.productionCategory.index')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Üretim Kategorileri</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
                     </div>
                     <!--end:Menu Müşteriler-->
 
@@ -262,7 +281,7 @@
                 <!--end:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.settings.customer')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.settings.*')) active @endif" href="{{route('admin.settings.customer')}}">
                         <span class="menu-icon">
                             <i class="bi bi-gear"></i>
                         </span>
@@ -272,7 +291,7 @@
                 </div>
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.slider.index')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.slider.*')) active @endif" href="{{route('admin.slider.index')}}">
                         <span class="menu-icon">
                             <i class="bi bi-sliders"></i>
                         </span>
@@ -282,7 +301,7 @@
                 </div>
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.main-page.index')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.main-page.*')) active @endif" href="{{route('admin.main-page.index')}}">
                         <span class="menu-icon">
                             <i class="fa fa-home"></i>
                         </span>
@@ -292,7 +311,7 @@
                 </div>
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.product.index')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.product.*')) active @endif" href="{{route('admin.product.index')}}">
                         <span class="menu-icon">
                             <i class="fa fa-ticket"></i>
                         </span>
@@ -302,7 +321,7 @@
                 </div>
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.reference.index')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.reference.*')) active @endif" href="{{route('admin.reference.index')}}">
                         <span class="menu-icon">
                             <i class="fa fa-toolbox"></i>
                         </span>
@@ -312,7 +331,37 @@
                 </div>
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('admin.contact-request.index')}}">
+                    <a class="menu-link @if(request()->routeIs('admin.team.*')) active @endif" href="{{route('admin.team.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-user-group"></i>
+                        </span>
+                        <span class="menu-title">Yönetim Kurulu</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link @if(request()->routeIs('admin.video.*')) active @endif" href="{{route('admin.video.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-video"></i>
+                        </span>
+                        <span class="menu-title">Videolar</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link @if(request()->routeIs('admin.newspaper.*')) active @endif" href="{{route('admin.newspaper.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        <span class="menu-title">Basında Biz</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link @if(request()->routeIs('admin.contact-request.*')) active @endif" href="{{route('admin.contact-request.index')}}">
                         <span class="menu-icon">
                             <i class="fa fa-message"></i>
                         </span>
@@ -323,7 +372,43 @@
                     </a>
                     <!--end:Menu link-->
                 </div>
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link @if(request()->routeIs('admin.jobRequestForm.*')) active @endif" href="{{route('admin.jobRequestForm.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-paperclip"></i>
+                        </span>
+                        <span class="menu-title justify-content-between">
+                            İş Başvuru Formları
+                            <span class="badge badge-circle badge-danger">{{auth('admin')->user()->jobRequestCount()}}</span>
+                        </span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
             <!--end::Menu-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link @if(request()->routeIs('admin.kvkk.*')) active @endif" href="{{route('admin.kvkk.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-paperclip"></i>
+                        </span>
+                        <span class="menu-title">
+                            Kvkk Metni
+                        </span>
+                    </a>
+                    <!--end:Menu link-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link @if(request()->routeIs('admin.language.*')) active @endif" href="{{route('admin.language.index')}}">
+                        <span class="menu-icon">
+                            <i class="fa fa-language"></i>
+                        </span>
+                            <span class="menu-title">Dil Ayarları</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                </div>
+                <!--end::Menu-->
         </div>
 
         <!--end::Menu wrapper-->

@@ -1,5 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title', $category->getMetaTitle())
+@section('description', $category->getMetaDescription())
 @section('styles')
 
 @endsection

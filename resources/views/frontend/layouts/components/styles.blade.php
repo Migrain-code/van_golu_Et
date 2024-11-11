@@ -22,5 +22,26 @@
     ::-webkit-scrollbar-track{
         background: #0b0e18;
     }
+    .languageMenu{
+        display: none !important;
+    }
+    @media (max-width: 768px) {
+        .hoverbox-4.bottom .content p,
+        .hoverbox-4.bottom .hover-content p {
+            display: none;
+        }
+
+        .hoverbox-4.bottom .content h5,
+        .hoverbox-4.bottom .hover-content h5 {
+            font-size: 17px;
+        }
+        .languageMenu{
+            display: inline-block !important;
+        }
+
+
+    }
+
+
 </style>
 @yield('styles')

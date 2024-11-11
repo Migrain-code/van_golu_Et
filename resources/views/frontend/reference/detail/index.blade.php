@@ -1,8 +1,20 @@
 @extends('frontend.layouts.master')
 @php
-   $title = $reference->getMetaTitle();
-   $descripton = $reference->getMetaDescription();
+    $title = trans("Referanslar");
+    $refName = trans("Referanslar");
+    $description = trans("Referanslar");
+    $image = "/frontend/assets/images/sample/slider/1.jpg";
+    if (isset($category)){
+        $title = $reference->getMetaTitle();
+        $descripton = $reference->getMetaDescription();
+        $refName = $reference->getName();
+        $image = $category->image;
+    } else{
+         $image = $categories->first()->image;
+    }
+
 @endphp
+
 @section('title', $title)
 @section('description', $descripton)
 @section('styles')
@@ -18,7 +30,7 @@
     @include('frontend.reference.parts.parallax')
     <!-- product section -->
     <div class="section" style="padding-top: 0px !important;">
-        <div class="row mt-4 mx-4">
+        <div class="row mt-4 mx-lg-4 mx-2">
 
                 @include('frontend.reference.parts.categories')
                 <div class="row col-12 col-lg-9">

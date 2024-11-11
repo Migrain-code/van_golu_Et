@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title', $subCategory->getMetaTitle())
+@section('description', $subCategory->getMetaDescription())
+
 @section('styles')
     <style>
         .line {
@@ -13,8 +15,8 @@
     @include('frontend.product.parts.parallax')
     <!-- product section -->
     <div class="section" style="padding-top: 0px !important;">
-            <div class="row mt-4 mx-4">
-                <div class="col-3">
+            <div class="row mt-4 mx-lg-4 mx-2">
+                <div class="col-12 col-lg-3">
                     <div class="border p-4 mb-4">
                         <h6 class="font-small fw-medium uppercase mb-4 text-center">{{__('Hızlı Menü')}}</h6>
                         <ul class="list-unstyled">
@@ -30,7 +32,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-12 col-lg-9">
                     <div class="row">
                         @forelse($subCategorySon->series as $serie)
                             <div class="col-12 d-flex align-items-center">
@@ -39,11 +41,11 @@
                                 </h1>
                                 <div class="line"></div>
                             </div>
-                            <div class="col-12 mt-1 row">
+                            <div class="mt-1 row">
 
                                 @foreach($serie->products as $product)
 
-                                    <div class="col-4 mb-3">
+                                    <div class="col-12 col-lg-4 mb-3">
                                         <div class="blog-card" style="cursor: pointer;" onclick="window.location.href = '{{route('search.subCategoryProduct', [$category->getSlug(), $subCategory->getSlug(), $subCategorySon->getSlug(), $product->getSlug()])}}'">
                                             <div class="hoverbox-6 mb-2">
                                                 <a href="{{route('search.subCategoryProduct', [$category->getSlug(), $subCategory->getSlug(), $subCategorySon->getSlug(), $product->getSlug()])}}">

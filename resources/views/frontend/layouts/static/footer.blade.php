@@ -2,31 +2,31 @@
     <div class="section-sm bg-dark">
         <div class="container">
             <div class="row g-4">
-                <div class="col-6 col-sm-6 col-lg-3">
+                <div class="col-12 col-lg-3">
                     <div class="d-flex justify-content-center align-items-center p-5">
                         <img src="{{image(setting('logo'))}}" style="">
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">{{ __('Useful Links') }}</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('Kurumsal') }}</h6>
                     <ul class="list-dash animate-links">
-                        <li><a href="#">{{ __('About us') }}</a></li>
-                        <li><a href="#">{{ __('Team') }}</a></li>
-                        <li><a href="#">{{ __('Prices') }}</a></li>
-                        <li><a href="#">{{ __('Contact') }}</a></li>
+                        <li><a href="{{route('about.index')}}">{{ __('Hakkımızda') }}</a></li>
+                        <li><a href="{{route('team')}}">{{ __('Yönetim Kurulu') }}</a></li>
+                        <li><a href="{{route('jobRequest.index')}}">{{ __('İş Başvuru Formu') }}</a></li>
+                        <li><a href="{{route('kvkk.index')}}">{{ __('Kvkk') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">{{ __('Additional Links') }}</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('Medya') }}</h6>
                     <ul class="list-dash animate-links">
-                        <li><a href="#">{{ __('Services') }}</a></li>
-                        <li><a href="#">{{ __('Process') }}</a></li>
-                        <li><a href="#">{{ __('FAQ') }}</a></li>
-                        <li><a href="#">{{ __('Careers') }}</a></li>
+                        <li><a href="{{route('newspaper')}}">{{ __('Basında Biz') }}</a></li>
+                        <li><a href="{{route('video')}}">{{ __('Videolar') }}</a></li>
+                        <li><a href="{{route('blog.index')}}">{{ __('Blog') }}</a></li>
+                        <li><a href="{{route('reference.index')}}">{{ __('Referanslar') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-3">
-                    <h6 class="font-small fw-medium uppercase">{{ __('Contact Info') }}</h6>
+                    <h6 class="font-small fw-medium uppercase">{{ __('İletişim') }}</h6>
                     <ul class="list-unstyled">
                         <li>{{setting('speed_address')}}</li>
                         <li>{{setting('speed_phone')}}</li>

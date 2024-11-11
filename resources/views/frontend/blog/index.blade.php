@@ -1,14 +1,29 @@
 @extends('frontend.layouts.master')
+@php
+    $title = trans("Tüm Bloglar");
+    $description = trans("Tüm Bloglar");
+    if (isset($category)){
+        $title = $category->getMetaTitle();
+        $description = $category->getMetaDescription();
+        $image = $category->image;
+    } else{
+        $image = $categories->first()->image;
+    }
+@endphp
+@section('title', $title)
+@section('description', $description)
 @section('content')
+
     <!-- end Header -->
-    <div class="section-xl bg-image parallax section-divider-curve-bottom" data-bg-src="/frontend/assets/images/sample/slider/1.jpg">
+    <div class="section-xl bg-image parallax section-divider-curve-bottom" data-bg-src="{{image($image)}}">
         <div class="bg-dark-06">
             <div class="container text-center">
                 <h1 class="fw-normal m-0">{{__('Tüm Bloglar')}}</h1>
                 <ul class="list-inline-dash">
-                    <li><a href="#">{{$blogs->count()}} {{__('Blog')}}</a></li>
+                    <li><a href="/">{{__('Anasayfa')}}</a></li>
+                    <li><a href="{{route('blog.index')}}">{{__('Tüm Bloglar')}}</a></li>
                     @if(isset($category))
-                        <li><a href="#">{{$category->getName()}}</a></li>
+                        <li><a href="{{route('blog.category', $category->getSlug())}}">{{$category->getName()}}</a></li>
                     @endif
                 </ul>
             </div><!-- end container -->
@@ -24,11 +39,7 @@
 
                 <!-- Blog Sidebar -->
                 <div class="col-12 col-lg-4 d-none d-lg-block">
-                    {{--
-                         <!-- Sidebar box 1 - About me -->
-                    @include('frontend.blog.parts.author')
-                    <!-- Sidebar box 2 - Categories -->
-                    --}}
+
                     @include('frontend.blog.parts.category')
                     <!-- Sidebar box 3 - Popular Posts -->
                     @include('frontend.blog.parts.popular')

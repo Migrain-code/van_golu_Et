@@ -1,11 +1,11 @@
 @extends('admin.layouts.master')
-@section('title', 'Ana Kategoriler')
+@section('title', 'Diller')
 @section('styles')
 
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Ana Kategoriler</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Diller</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">

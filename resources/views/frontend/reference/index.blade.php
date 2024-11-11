@@ -1,5 +1,21 @@
 @extends('frontend.layouts.master')
-@section('title', trans("Referanslar"))
+@php
+    $title = trans("Referanslar");
+    $refName = trans("Referanslar");
+    $description = trans("Referanslar");
+    $image = "/frontend/assets/images/sample/slider/1.jpg";
+    if (isset($category)){
+        $title = $category->getMetaTitle();
+        $refName = $category->getName();
+        $description = $category->getMetaDescription();
+        $image = $category->image;
+    } else{
+        $image = $categories->first()->image;
+    }
+
+@endphp
+@section('title', $title)
+@section('description', $description)
 @section('styles')
     <style>
         .line {
@@ -14,7 +30,7 @@
 
     <!-- product section -->
     <div class="section" style="padding-top: 0px !important;">
-            <div class="row mt-4 mx-4">
+            <div class="row mt-4 mx-lg-4 mx-2">
                 @include('frontend.reference.parts.categories')
                 <div class="col-12 col-lg-9">
                     <div class="row">

@@ -6564,7 +6564,7 @@ button.mfp-close:hover {
     display: inline-block;
     width: 28px;
     height: 28px;
-    margin-left: auto;
+    margin-left: 20px;
     cursor: pointer
 }
 
@@ -6742,7 +6742,7 @@ button.mfp-close:hover {
     color: white
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1350px) {
     .header[class*='header-color']:not(.transparent-dark) .header-menu .nav .nav-item .nav-link, .header[class*='header-color']:not(.transparent-dark) .header-menu .nav .nav-item .nav-dropdown-toggle {
         color: white
     }
@@ -6832,7 +6832,7 @@ button.mfp-close:hover {
     background: transparent
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1350px) {
     .header.transparent-light .header-menu .nav .nav-item .nav-link, .header.transparent-light .header-menu .nav .nav-item .nav-dropdown-toggle {
         color: white
     }
@@ -6854,7 +6854,7 @@ button.mfp-close:hover {
     color: white
 }
 
-@media (min-width: 992px) {
+@media (min-width:  1350.98px) {
     .header .header-logo, .header .header-menu-extra {
         z-index: 996
     }
@@ -7170,10 +7170,6 @@ button.mfp-close:hover {
         margin-left: 30px
     }
 
-    .header .header-toggle {
-        display: none
-    }
-
     .header:not(.center):not(.left) .header-menu .nav .nav-item:last-child .nav-dropdown, .header:not(.center):not(.left) .header-menu .nav .nav-item:nth-last-child(2) .nav-dropdown {
         right: 0;
         left: auto
@@ -7195,7 +7191,7 @@ button.mfp-close:hover {
     }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1350.98px) {
     .header {
         height: 70px
     }
@@ -7373,7 +7369,7 @@ button.mfp-close:hover {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1350px) {
     .header-lg {
         height: 90px
     }
@@ -9712,4 +9708,13 @@ h1.display-4[class*='text-highlight']:before {
     bottom: 20px;
     left: 20px;
     z-index: 994;
+}
+@media (max-width: 1350px) {
+    .header .header-toggle {
+        margin-left: auto;
+    }
+}@media (min-width: 1350px) {
+    .header .header-toggle {
+        display: none;
+    }
 }

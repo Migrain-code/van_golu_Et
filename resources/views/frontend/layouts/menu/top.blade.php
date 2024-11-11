@@ -21,23 +21,17 @@
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('team')}}">
                                 {{__("Yönetim Kurulu")}}
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('jobRequest.index')}}">
                                 {{__("İş Başvuru Formu")}}
                             </a>
                         </li>
-
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
-                                {{__("Videolar")}}
-                            </a>
-                        </li>
-                        <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('kvkk.index')}}">
                                 {{__("Kvkk")}}
                             </a>
                         </li>
@@ -56,7 +50,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{__("Üretim")}}</a>
+                    <a class="nav-link" href="{{route('production.index')}}">{{__("Üretim")}}</a>
                 </li>
 
                 <li class="nav-item">
@@ -67,12 +61,12 @@
                     <a class="nav-link" href="#">{{ __('Medya') }}</a>
                     <ul class="nav-dropdown">
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('newspaper')}}">
                                 {{__("Basında Biz")}}
                             </a>
                         </li>
                         <li class="nav-dropdown-item">
-                            <a class="nav-dropdown-link" href="../blocks/about.html">
+                            <a class="nav-dropdown-link" href="{{route('video')}}">
                                 {{__("Videolar")}}
                             </a>
                         </li>
@@ -84,6 +78,19 @@
                     </ul>
                 </li>
 
+                <li class="nav-item languageMenu">
+                    <a class="nav-link" href="#">{{ __('Dil Seçiniz') }}</a>
+                    <ul class="nav-dropdown">
+                        @foreach($languages as $language)
+                            <li class="nav-dropdown-item">
+                                <a class="nav-dropdown-link d-flex gap-2" href="{{route('changeLanguage', $language->id)}}">
+                                    <img style="width: 20px" src="{{image($language->flag)}}">
+                                    {{__($language->name)}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contact.index')}}">{{ __('İletişim') }}</a>
                 </li>
@@ -106,7 +113,7 @@
                         <li style="border-bottom: 1px solid rgb(220 220 220 / 50%);">
                             <a href="{{route('changeLanguage', $language->id)}}" class="d-flex gap-2">
                                 <img src="{{image($language->flag)}}">
-                                <span style="color: black">{{$language->name}}</span>
+                                <span style="color: black">{{__($language->name)}}</span>
                             </a>
                         </li>
                     @endforeach

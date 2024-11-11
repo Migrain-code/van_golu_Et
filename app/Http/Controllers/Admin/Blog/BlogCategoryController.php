@@ -42,6 +42,10 @@ class BlogCategoryController extends Controller
             $slugs[$locale] = Str::slug($title);
         }
         $blogCategory->slug = $slugs;
+        if ($request->hasFile('image')) {
+            $blogCategory->image = $request->file('image')->store('blogCategoryImages');
+        }
+
         if ($blogCategory->save()) {
             return redirect()->route('admin.blog-category.index')->with('response', [
                 'status' => 'success',
@@ -73,6 +77,10 @@ class BlogCategoryController extends Controller
             $slugs[$locale] = Str::slug($title);
         }
         $blogCategory->slug = $slugs;
+        if ($request->hasFile('image')) {
+            $blogCategory->image = $request->file('image')->store('blogCategoryImages');
+        }
+
         if ($blogCategory->save()) {
             return redirect()->route('admin.blog-category.index')->with('response', [
                 'status' => 'success',
