@@ -52,14 +52,7 @@
                         <img src="{{image(setting('favicon'))}}" class="p-3" style="width: 50px; height: 50px">
                     </div>
                 </div>
-                <div class="fv-row mb-7">
-                    <!--begin::Label-->
-                    <label class="required fs-6 fw-semibold mb-2">Sayfalama Sayısı</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <input type="number" class="form-control form-control-solid" placeholder="" name="pagination_number" value="{{setting('pagination_number')}}" />
-                    <!--end::Input-->
-                </div>
+
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
                     <label class="required fs-6 fw-semibold mb-2">Video Kapak Görseli (1260 × 500) <a href="{{image(setting('main_page_video_cover_image'))}}" target="_blank">Görüntüle</a></label>
