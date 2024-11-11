@@ -416,7 +416,7 @@
     <!--end::sidebar menu-->
     <!--begin::Footer-->
     <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-        <form method="post" action="{{route('logout')}}">
+        <form method="post" id="logout-form" action="{{route('logout')}}">
             @csrf
             <button type="submit" class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="Güvenli Çıkış Yap">
                 <span class="btn-label">Çıkış Yap</span>

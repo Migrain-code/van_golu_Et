@@ -62,13 +62,13 @@
                             <!--begin::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
-                                <input type="text" placeholder="E-posta Adresiniz" name="email" value="hello@example.com" autocomplete="off" data-kt-translate="sign-in-input-email" class="form-control form-control-solid phone" />
+                                <input type="text" placeholder="E-posta Adresiniz" name="email" value="" autocomplete="off" data-kt-translate="sign-in-input-email" class="form-control form-control-solid phone" />
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
                             <div class="fv-row mb-7">
                                 <!--begin::Password-->
-                                <input type="password" placeholder="Password" name="password" autocomplete="off" data-kt-translate="sign-in-input-password" value="123456" class="form-control form-control-solid" />
+                                <input type="password" placeholder="Password" name="password" autocomplete="off" data-kt-translate="sign-in-input-password" value="" class="form-control form-control-solid" />
                                 <!--end::Password-->
                             </div>
                             <!--end::Input group=-->
