@@ -102,7 +102,7 @@
                             </label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" data-inputmask="'mask': '(999) 999-9999'" placeholder="Randevu telefonu" name="app_phone" value="{{$user->app_phone}}" />
+                            <input type="text" class="form-control form-control-solid" data-inputmask="'mask': '(999) 999-9999'" placeholder="Kullanıcı Telefonu" name="app_phone" value="{{$user->phone}}" />
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->
