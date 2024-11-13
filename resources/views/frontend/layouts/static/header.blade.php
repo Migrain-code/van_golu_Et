@@ -28,7 +28,7 @@
         }
         .dropdown {
             position: relative;
-            width: 150px;
+            width: 85px;
             filter: url(#goo);
         }
 
@@ -58,10 +58,18 @@
             transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
         }
 
-        .dropdown__text{
+        .dropdown__text {
+            background: white;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
             margin-left: 10px;
             color: white;
             font-weight: bold;
+            padding: 4px;
         }
         .dropdown__arrow {
             border-bottom: 2px solid #fff;
@@ -96,6 +104,7 @@
         }
         .dropdown__items li img{
             width: 25px;
+            height: 25px;
             border-radius: 50%;
         }
 
@@ -114,7 +123,7 @@
             padding: 10px;
             height: auto;
             width: max-content;
-            min-width: 160px;
+
             display: flex;
             flex-direction: column;
         }

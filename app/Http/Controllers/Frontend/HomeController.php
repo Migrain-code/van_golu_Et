@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Language;
 use App\Models\MainPage;
 use App\Models\Product;
+use App\Models\Reference;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -18,9 +19,10 @@ class HomeController extends Controller
     {
         $sliders = Slider::where("isActive", 1)->get();
         $parts = MainPage::where('status', 1)->get();
-        $blogs = Blog::where('status', 1)->where('is_main_page', 1)->get();
+        $references = Reference::where('status', 1)->take(4)->get();
+        $blogs = Blog::where('status', 1)->where('is_main_page', 1)->take(4)->get();
 
-        return view('frontend.home.index', compact('sliders', 'parts', 'blogs'));
+        return view('frontend.home.index', compact('sliders', 'parts', 'blogs', 'references'));
     }
 
     public function changeLanguage(Language $language)
