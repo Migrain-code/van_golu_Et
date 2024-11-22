@@ -12,31 +12,29 @@ use App\Http\Controllers\Admin\Category\SeriesController;
 use App\Http\Controllers\Admin\Category\SubCategoryController;
 use App\Http\Controllers\Admin\Category\SubCategorySonController;
 use App\Http\Controllers\Admin\Contact\ContactRequestController;
-use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\JobRequestFormController;
 use App\Http\Controllers\Admin\Language\LanguageController;
 use App\Http\Controllers\Admin\MainPage\MainPageController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Production\ProductionCategoryController;
+use App\Http\Controllers\Admin\Production\ProductionController;
 use App\Http\Controllers\Admin\Reference\ReferenceCategoryController;
 use App\Http\Controllers\Admin\Reference\ReferenceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\Slider\SliderController;
 use App\Http\Controllers\Admin\Team\TeamController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\Video\VideoController;
 use App\Http\Controllers\FAboutController;
 use App\Http\Controllers\FJobRequestFormController;
 use App\Http\Controllers\FProductionController;
 use App\Http\Controllers\FReferenceController;
-use App\Http\Controllers\FrontEnd\Blog\FBlogController;
 use App\Http\Controllers\Frontend\FContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\NewsPaperController;
 use App\Http\Controllers\SearchProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Production\ProductionController;
-use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +50,9 @@ Route::post('city', [HomeController::class, 'city'])->name('city');
 Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('blog')->as('blog.')->group(function () {
-    Route::get('/', [FBlogController::class, 'index'])->name('index');
-    Route::get('/{slug}', [FBlogController::class, 'detail'])->name('detail');
-    Route::get('/category/{slug}', [FBlogController::class, 'category'])->name('category');
+    Route::get('/', [\App\Http\Controllers\Frontend\FBlogController::class, 'index'])->name('index');
+    Route::get('/{slug}', [\App\Http\Controllers\Frontend\FBlogController::class, 'detail'])->name('detail');
+    Route::get('/category/{slug}', [\App\Http\Controllers\Frontend\FBlogController::class, 'category'])->name('category');
 });
 
 Route::prefix('contact')->as('contact.')->group(function () {

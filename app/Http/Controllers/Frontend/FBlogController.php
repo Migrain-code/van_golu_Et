@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd\Blog;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class FBlogController extends Controller
