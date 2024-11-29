@@ -28,28 +28,31 @@
         }
         .dropdown {
             position: relative;
-            width: 85px;
+            width: 100px;
             filter: url(#goo);
         }
 
         .dropdown__face, .dropdown__items {
             background-color: transparent;
-            border: 1px solid white;
+            border: 1px solid #fff;
             padding: 5px;
             border-radius: 15px;
         }
         .dropdown__face {
-            display: block;
+            display: flex;
             position: relative;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
         }
         .dropdown__items {
+            min-width: 100px;
             margin: 0;
             position: absolute;
             right: 0;
             top: 50%;
             width: 100%;
             list-style: none;
-            list-style-type: none;
             display: flex;
             justify-content: space-between;
             visibility: hidden;
@@ -59,21 +62,18 @@
         }
 
         .dropdown__text {
-            background: white;
-            width: 25px;
-            height: 25px;
+            background: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 5px;
-            margin-left: 10px;
-            color: white;
-            font-weight: bold;
-            padding: 4px;
+            margin-left: 6px;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: black;
         }
         .dropdown__arrow {
-            border-bottom: 2px solid #fff;
-            border-right: 2px solid #fff;
+            border-bottom: 2px solid #000;
+            border-right: 2px solid #000;
             position: absolute;
             top: 50%;
             right: 30px;
@@ -98,13 +98,27 @@
             padding-bottom: 8px;
             padding-top: 5px;
             border-radius: 5px;
+            transition: .4s;
+        }
+        .dropdown__items li:hover {
+            background: #181c20;
+            color: white !important
+        }
+        .dropdown__items li:hover .langSpan {
+            color: white;
         }
         .dropdown__items li a{
             color: black;
+            text-transform: uppercase;
+            font-size: 10px;
+
+        }
+        .dropdown__items li a span{
+            margin-top: 3px;
         }
         .dropdown__items li img{
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
         }
 
@@ -120,9 +134,9 @@
             color: white !important
         }
         .dropdown__items {
-            padding: 10px;
+            /*padding: 10px;*/
             height: auto;
-            width: max-content;
+            width: 100px;
 
             display: flex;
             flex-direction: column;

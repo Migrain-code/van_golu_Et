@@ -85,7 +85,7 @@
                             <li class="nav-dropdown-item">
                                 <a class="nav-dropdown-link d-flex gap-2" href="{{route('changeLanguage', $language->id)}}">
                                     <img style="width: 20px;" src="{{image($language->flag)}}">
-                                    {{--__($language->name)--}}
+                                    {{__($language->code)}}
                                 </a>
                             </li>
                         @endforeach
@@ -107,7 +107,8 @@
                         {{-- __('Dil Seçiniz') --}}
                         @foreach($languages as $language)
                             @if($language->code == app()->getLocale())
-                                <img style="width: 25px;height: 20px; border-radius: 5px" src="{{image($language->flag)}}">
+                                <img style="width: 20px;height: 20px; border-radius: 50%" src="{{image($language->flag)}}">
+                                <span style="margin-left: 5px">{{$language->code}}</span>
                             @endif
                         @endforeach
 
@@ -121,11 +122,11 @@
                         <li @class(['active' => $language->code == app()->getLocale()]) style="border-bottom: 1px solid rgb(220 220 220 / 50%);">
                             <a href="{{route('changeLanguage', $language->id)}}" class="d-flex gap-2">
                                 <img src="{{image($language->flag)}}">
-                                {{--
+
                                 <span @class(['activesp' => $language->code == app()->getLocale(), 'langSpan' => $language->code != app()->getLocale()])>
-                                    {{ __($language->name) }}
+                                    {{ __($language->code) }}
                                 </span>
-                                --}}
+
                             </a>
                         </li>
                     @endforeach
