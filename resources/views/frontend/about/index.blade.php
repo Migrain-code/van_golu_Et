@@ -1,6 +1,14 @@
 @extends('frontend.layouts.master')
 @section('title', setting('about_meta_title_'.app()->getLocale().'_text'))
 @section('description', setting('about_meta_description'.app()->getLocale().'_text'))
+@section('styles')
+    <style>
+        .owl-carousel .owl-item img {
+            width: auto;
+            min-height: 270px;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- end Header -->
     <div class="section-xl bg-image parallax" data-bg-src="{{image(setting('about_banner_image'))}}">
