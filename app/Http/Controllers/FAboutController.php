@@ -15,7 +15,7 @@ class FAboutController extends Controller
     public function index()
     {
         $galleries = AboutGallery::all();
-        $references = Reference::where('status', 1)->take(4)->get();
+        $references = Reference::where('status', 1)->take(3)->get();
         $downloadableContents = DownloadableContent::where('status', 1)->take(10)->get();
         return view('frontend.about.index', compact('galleries', 'references', 'downloadableContents'));
     }
