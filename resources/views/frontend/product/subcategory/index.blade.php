@@ -49,7 +49,7 @@
                                         <div class="blog-card" style="cursor: pointer;" onclick="window.location.href = '{{route('search.subCategoryProduct', [$category->getSlug(), $subCategory->getSlug(), $subCategorySon->getSlug(), $product->getSlug()])}}'">
                                             <div class="hoverbox-6 mb-2">
                                                 <a href="{{route('search.subCategoryProduct', [$category->getSlug(), $subCategory->getSlug(), $subCategorySon->getSlug(), $product->getSlug()])}}">
-                                                    <img src="{{image($product->image)}}" alt="">
+                                                    <img src="{{image($product->image)}}" alt="" style="width: 315px;height: 415px;object-fit: cover;">
                                                 </a>
                                             </div>
                                             <h5 class="fw-medium">

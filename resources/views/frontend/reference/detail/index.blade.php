@@ -79,24 +79,30 @@
                             <p>{{$reference->getDescription()}}</p>
                             <p>{!! $reference->getContent() !!}</p>
                             <div class="row mt-3">
-                            @foreach($reference->products as $refProduct)
-                                    @php
-                                        $product= $refProduct->product;
-                                        $productLink = route('search.subCategoryProduct', [$product->category->parent->parent->parent->getSlug(),$product->category->parent->parent->getSlug(),$product->category->parent->getSlug(), $product->getSlug()]);
-                                    @endphp
-                                    <div class="col-12 col-lg-6">
-                                        <a href="{{$productLink}}">
-                                            <img src="{{image($refProduct->product->image)}}" style="width: 200px" alt="">
-                                        </a>
-                                        <div class="">
-                                            <h6 class="fw-normal mt-2 mb-0">
-                                                <a class="text-link-1" href="{{$productLink}}">
-                                                    {{$refProduct->product->getName()}}
+                            @if(isset($reference->products))
+                                @foreach($reference->products as $refProduct)
+                                    @if($refProduct->category)
+                                            @php
+                                                $product= $refProduct->product;
+                                                $productLink = route('search.subCategoryProduct', [$product->category->parent->parent->parent->getSlug(),$product->category->parent->parent->getSlug(),$product->category->parent->getSlug(), $product->getSlug()]);
+                                            @endphp
+                                            <div class="col-12 col-lg-6">
+                                                <a href="{{$productLink}}">
+                                                    <img src="{{image($refProduct->product->image)}}" style="width: 200px" alt="">
                                                 </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                            @endforeach
+                                                <div class="">
+                                                    <h6 class="fw-normal mt-2 mb-0">
+                                                        <a class="text-link-1" href="{{$productLink}}">
+                                                            {{$refProduct->product->getName()}}
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                    @endif
+
+                                @endforeach
+                            @endif
+
                             </div>
                         </div>
 
