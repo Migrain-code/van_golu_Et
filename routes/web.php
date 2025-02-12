@@ -92,13 +92,6 @@ Auth::routes();
 Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 
-    /*------------------------------Customer Routes-----------------------------------*/
-    /*Route::resource('customer', CustomerController::class);
-    Route::controller(CustomerController::class)->prefix('customer')->as('customer.')->group(function (){
-        Route::post('update/phone', 'updatePhone')->name('updatePhone');
-        Route::post('update/phone/verify', 'verifyPhone')->name('verifyPhone');
-        Route::post('update/password', 'updatePassword')->name('updatePassword');
-    });*/
     Route::resource('user', UserController::class);
     Route::resource('slider', SliderController::class); // Sliderlar
     Route::resource('production', ProductionController::class); // Sliderlar

@@ -9,7 +9,23 @@
         <input type="text" class="form-control form-control-solid" placeholder="" name="title[{{$row->code}}]" value="" />
         <!--end::Input-->
     </div>
-    @foreach(range(1, 3) as $boxC)
+    <div class="fv-row mb-7">
+        <!--begin::Label-->
+        <label class="required fs-6 fw-semibold mb-2">Alt Başlık</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input type="text" class="form-control form-control-solid" placeholder="" name="sub_title[{{$row->code}}]" value="" />
+        <!--end::Input-->
+    </div>
+    <div class="fv-row mb-7">
+        <!--begin::Label-->
+        <label class="required fs-6 fw-semibold mb-2">Açıklama</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <textarea class="form-control form-control-solid" rows="7" placeholder="örn. [Firma Adı], alüminyum sektöründe uzun yıllara dayanan tecrübemiz ...." name="descriptions[{{$row->code}}]"></textarea>
+        <!--end::Input-->
+    </div>
+    @foreach(range(1, 2) as $boxC)
         <div class="row">
             <div class="fv-row mb-7 col-6">
                 <!--begin::Label-->
@@ -24,18 +40,11 @@
                 <label class="required fs-6 fw-semibold mb-2">Kutu {{$boxC}} Sayaç</label>
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input type="number" class="form-control form-control-solid" placeholder="örn. 10" name="box_{{$boxC}}_counter[{{$row->code}}]" value="" />
+                <input type="text" class="form-control form-control-solid" placeholder="örn. 10" name="box_{{$boxC}}_counter[{{$row->code}}]" value="" />
                 <!--end::Input-->
             </div>
         </div>
     @endforeach
 
-    <div class="fv-row mb-7">
-        <!--begin::Label-->
-        <label class="required fs-6 fw-semibold mb-2">Açıklama</label>
-        <!--end::Label-->
-        <!--begin::Input-->
-        <textarea class="form-control form-control-solid" rows="7" placeholder="örn. [Firma Adı], alüminyum sektöründe uzun yıllara dayanan tecrübemiz ...." name="descriptions[{{$row->code}}]"></textarea>
-        <!--end::Input-->
-    </div>
+
 </div>

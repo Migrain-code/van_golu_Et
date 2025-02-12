@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Language;
 use App\Models\MainPage;
@@ -21,8 +22,9 @@ class HomeController extends Controller
         $parts = MainPage::where('status', 1)->get();
         $references = Reference::where('status', 1)->take(3)->get();
         $blogs = Blog::where('status', 1)->where('is_main_page', 1)->take(4)->get();
-
-        return view('frontend.home.index', compact('sliders', 'parts', 'blogs', 'references'));
+        $categories = Category::where('status', 1)->take(5)->get();
+        $products = Product::where('status', 1)->take(8)->get();
+        return view('frontend.home.index', compact('products','sliders', 'parts', 'blogs', 'references', 'categories'));
     }
 
     public function changeLanguage(Language $language)

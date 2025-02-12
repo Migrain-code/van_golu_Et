@@ -1,8 +1,19 @@
 <!-- ***** JAVASCRIPTS ***** -->
-<script src="/frontend/assets/plugins/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi4SV0ZRVGoIDH2E00YtJ8Gvg67eaPG5A"></script>
-<script src="/frontend/assets/plugins/plugins.js"></script>
-<script src="/frontend/assets/js/functions.min.js"></script>
+<!-- JS here -->
+<script src="/frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="/frontend/assets/js/bootstrap.min.js"></script>
+<script src="/frontend/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="/frontend/assets/js/jquery.countdown.min.js"></script>
+<script src="/frontend/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="/frontend/assets/js/jquery.odometer.min.js"></script>
+<script src="/frontend/assets/js/jquery.appear.js"></script>
+<script src="/frontend/assets/js/tween-max.min.js"></script>
+<script src="/frontend/assets/js/slick.min.js"></script>
+<script src="/frontend/assets/js/slick-animation.min.js"></script>
+<script src="/frontend/assets/js/jquery-ui.min.js"></script>
+<script src="/frontend/assets/js/ajax-form.js"></script>
+<script src="/frontend/assets/js/wow.min.js"></script>
+<script src="/frontend/assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>

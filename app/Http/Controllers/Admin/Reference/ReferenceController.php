@@ -27,9 +27,7 @@ class ReferenceController extends Controller
      */
     public function create()
     {
-        $categories = ReferenceCategory::all();
-        $products = Product::all();
-        return view('admin.reference.create.index', compact('categories', 'products'));
+        return view('admin.reference.create.index');
     }
 
     /**
@@ -43,7 +41,6 @@ class ReferenceController extends Controller
         $reference->meta_description = $request->meta_description;
         $reference->description = $request->short_description;
         $reference->content = $request->technic;
-        $reference->category_id = $request->category_id;
         $slugs = [];
         foreach ($request->title as $locale => $title) {
             $slugs[$locale] = Str::slug($title);
@@ -54,22 +51,6 @@ class ReferenceController extends Controller
         }
 
         if ($reference->save()) {
-            if (count($request->product_id) > 0){
-                foreach ($request->product_id as $productId){
-                    $referenceProduct = new ReferenceProduct();
-                    $referenceProduct->reference_id = $reference->id;
-                    $referenceProduct->product_id = $productId;
-                    $referenceProduct->save();
-                }
-            }
-            if (count($request->images) > 0){
-                foreach ($request->images as $referenceImage){
-                    $referenceOtherImage = new ReferenceImage();
-                    $referenceOtherImage->reference_id = $reference->id;
-                    $referenceOtherImage->image = $referenceImage->store('referenceImages');
-                    $referenceOtherImage->save();
-                }
-            }
             return redirect()->route('admin.reference.index')->with('response', [
                 'status' => 'success',
                 'message' => 'Referans Başarıyla Eklendi'
@@ -83,11 +64,7 @@ class ReferenceController extends Controller
      */
     public function edit(Reference $reference)
     {
-        $categories = ReferenceCategory::all();
-        $products = Product::all();
-        $productIds = $reference->products()->pluck('product_id')->toArray();
-
-        return view('admin.reference.edit.index', compact('reference', 'categories', 'products', 'productIds'));
+        return view('admin.reference.edit.index', compact('reference'));
     }
 
     /**
@@ -100,7 +77,6 @@ class ReferenceController extends Controller
         $reference->meta_description = $request->meta_description;
         $reference->description = $request->short_description;
         $reference->content = $request->technic;
-        $reference->category_id = $request->category_id;
         $slugs = [];
         foreach ($request->title as $locale => $title) {
             $slugs[$locale] = Str::slug($title);
@@ -111,24 +87,6 @@ class ReferenceController extends Controller
         }
 
         if ($reference->save()) {
-            if (count($request->product_id) > 0) {
-                $reference->products()->delete();
-                foreach ($request->product_id as $productId) {
-                    $referenceProduct = new ReferenceProduct();
-                    $referenceProduct->reference_id = $reference->id;
-                    $referenceProduct->product_id = $productId;
-                    $referenceProduct->save();
-                }
-            }
-            if (isset($request->images) && count($request->images) > 0) {
-                foreach ($request->images as $referenceImage) {
-                    $referenceOtherImage = new ReferenceImage();
-                    $referenceOtherImage->reference_id = $reference->id;
-                    $referenceOtherImage->image = $referenceImage->store('referenceImages');
-                    $referenceOtherImage->save();
-                }
-            }
-
             return redirect()->route('admin.reference.index')->with('response', [
                 'status' => 'success',
                 'message' => 'Referans Başarıyla Güncellendi'

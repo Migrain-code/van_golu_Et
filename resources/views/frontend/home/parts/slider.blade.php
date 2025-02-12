@@ -1,27 +1,49 @@
 <!-- Hero section -->
-<div class="owl-carousel owl-nav-overlay owl-dots-overlay" data-owl-nav="true" data-owl-dots="true" data-owl-items="1">
-    @foreach($sliders as $slider)
-        <!-- Slider box -->
-        <div class="bg-image" data-bg-src="{{image($slider->image)}}">
-            <div class="section-xl bg-dark-03">
-                <div class="container text-center">
-                    <div class="row g-4">
-                        <div class="col-12 col-sm-10 offset-sm-1">
-                            <h1 class="fw-bold letter-spacing-1">
-                                {{$slider->getTitle()}}
-                            </h1>
-                            <h5 class="fw-normal mb-4 text-white">
-                                {{$slider->getDescription()}}
-                            </h5>
-
-                            <a class="button button-xl button-radius button-outline-white mt-3 button-font-2" href="{{$slider->getButtonLink()}}" target="_blank">{{$slider->getButtonText()}}</a>
-                        </div>
-                    </div><!-- end row -->
-                </div><!-- end container -->
+@foreach($sliders as $slider)
+<!-- banner-area -->
+<section class="banner-area-two tg-motion-effects banner-bg-two" data-background="/frontend/assets/img/banner/h3_banner_bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-content-two">
+                    <div class="icon wow zoomIn" data-wow-delay=".2s">
+                        <img src="/frontend/assets/img/banner/h3_banner_icon.png" alt="" class="rotateme">
+                    </div>
+                    <h1 class="title wow bounceInRight" data-wow-delay=".4s"> {{$slider->getTitle()}}</h1>
+                </div>
+                <div class="banner-img-two wow bounceInLeft" data-wow-delay=".6s">
+                    <img src="{{image($slider->image)}}" alt="">
+                </div>
             </div>
         </div>
-        <!-- Slider box end-->
-    @endforeach
+    </div>
+    <div class="banner-shape-wrap-two">
+        <img src="/frontend/assets/img/banner/h3_banner_shape01.png" alt="" class="tg-motion-effects4">
+        <img src="/frontend/assets/img/banner/h3_banner_shape02.png" alt="" class="tg-motion-effects5">
+        <img src="/frontend/assets/img/banner/h3_banner_shape03.png" alt="">
+        <img src="/frontend/assets/img/banner/h3_banner_shape04.png" alt="">
+    </div>
+</section>
+<!-- banner-area-end -->
+@endforeach
 
+<!-- category-area -->
+<div class="category-area category-bg" data-background="/frontend/assets/img/bg/category_bg.png">
+    <div class="container">
+        <div class="row justify-content-center row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
+            @foreach($categories as $category)
+                <div class="col">
+                    <div class="category-item">
+                        <a href="#">
+                            <div class="icon">
+                                <img src="{{image($category->image)}}" alt="">
+                            </div>
+                            {{$category->getName()}}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
-<!-- end owl-carousel -->
+<!-- category-area-end -->

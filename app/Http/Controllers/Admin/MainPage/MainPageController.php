@@ -33,6 +33,7 @@ class MainPageController extends Controller
     {
         $mainPage = new MainPage();
         $mainPage->title = $request->title;
+        $mainPage->sub_title = $request->sub_title;
         $mainPage->description = $request->descriptions;
         foreach (range(1, 3) as $item) {
             $mainPage->{'box_' . $item . '_title'} = $request->{'box_' . $item . '_title'};
@@ -72,6 +73,7 @@ class MainPageController extends Controller
     public function update(Request $request, MainPage $mainPage)
     {
         $mainPage->title = $request->title;
+        $mainPage->sub_title = $request->sub_title;
         $mainPage->description = $request->descriptions;
         foreach (range(1, 3) as $item) {
             $mainPage->{'box_' . $item . '_title'} = $request->{'box_' . $item . '_title'};

@@ -1,37 +1,43 @@
-<!-- About section -->
-<div class="section" style="padding: 50px 0;">
+<!-- about-area -->
+<section class="about-area-two">
     <div class="container">
         @foreach($parts as $part)
-            <div class="row g-4 g-lg-5 mt-3 ">
-                <div class="col-12 col-lg-6 @if($part->image_rotation == 1) order-lg-2 @endif">
-                    <div class="img-box-icon border-radius-1 box-shadow">
-                        <a class="lightbox-media-box border-radius icon-xl"
-                           href="{{image($part->image)}}">
-                            <img src="{{image($part->image)}}" alt="">
-                        </a>
-                    </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-9 @if($part->image_rotation == 1) order-lg-2 @endif">
+                <div class="about-img-wrap">
+                    <img src="{{image($part->image)}}" alt="">
                 </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-content-two">
+                    <div class="section-title mb-40">
+                        <span class="sub-title">{{$part->getSubTitle()}}</span>
+                        <h2 class="title"> {{$part->getTitle()}}</h2>
+                    </div>
+                    <p> {{$part->getDescription()}}</p>
 
-                <div class="col-12 col-lg-6">
-                    <h2 class="fw-bold mb-3">
-                        {{$part->getTitle()}}
-                    </h2>
-                    <p>
-                        {{$part->getDescription()}}
-                    </p>
-                    <div class="d-flex gap-2 mt-4">
-                        @foreach(range(1, 3) as $rw)
-                            <div class="col-4 d-inline-block bg-gray border-radius p-3">
-                                <h1 class="fw-normal line-height-120 text-color-theme mb-0">
-                                    <span class="counter">{{ $part->{'getBox' . $rw . 'Counter'}() }}</span>+
-                                </h1>
-                                <p>{{ $part->{'getBox' . $rw . 'Title'}() }}</p>
-                            </div>
-                        @endforeach
+                    <div class="about-info-wrap">
+                        <ul class="list-wrap" style="justify-content: left">
+                            @foreach(range(1, 2) as $rw)
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-clock" style="color: #df2614;
+    background: white;
+    border-radius: 50%;"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">{{ $part->{'getBox' . $rw . 'Counter'}() }}</h4>
+                                        <span>{{ $part->{'getBox' . $rw . 'Title'}() }}</span>
+                                    </div>
+                                </li>
+
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
         @endforeach
-
-    </div><!-- end container -->
-</div>
+    </div>
+</section>
+<!-- about-area-end -->

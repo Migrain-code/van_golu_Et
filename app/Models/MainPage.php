@@ -9,11 +9,16 @@ use Spatie\Translatable\HasTranslations;
 class MainPage extends Model
 {
     use HasFactory, HasTranslations;
-    protected $translatable = ['title', 'description', 'box_1_title', 'box_1_counter', 'box_2_title','box_2_counter','box_3_title','box_3_counter'];
+    protected $translatable = ['title','sub_title', 'description', 'box_1_title', 'box_1_counter', 'box_2_title','box_2_counter','box_3_title','box_3_counter'];
 
     public function getTitle()
     {
         return $this->translate('title');
+    }
+
+    public function getSubTitle()
+    {
+        return $this->translate('sub_title');
     }
 
     public function getDescription()

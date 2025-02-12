@@ -1,46 +1,51 @@
-<!-- product section -->
-<div class="section" style="padding-top: 0px !important;">
+<!-- testimonial-area -->
+<section class="testimonial-area testimonial-bg" data-background="/frontend/assets/img/bg/testimonial_bg.jpg">
     <div class="container">
-        <div class="d-flex justify-content-center align-items-center mb-4">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h6 class="d-inline-block bg-gray border-radius
-								 px-3 py-2 line-height-140 font-small uppercase letter-spacing-1 mb-3">
-									<span class="text-color-theme">
-										{{__("Referanslar")}}
-									</span>
-                    </h6>
-                    <h2 class="fw-bold mb-1">
-                        {{__('Anasayfa Referanslar Başlık')}}
-                    </h2>
-                    <p class="">
-                        {{__('Anasayfa Referanslar Açıklama')}}
-                    </p>
+        <div class="row align-items-end">
+            <div class="col-md-8">
+                <div class="section-title mb-60">
+                    <span class="sub-title">{{__("Referanslar")}}</span>
+                    <h2 class="title"> {{__('Anasayfa Referanslar Başlık')}}</h2>
+                    <p> {{__('Anasayfa Referanslar Açıklama')}}</p>
                 </div>
-
             </div>
-
+            <div class="col-md-4">
+                <div class="testimonial-nav"></div>
+            </div>
         </div>
-        <div class="mb-0">
-            <div class="row g-3 g-lg-4">
-                    @foreach($references as $rowReference)
-                        <div class="col-12 col-lg-4 mb-3">
-                            <div class="hoverbox-4 bottom border-radius">
-                                <img src="{{image($rowReference->image)}}" style="min-height: 315px;object-fit: cover" alt="">
-                                <div class="content">
-                                    <h5 style="margin-bottom: -5px;">{{ $rowReference->getName() }}</h5>
-                                    <p>{{$rowReference->getDescription()}}</p>
-                                </div>
-                                <div class="hover-content">
-
-                                    <a class="button button-md button-radius button-outline-white" href="{{route('reference.detail', [$rowReference->category->getSlug(),$rowReference->getSlug()])}}">{{ __('Detay') }}</a>
-                                </div>
-                            </div>
+        <div class="row testimonial-active">
+            @foreach($references as $rowReference)
+            <div class="col-lg-6">
+            <div class="testimonial-item">
+                <div class="testimonial-content">
+                    <div class="icon"><i class="flaticon-quotation"></i></div>
+                    <p>
+                        {{$rowReference->getDescription()}}
+                    </p>
+                    <div class="testimonial-avatar">
+                        <div class="thumb">
+                            <img src="{{image($rowReference->image)}}" alt="">
                         </div>
-                    @endforeach
+                        <div class="content">
+                            <h4 class="title fw-bold">{{ $rowReference->getName() }}</h4>
+                            <span>Müşteri</span>
+                        </div>
+                    </div>
+                    <div class="overlay-icon">
+                        <i class="flaticon-quotation"></i>
+                    </div>
+                </div>
+                <div class="testimonial-shape">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 626 367" preserveAspectRatio="none">
+                        <path d="M331,5709H917a20,20,0,0,1,20,20l-29,327a20,20,0,0,1-20,20H361a20,20,0,0,1-20-20l-30-327A20,20,0,0,1,331,5709Z" transform="translate(-311 -5709)" />
+                    </svg>
+                </div>
             </div>
+        </div>
+            @endforeach
 
         </div>
     </div>
-</div>
-<!-- end product section -->
+</section>
+<!-- testimonial-area-end -->
+

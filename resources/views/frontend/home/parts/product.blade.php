@@ -1,46 +1,54 @@
-<!-- product section -->
-<div class="section" style="padding-top: 0px !important;">
+<!-- product-area -->
+<section class="product-area-four tg-motion-effects product-bg-four pt-0" data-background="/frontend/assets/img/bg/h3_product_bg.jpg">
+    <div class="product-bg-shape" data-background="/frontend/assets/img/images/h3_product_bg_shape.png"></div>
     <div class="container">
-        <div class="d-flex justify-content-center align-items-center mb-4">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h6 class="d-inline-block bg-gray border-radius
-								 px-3 py-2 line-height-140 font-small uppercase letter-spacing-1 mb-3">
-									<span class="text-color-theme">
-										{{__("Ürünler")}}
-									</span>
-                    </h6>
-                    <h2 class="fw-bold mb-1">
-                        {{__('Anasayfa Ürünler Başlık')}}
-                    </h2>
-                    <p class="">
-                        {{__('Anasayfa Ürünler Açıklama')}}
-                    </p>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title title-style-two text-center mb-60">
+                    <span class="sub-title">{{__("Ürünler")}}</span>
+                    <h2 class="title">{{__('Anasayfa Ürünler Başlık')}}</h2>
+                    <p>{{__('Anasayfa Ürünler Açıklama')}}</p>
+                    <div class="title-shape" data-background="/frontend/assets/img/images/title_shape.png"></div>
                 </div>
-
             </div>
-
         </div>
-        <div class="mb-0">
-            <div class="row g-3 g-lg-4">
-                @foreach($productCategories as $pCategory)
-                    <div class="col-12 col-lg-4">
-                        <div class="hoverbox-4 bottom border-radius">
-                            <img src="{{image($pCategory->image)}}" style="object-fit: cover" alt="">
-                            <div class="content">
-                                <h5>{{$pCategory->getName() }}</h5>
+        <div class="product-item-wrap-four">
+            <div class="row justify-content-center">
+                @foreach($products as $product)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+                        <div class="product-item-four">
+                            <div class="product-thumb-four">
+                                <a href="shop-details.html"><img src="{{image($product->image)}}" alt=""></a>
+                                <span class="batch"><i class="fas fa-star"></i></span>
                             </div>
-                            <div class="hover-content">
-                                <a class="button button-md button-radius button-outline-white" href="{{route('search.category', $pCategory->getSlug())}}">{{ __('Bilgi Al') }}</a>
+                            <div class="product-content-four">
+                                <div class="line" data-background="/frontend/assets/img/images/line.png"></div>
+                                <h2 class="title"><a href="shop-details.html">{{$product->getName()}}</a></h2>
+
+                                <div class="product-tag">
+                                    <ul class="list-wrap">
+                                        <li><a href="shop.html">{{$product->category->getName()}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-shape-four">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333 431" preserveAspectRatio="none">
+                                    <path d="M258,2672H551a20,20,0,0,1,20,20l-15,391a20,20,0,0,1-20,20H273a20,20,0,0,1-20-20l-15-391A20,20,0,0,1,258,2672Z" transform="translate(-238 -2672)" />
+                                </svg>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
-
-
-            </div><!-- end row -->
+            </div>
+            <div class="shop-now-btn text-center mt-20">
+                <a href="shop.html" class="btn btn-two">Tüm Ürünler</a>
+            </div>
         </div>
     </div>
-</div>
-<!-- end product section -->
+    <div class="product-shape-wrap">
+        <img src="/frontend/assets/img/product/h3_product_shape_img01.png" alt="" class="tg-motion-effects4">
+        <img src="/frontend/assets/img/product/h3_product_shape_img02.png" alt="" class="tg-motion-effects6">
+        <img src="/frontend/assets/img/product/h3_product_shape_img03.png" alt="" class="tg-motion-effects5">
+    </div>
+</section>
+<!-- product-area-end -->

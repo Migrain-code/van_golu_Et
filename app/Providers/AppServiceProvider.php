@@ -47,9 +47,6 @@ class AppServiceProvider extends ServiceProvider
         $cities = City::all();
         View::share('cities', $cities);
 
-        $productCategories = Category::where('status', 1)->get();
-        View::share('productCategories', $productCategories);
-
         $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
 

@@ -48,7 +48,7 @@
                         <h6 class="font-small fw-medium uppercase mb-4">{{__('Takip Edin')}}</h6>
                         <ul class="list-inline">
                             <li><a href="{{setting('speed_facebook_url')}}"><i class="bi bi-facebook"></i></a></li>
-                            <li><a href="{{setting('speed_twitter_url')}}"><i class="bi bi-twitter-x"></i></a></li>
+                            <li><a href="{{setting('speed_twitter_url')}}"><i class="bi bi-youtube"></i></a></li>
                             <li><a href="{{setting('speed_instagram_url')}}"><i class="bi bi-instagram"></i></a></li>
                         </ul>
                     </div>
