@@ -56,8 +56,9 @@
                                 <ul class="navigation">
                                     <li><a href="">{{__('Hakkımızda')}}</a></li>
                                     <li><a href="#">{{__('Ürünler')}}</a></li>
-                                    <li><a href="#">{{__('Bloglar')}}</a></li>
+                                    <li><a href="{{route('blog.index')}}">{{__('Bloglar')}}</a></li>
                                     <li><a href="#">{{__('İletişim')}}</a></li>
+                                    <li><a href="#">{{__('Şubeler')}}</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">

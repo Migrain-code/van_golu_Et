@@ -1,20 +1,18 @@
-<div class="border p-4 mb-4">
-    <h6 class="font-small fw-medium uppercase mb-4 text-center">{{__('Popüler Bloglar')}}</h6>
-    <!-- Popular post 1 -->
-    @foreach($latestBlog as $blogItem)
-        <div class="d-flex align-items-center mb-3">
-            <a href="{{route('blog.detail', $blogItem->getSlug())}}">
-                <img src="{{image($blogItem->image)}}" style="width: 200px" alt="">
-            </a>
-            <div class="ps-3">
-                <h6 class="fw-normal mb-0">
-                    <a class="text-link-1" href="{{route('blog.detail', $blogItem->getSlug())}}">
-                        {{$blogItem->getName()}}
-                    </a>
-                </h6>
-                <span class="font-small">{{$blogItem->created_at->format('d.m.Y')}}</span>
+
+<div class="blog-widget">
+    <h4 class="sw-title">{{__('Popüler Bloglar')}}</h4>
+    <div class="rc-post-list">
+        @foreach($latestBlog as $blogItem)
+        <div class="rc-post-item">
+            <div class="thumb">
+                <a href="{{route('blog.detail', $blogItem->getSlug())}}"><img src="{{image($blogItem->image)}}" alt=""></a>
+            </div>
+            <div class="content">
+                <h4 class="title"><a href="{{route('blog.detail', $blogItem->getSlug())}}">{{$blogItem->getName()}}</a></h4>
+                <span class="date"><i class="fas fa-calendar-alt"></i>{{$blogItem->created_at->format('d.m.Y')}}</span>
             </div>
         </div>
-    @endforeach
+        @endforeach
 
+    </div>
 </div>

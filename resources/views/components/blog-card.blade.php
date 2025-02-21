@@ -1,27 +1,20 @@
 <div>
-    <!-- Blog Post box 1 -->
-    <div class="mb-5">
-        <div class="img-link-box">
-            <a href="{{route('blog.detail', $blog->getSlug())}}">
-                <img src="{{image($blog->image)}}" alt="">
-            </a>
+    <div class="blog-item mb-3">
+        <div class="blog-thumb">
+            <a href="{{route('blog.detail', $blog->getSlug())}}"><img src="{{image($blog->image)}}" style="border-radius: 10px" alt=""></a>
         </div>
-        <div class="mt-4">
-            <div class="d-flex justify-content-between mb-2">
-                <div class="d-inline-flex">
-                    <a class="font-family-tertiary font-small fw-medium uppercase" href="{{route('blog.category', $blog->category->getSlug())}}">{{$blog->category->getName()}}</a>
-                </div>
-                <div class="d-inline-flex">
-                    <span class="font-small">{{$blog->created_at->format('d.m.Y')}}</span>
-                </div>
+        <div class="blog-content">
+            <div class="blog-meta-two">
+                <ul class="list-wrap">
+                    <li><a href="{{route('blog.detail', $blog->getSlug())}}">Admin</a></li>
+                    <li><a href="{{route('blog.detail', $blog->getSlug())}}"><i class="far fa-comment-alt"></i> {{__("Yorum")}} ({{$blog->comments->count()}})</a></li>
+                    <li><a href="{{route('blog.detail', $blog->getSlug())}}"><i class="far fa-bookmark"></i>{{$blog->created_at->format('d.m.Y')}}</a></li>
+                </ul>
             </div>
-            <h5><a href="{{route('blog.detail', $blog->getSlug())}}">{{$blog->getName()}}</a></h5>
-            <p>
-                {!! \Illuminate\Support\Str::limit(strip_tags($blog->getContent()), 180) !!}
-            </p>
-            <div class="mt-3">
-                <a class="button-text-1" href="#">{{__('Daha Fazla')}}</a>
-            </div>
+            <h2 class="title"><a href="{{route('blog.detail', $blog->getSlug())}}">{{$blog->getName()}}</a></h2>
+            <p>  {!! \Illuminate\Support\Str::limit(strip_tags($blog->getContent()), 180) !!}</p>
+            <a href="{{route('blog.detail', $blog->getSlug())}}" class="link-btn">{{__("Daha Fazla")}}<i class="fas fa-angle-double-right"></i></a>
         </div>
     </div>
+
 </div>

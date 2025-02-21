@@ -11,51 +11,85 @@
     }
 @endphp
 @section('title', $title)
+
 @section('description', $description)
+@section('styles')
+    <style>
+        .page-item:last-child .page-link {
+            border-radius: 50% !important;
+        }
+        .page-item:first-child .page-link {
+            border-radius: 50% !important;
+        }
+        .pagination {
+            gap: 10px;
+        }
+        .page-link {
+            position: relative;
+            display: flex;
+            color: #de2312;
+            text-decoration: none;
+            background-color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 17px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #dee2e6;
+            transition: color .15sease-in-out, background-color .15sease-in-out, border-color .15sease-in-out, box-shadow .15sease-in-out;
+        }
+        .page-item.active .page-link {
+            z-index: 3;
+            color: #fff;
+            background-color: #de2312;
+            border-color: #de2312;
+        }
+        .page-link:hover {
+            color: #de2312;
+        }
+    </style>
+@endsection
 @section('content')
 
-    <!-- end Header -->
-    <div class="section-xl bg-image parallax section-divider-curve-bottom" data-bg-src="{{image($image)}}">
-        <div class="bg-dark-06">
-            <div class="container text-center">
-                <h1 class="fw-normal m-0">{{__('Tüm Bloglar')}}</h1>
-                <ul class="list-inline-dash">
-                    <li><a href="/">{{__('Anasayfa')}}</a></li>
-                    <li><a href="{{route('blog.index')}}">{{__('Tüm Bloglar')}}</a></li>
-                    @if(isset($category))
-                        <li><a href="{{route('blog.category', $category->getSlug())}}">{{$category->getName()}}</a></li>
-                    @endif
-                </ul>
-            </div><!-- end container -->
-        </div>
-    </div>
-    <!-- Blog section  -->
-    <div class="section">
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area tg-motion-effects breadcrumb-bg" data-background="/frontend/assets/img/bg/h3_product_bg.jpg">
         <div class="container">
-            <div class="row g-5">
-                <!-- Blog Posts -->
-                @include('frontend.blog.parts.list')
-                <!-- end Blog Posts -->
-
-                <!-- Blog Sidebar -->
-                <div class="col-12 col-lg-4 d-none d-lg-block">
-
-                    @include('frontend.blog.parts.category')
-                    <!-- Sidebar box 3 - Popular Posts -->
-                    @include('frontend.blog.parts.popular')
-                    <!-- Sidebar box 6 - Facebook Like box -->
-                    <div class="border p-4 mb-4 text-center">
-                        <h6 class="font-small fw-medium uppercase mb-4">{{__('Takip Edin')}}</h6>
-                        <ul class="list-inline">
-                            <li><a href="{{setting('speed_facebook_url')}}"><i class="bi bi-facebook"></i></a></li>
-                            <li><a href="{{setting('speed_twitter_url')}}"><i class="bi bi-youtube"></i></a></li>
-                            <li><a href="{{setting('speed_instagram_url')}}"><i class="bi bi-instagram"></i></a></li>
-                        </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">{{__('Tüm Bloglar')}}</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">{{__('Anasayfa')}}</a></li>
+                                <li class="breadcrumb-item active"  aria-current="page"><a href="{{route('blog.index')}}">{{__('Tüm Bloglar')}}</a></li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
-                <!-- end Blog Sidebar -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div>
-    <!-- end Blog section -->
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- blog-area -->
+    <section class="blog-area blog-bg" data-background="assets/img/bg/blog_bg.jpg">
+        <div class="container custom-container-five">
+            <div class="blog-inner-wrap">
+                <div class="row justify-content-center">
+                    @include('frontend.blog.parts.list')
+                    <div class="col-lg-4 col-md-8">
+                        <div class="blog-sidebar">
+
+                            @include('frontend.blog.parts.category')
+                            @include('frontend.blog.parts.popular')
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog-area-end -->
 @endsection

@@ -5,85 +5,128 @@
 
 @endsection
 @section('content')
-    <div class="section-xl bg-image parallax" data-bg-src="{{image($blog->image)}}">
-        <div class="bg-dark-06">
-            <div class="container text-center">
-                <h1 class="fw-light">{{$blog->getName()}}</h1>
-                <ul class="list-inline-dash">
-                    <li><a href="/">{{__('Anasayfa')}}</a></li>
-                    <li><a href="{{route('blog.index')}}">{{__('Tüm Bloglar')}}</a></li>
-                    <li><a href="{{route('blog.category', $blog->category->getSlug())}}">{{$blog->category->getName()}}</a></li>
-                    <li><a href="#comments"><i class="fa fa-comment-dots"></i> {{$blog->comments->count()}} {{__('Yorum')}}</a></li>
-                </ul>
-            </div><!-- end container -->
-        </div>
-    </div>
-
-    <!-- Blog Post section -->
-    <div class="section py-lg-5 py-4" >
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area tg-motion-effects breadcrumb-bg" data-background="/frontend/assets/img/bg/h3_product_bg.jpg">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-12 col-lg-8 order-lg-0 order-1">
-                    <div class="mb-4">
-                        <div class="row gallery-wrapper spacing-3">
-                            <!-- Gallery image box 1 -->
-                            <div class="col-12 gallery-box">
-                                <div class="gallery-img">
-                                    <a href="{{image($blog->image)}}" data-gallery-title="Gallery Image 1">
-                                        <img src="{{image($blog->image)}}" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                     </div>
-                    <div class="content" id="contentBox">
-                        {!! $blog->getContent() !!}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">{{$blog->getName()}}</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">{{__('Anasayfa')}}</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('blog.index')}}">{{__('Tüm Bloglar')}}</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('blog.category', $blog->category->getSlug())}}">{{$blog->category->getName()}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{__('Blog Detayı')}}</li>
+                            </ol>
+                        </nav>
                     </div>
-                </div>
-                <div class="col-lg-4 col-12 border py-3 order-lg-1 order-0" style="height: max-content">
-                    <h6 class="font-small fw-medium uppercase mb-4 text-center">{{__('İçindekiler')}}</h6>
-                    <ul class="list-unstyled">
-                        @foreach($heads as $head)
-                            <li class="pb-2 border-bottom">
-                                <a href="#head-{{$loop->index}}">{!! $head !!} </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
-                <!-- end row -->
         </div>
-            <!-- end container -->
-    </div>
-    <!-- end Blog Post section -->
-    @if($blog->comments->count() > 0)
-        <!-- Comments section -->
-        <div class="section order-2" id="comments">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-8 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-                        <h4 class="mb-5 text-center">{{__('Yorumlar')}}</h4>
-                        @foreach($blog->comments as $comment)
-                            <!-- Comment box 1 -->
-                            <div class="comment-box">
-                                <div class="comment-user-avatar">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <div class="comment-content">
-                                    <span class="comment-time">{{$comment->created_at->diffForHumans()}}</span>
-                                    <h6 class="fw-normal">{{$comment->getUserName()}}</h6>
-                                    <p>{{$comment->getComment()}}</p>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- blog-details-area -->
+    <section class="blog-area blog-details-area blog-bg">
+        <div class="container custom-container-five">
+            <div class="blog-inner-wrap">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="blog-details-wrap">
+                            <div class="blog-thumb">
+                                <img src="{{image($blog->image)}}" alt="">
+                            </div>
+                            <div class="blog-content blog-details-content">
+                                {!! $blog->getContent() !!}
+                            </div>
+                        </div>
+                        @if($blog->comments->count() > 0)
+                            <div class="comments-wrap" id="comments">
+                                <h4 class="comments-wrap-title">{{__('Yorumlar')}}</h4>
+                                <div class="latest-comments">
+                                    <ul class="list-wrap">
+                                        @foreach($blog->comments as $comment)
+                                            <li>
+                                                <div class="comments-box">
+                                                    <div class="comments-avatar">
+                                                        <img src="{{image($comment->image)}}" style="width: 120px;height: 120px;object-fit: cover" alt="img">
+                                                    </div>
+                                                    <div class="comments-text">
+                                                        <div class="avatar-name">
+                                                            <h6 class="name">{{$comment->getUserName()}}</h6>
+                                                        </div>
+                                                        <p>{{$comment->getComment()}}</p>
+                                                        <div class="comment-reply">
+                                                            <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
-                            <!-- Comment box 2 -->
-                        @endforeach
+                        @endif
+
+
                     </div>
-                </div><!-- end row -->
-            </div><!-- end container -->
+                    <div class="col-lg-4 col-md-8">
+                        <div class="blog-sidebar">
+                            <div class="blog-widget">
+                                <h4 class="sw-title">{{__('Kategoriler')}}</h4>
+                                <div class="sidebar-cat-list">
+                                    <ul class="list-wrap">
+                                        @foreach($blogCategories as $blogCategory)
+                                            <li><a href="{{route('blog.category', $blogCategory->getSlug())}}">{{$blogCategory->getName()}} <span>({{$blogCategory->blogs->count()}})</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="sw-title">{{__('Son Bloglar')}}</h4>
+                                <div class="rc-post-list">
+                                    @foreach($latestBlog as $latestBlogItem)
+                                        <div class="rc-post-item">
+                                            <div class="thumb">
+                                                <a href="{{route('blog.detail', $latestBlogItem->getSlug())}}">
+                                                    <img style="border-radius: 10px" src="{{image($latestBlogItem->image)}}" alt=""></a>
+                                            </div>
+                                            <div class="content">
+                                                <h4 class="title"><a href="{{route('blog.detail', $latestBlogItem->getSlug())}}">{{$latestBlogItem->getName()}}</a></h4>
+                                                <span class="date"><i class="fas fa-calendar-alt"></i>{{$latestBlogItem->created_at->translatedFormat('d F Y')}}</span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="blog-widget">
+                                <h4 class="sw-title">{{__('Başlıklar')}}</h4>
+                                <div class="sidebar-tag-list">
+                                    <ul class="list-wrap">
+                                        @foreach($heads as $head)
+                                            <li class="pb-2 border-bottom">
+                                                <a href="#head-{{$loop->index}}">{!! $head !!} </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            {{--
+                            <div class="blog-widget">
+                                <div class="sidebar-add-banner">
+                                    <a href="#"><img src="/frontend/assets/img/blog/add_banner.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            --}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end Comments section -->
-    @endif
+    </section>
+    <!-- blog-details-area-end -->
 
 
 @endsection
