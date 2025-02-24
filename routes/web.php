@@ -69,11 +69,11 @@ Route::get('videos', [FAboutController::class, 'video'])->name('video');
 Route::get('newspaper', [FAboutController::class, 'newspaper'])->name('newspaper');
 Route::get('kvkk', [HomeController::class, 'kvkk'])->name('kvkk.index'); //kvkk
 
-Route::prefix('search')->as('search.')->group(function () {
-    Route::get('/{slug}', [SearchProductController::class, 'category'])->name('category');
-    Route::get('/{slug}/category/{subCategory}', [SearchProductController::class, 'subCategory'])->name('subCategory');
-    Route::get('/{slug}/category/{subCategory}/sub-category/{subCategorySon}', [SearchProductController::class, 'subCategorySon'])->name('subCategorySon');
-    Route::get('/{slug}/category/{subCategory}/sub-category/{subCategorySon}/product/{product}', [SearchProductController::class, 'subCategoryProduct'])->name('subCategoryProduct');
+Route::prefix('product')->as('product.')->group(function () {
+    Route::get('/', [HomeController::class, 'product'])->name('index');
+    Route::get('/{slug}', [HomeController::class, 'productDetail'])->name('detail');
+    Route::get('/category/{slug}', [HomeController::class, 'productCategory'])->name('category');
+
 });
 
 Route::prefix('reference')->as('reference.')->group(function () {

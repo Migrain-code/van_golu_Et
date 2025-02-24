@@ -6,150 +6,133 @@
 @section('title', $title)
 @section('description', $descripton)
 @section('styles')
-    <style>
-        .line {
-            flex-grow: 1;
-            height: 3.72px;
-            background-color: #6667AB;
-        }
-    </style>
+
 @endsection
 @section('content')
-    @include('frontend.product.parts.parallax')
-    <!-- product section -->
-    <div class="section" style="padding-top: 0px !important;">
-        <div class="row mt-3 mt-lg-4 mx-lg-4 mx-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 d-flex align-items-center">
-                        <h1 class="fw-semi-bold text-very-peri me-3">
-                            {{$series->getName()}}
-                        </h1>
-                        <div class="line"></div>
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area tg-motion-effects breadcrumb-bg" data-background="/frontend/assets/img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">{{__('Ürün Detayı')}}</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">{{__('Anasayfa')}}</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('product.index')}}">{{__('Ürünler')}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{__('Ürün Detayı')}}</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <div class="col-12">
-                        <p style="margin-top: -10px;">{{$series->getDescription()}}</p>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
 
-                    <!-- Main content and similar products section -->
-                    <div class="col-12 mt-3 row">
-
-                        <!-- Gallery Section - Order First on Mobile to Show Above Advantages -->
-                        <div class="col-12 col-lg-7 order-1 order-lg-1">
-                            <div class="row gallery-wrapper spacing-3">
-                                <!-- Gallery image box 1 -->
-                                <div class="col-12 gallery-box">
-                                    <div class="gallery-img">
-                                        <a href="{{image($product->image)}}" data-gallery-title="Gallery Image 1">
-                                            <img src="{{image($product->image)}}" alt="">
-                                        </a>
-                                    </div>
-                                </div>
+    <!-- shop-details-area -->
+    <section class="shop-details-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="shop-details-images-wrap">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane show active" id="itemOne-tab-pane" role="tabpanel" aria-labelledby="itemOne-tab" tabindex="0">
+                                <a href="{{image($product->image)}}" class="popup-image">
+                                    <img src="{{image($product->image)}}" alt="" style="width: 600px;height: 500px;object-fit: cover">
+                                </a>
                             </div>
-                        </div>
 
-                        <!-- Product Details Section - Shows Below Gallery on Mobile -->
-                        <div class="col-12 col-lg-5 px-3 order-2 order-lg-2">
-                            <h3 class="text-very-peri">{{$product->getName()}}</h3>
-                            <p>{{$product->getDescription()}}</p>
-                            <h3 class="text-very-peri">{{__("Avantajlar")}}</h3>
-                            <div>{!! $product->getAdvantage() !!}</div>
-                            <div class="d-flex justify-content-center mt-3">
-                                <button class="button button-lg button-rounded button-outline-dark" data-bs-toggle="modal" data-bs-target="#technicalSpecificationsModal" type="button">
-                                    {{__('Teknik Özellikler')}}
+                        </div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="itemOne-tab" data-bs-toggle="tab" data-bs-target="#itemOne-tab-pane" type="button" role="tab" aria-controls="itemOne-tab-pane" aria-selected="true">
+                                    <img src="{{image($product->image)}}" alt="">
                                 </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shop-details-content">
+                        <h2 class="title">{{$product->getName()}}</h2>
+                        <div class="review-wrap">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
+                            <span>({{rand(1, 100)}} {{__('Müşteri Yorumu')}})</span>
                         </div>
+                        <h3 class="price"><span>Stokta</span></h3>
 
-                        @if($series->products->count() > 1)
-                            <div class="col-12 mt-5 order-3 order-lg-3">
-                                <div class="mb-2">
-                                    <div class="col-12 d-flex align-items-center">
-                                        <h3 class="fw-semi-bold text-very-peri me-3">
-                                            {{__("Benzer Ürünler")}}
-                                        </h3>
-                                        <div class="line"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    @foreach($series->products as $product)
-                                        <div class="col-12 col-lg-3 mb-3">
-                                            <div class="blog-card">
-                                                <div class="hoverbox-6 mb-2">
-                                                    <a href="#">
-                                                        <img src="{{image($product->image)}}" alt="">
-                                                    </a>
-                                                </div>
-                                                <h5 class="fw-medium">
-                                                    <a class="text-link-1" href="{{route('search.subCategoryProduct', [$category->getSlug(), $subCategory->getSlug(), $subCategorySon->getSlug(), $product->getSlug()])}}">
-                                                        {{$product->getName()}}
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                        @if(true)
-                            <!-- Blog section -->
-                            <div class="col-12 mt-5 order-4 order-lg-4">
+                        <p>{{$product->getDescription()}}</p>
 
-                                    <div class="mb-2">
-                                        <div class="col-12 d-flex align-items-center">
-                                            <h3 class="fw-semi-bold text-very-peri me-3">
-                                                {{__("Referanslar")}}
-                                            </h3>
-                                            <div class="line"></div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-carousel owl-nav-overlap" data-owl-nav="true" data-owl-margin="30" data-owl-xs="1" data-owl-sm="1" data-owl-md="1" data-owl-lg="3" data-owl-xl="2" data-owl-autoPlay="true">
-                                        @foreach($product->references as $reference)
-                                            <div class="hoverbox-4 bottom border-radius">
-                                                <img src="{{image($reference->reference->image)}}" alt="">
-                                                <div class="content">
-                                                    <h5>{{$reference->reference->getName()}}</h5>
-                                                    <p>
-                                                        {{$reference->reference->getDescription()}}
-                                                    </p>
-                                                </div>
-                                                <div class="hover-content">
-                                                    <a class="button button-lg button-outline-white button-rounded" href="{{route('reference.detail', [$reference->reference->category->getSlug(), $reference->reference->getSlug()])}}">{{ __('İncele') }}</a>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                        <!-- Blog post -->
-
-
-                                    </div>
-
-                            </div>
-                            <!-- end Blog section -->
-
-                        @endif
-
+                        <div class="sd-sku">
+                            <span class="title">SKU:</span>
+                            <a href="#">#{{$product->id}}</a>
+                        </div>
+                        <div class="sd-category">
+                            <span class="title">{{__('Kategori')}}:</span>
+                            <ul class="list-wrap">
+                                <li><a href="#">{{$product->category->getName()}}</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            {!! $product->getAdvantage() !!}
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
-    <!-- Teknik Özellikler Modal -->
-    <div class="modal fade" id="technicalSpecificationsModal" tabindex="-1" aria-labelledby="technicalSpecificationsLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="technicalSpecificationsLabel">{{ __('Teknik Özellikler') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </section>
+    <!-- shop-details-area-end -->
+
+    <!-- product-area -->
+    <section class="related-product-area pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-50">
+                        <span class="sub-title">{{__('Organik Ürünler')}}</span>
+                        <h2 class="title">{{__('İlgili Ürünler')}}</h2>
+                        <div class="title-shape" data-background="assets/img/images/title_shape.png"></div>
+                    </div>
                 </div>
-                <div class="modal-body p-5">
-                    {!! $product->getTechnic() !!}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Kapat') }}</button>
+            </div>
+            <div class="product-item-wrap-three">
+                <div class="row justify-content-center rp-active">
+                    @foreach($product->category->products as $productItem)
+                        <div class="col-xl-3">
+                            <div class="product-item-three inner-product-item">
+                                <div class="product-thumb-three">
+                                    <a href="{{route('product.detail', $productItem->getSlug())}}"><img src="{{image($productItem->image)}}" style="border-radius: 20px" alt=""></a>
+                                    <span class="batch"><i class="fas fa-star"></i></span>
+                                </div>
+                                <div class="product-content-three">
+                                    <a href="{{route('product.category', $productItem->category->getSlug())}}" class="tag">{{$productItem->category->getName()}}</a>
+                                    <h2 class="title"><a href="{{route('product.detail', $productItem->getSlug())}}">{{$productItem->getName()}}</a></h2>
+
+                                </div>
+                                <div class="product-shape-two">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303 445" preserveAspectRatio="none">
+                                        <path d="M319,3802H602c5.523,0,10,5.24,10,11.71l-10,421.58c0,6.47-4.477,11.71-10,11.71H329c-5.523,0-10-5.24-10-11.71l-10-421.58C309,3807.24,313.477,3802,319,3802Z" transform="translate(-309 -3802)" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- product-area-end -->
 @endsection
 
 @section('scripts')

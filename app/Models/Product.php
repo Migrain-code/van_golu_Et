@@ -15,10 +15,7 @@ class Product extends Model
     {
         return $this->hasOne(Series::class, 'id', 'group_id');
     }
-    public function references()
-    {
-        return $this->hasMany(ProductReference::class, 'product_id', 'id');
-    }
+
     public function getName()
     {
         return $this->translate('name');

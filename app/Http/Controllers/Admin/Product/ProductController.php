@@ -29,9 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = SubCategorySon::all();
-        $references = Reference::all();
-        return view('admin.product.create.index', compact('categories', 'references'));
+        $categories = Series::all();
+
+        return view('admin.product.create.index', compact('categories'));
     }
 
     /**
@@ -57,15 +57,7 @@ class ProductController extends Controller
         }
 
         if ($product->save()) {
-            if (isset($request->reference_id) && count($request->reference_id) > 0) {
-                $product->references()->delete();
-                foreach ($request->reference_id as $referenceId) {
-                    $productReference = new ProductReference();
-                    $productReference->reference_id = $referenceId;
-                    $productReference->product_id = $product->id;
-                    $productReference->save();
-                }
-            }
+
             return redirect()->route('admin.product.index')->with('response', [
                 'status' => 'success',
                 'message' => 'Ürün Başarıyla Eklendi'
@@ -78,10 +70,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = SubCategorySon::all();
-        $references = Reference::all();
-        $referenceIds = $product->references()->pluck('reference_id')->toArray();
-        return view('admin.product.edit.index', compact('product', 'categories', 'references', 'referenceIds'));
+        $categories = Series::all();
+
+        return view('admin.product.edit.index', compact('product', 'categories'));
     }
 
     /**
@@ -105,16 +96,6 @@ class ProductController extends Controller
             $product->image = $request->file('image')->store('blogImages');
         }
         if ($product->save()) {
-
-            if (isset($request->reference_id) && count($request->reference_id) > 0) {
-                $product->references()->delete();
-                foreach ($request->reference_id as $referenceId) {
-                    $productReference = new ProductReference();
-                    $productReference->reference_id = $referenceId;
-                    $productReference->product_id = $product->id;
-                    $productReference->save();
-                }
-            }
             return redirect()->route('admin.product.index')->with('response', [
                 'status' => 'success',
                 'message' => 'Ürün Başarıyla Güncellendi'

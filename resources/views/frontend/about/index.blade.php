@@ -3,137 +3,185 @@
 @section('description', setting('about_meta_description'.app()->getLocale().'_text'))
 @section('styles')
     <style>
-        .owl-carousel .owl-item img {
-            width: auto;
-            min-height: 270px;
+        p {
+            font-size: var(--tg-body-font-size);
+            font-weight: var(--tg-body-font-weight);
+            line-height: var(--tg-body-line-height);
+            color: #212121;
+            margin-bottom: 15px;
         }
     </style>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
 @endsection
 @section('content')
-    <!-- end Header -->
-    <div class="section-xl bg-image parallax" data-bg-src="{{image(setting('about_banner_image'))}}">
-        <div class="bg-dark-06">
-            <div class="container text-center">
-                <h1 class="fw-normal m-0">{{__('Hakkımızda')}}</h1>
-                <ul class="list-inline-dash">
-                    <li><a href="/">{{__("Anasayfa")}}</a></li>
-                    <li><a href="{{route('about.index')}}">{{__("Hakkımızda")}}</a></li>
-                </ul>
-            </div><!-- end container -->
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area tg-motion-effects breadcrumb-bg" data-background="/frontend/assets/img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">{{__('Biz Kimiz')}}</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">{{__('Anasayfa')}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{__('Hakkımızda')}}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="section" style="padding: 50px 0px;">
-        <div class="container">
-            <div class="row g-4">
-                {!! setting('about_content_'.app()->getLocale().'_text') !!}
-            </div><!-- end row -->
+    </section>
+    <!-- breadcrumb-area-end -->
 
-        </div><!-- end container -->
-    </div>
-    <!-- Misyon Vizyon  -->
-    <div class="section pt-0">
+    <!-- choose-area -->
+    <section class="choose-area choose-area-two choose-bg" data-background="/frontend/assets/img/bg/choose_bg.jpg">
         <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-12 col-lg-7">
-                    <div class="owl-carousel owl-dots-overlay" data-owl-items="1" data-owl-autoplay="true">
-                        <!-- Carousel item 1 -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-50">
+                        <span class="sub-title">{{__('Van Gölü Et')}}</span>
+                        <h2 class="title">{{__('Neden Mağazamızı Seçmelisiniz')}}</h2>
+                        <div class="title-shape" data-background="/frontend/assets/img/images/title_shape.png"></div>
+                    </div>
+                    <div>
+                        <p>{!! setting('about_content_'.app()->getLocale().'_text') !!}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- choose-area-end -->
+
+    <!-- team-area -->
+    <section class="team-area team-bg" data-background="/frontend/assets/img/bg/team_bg.jpg">
+        <div class="container custom-container-two">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="team-content-wrap">
+                        <div class="section-title white-title mb-50">
+                            <span class="sub-title">{{__('Yönetim')}}</span>
+                            <h2 class="title">{{__('Yönetim Kurulu')}}</h2>
+                        </div>
+                        <p>Van Gölü Et Kurucuları ve Yöneticileri </p>
+
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="team-item-wrap">
+                        <div class="row justify-content-center">
+                            @foreach($teams as $team)
+                                <div class="col-lg-4 col-md-6 col-sm-8">
+                                    <div class="team-item">
+                                        <div class="team-thumb">
+                                            <img src="{{image($team->image)}}" alt="">
+                                            <a href="javascript:void(0)" class="link-btn"><i class="fas fa-plus"></i></a>
+                                        </div>
+                                        <div class="team-content">
+                                            <div class="line" data-background="assets/img/images/line.png"></div>
+                                            <h4 class="title"><a href="javascript:void(0)">{{$team->name}}</a></h4>
+                                            <span>{{$team->getMission()}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- team-area-end -->
+
+    <!-- faq-area -->
+    <section class="faq-area tg-motion-effects faq-bg" data-background="/frontend/assets/img/bg/faq_bg.jpg">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-10">
+                    <div class="faq-img-wrap">
+                        <img src="{{image(setting('about_banner_image'))}}" alt="">
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="faq-content">
+                        <div class="faq-wrap">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {{__('Misyonumuz')}}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>{{setting('about_mission_'.app()->getLocale().'_text')}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            {{__('Vizyonumuz')}}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>{{setting('about_vission_'.app()->getLocale().'_text')}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="faq-shape-wrap">
+            <img src="/frontend/assets/img/images/faq_shape01.png" alt="" class="tg-motion-effects3">
+            <img src="/frontend/assets/img/images/faq_shape02.png" alt="" class="tg-motion-effects2">
+        </div>
+    </section>
+    <!-- faq-area-end -->
+    <section class="choose-area choose-area-two choose-bg" data-background="/frontend/assets/img/bg/choose_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-50">
+                        <span class="sub-title">{{__('Galeri')}}</span>
+                        <h2 class="title">{{__('Resim Galerimiz')}}</h2>
+                        <div class="title-shape" data-background="/frontend/assets/img/images/title_shape.png"></div>
+                    </div>
+                    <div class="d-flex gap-3" style="width: 1800px; overflow-x: auto">
                         @foreach($galleries as $gallery)
-                            <div>
-                                <img src="{{image($gallery->image)}}" alt="">
+                            <div class="col-4">
+                                <a href="{{image($gallery->image)}}" data-fancybox="gallery" data-caption="{{$loop->index}}">
+                                    <img src="{{image($gallery->image)}}" style="border-radius: 10px" />
+                                </a>
                             </div>
+
                         @endforeach
-
                     </div>
                 </div>
-                <div class="col-12 col-lg-5">
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-12">
-                            <h4 class="fw-bold">Misyonumuz</h4>
-                            <p>{{setting('about_mission_'.app()->getLocale().'_text')}}</p>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-12">
-                            <h4 class="fw-bold">Vizyonumuz</h4>
-
-                            <p>{{setting('about_vission_'.app()->getLocale().'_text')}}</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div>
-
-    <!-- product section -->
-    <div class="section" style="padding-top: 0px !important;">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center mb-4">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h6 class="d-inline-block bg-gray border-radius
-								 px-3 py-2 line-height-140 font-small uppercase letter-spacing-1 mb-3">
-									<span class="text-color-theme">
-										{{__('Referanslar')}}
-									</span>
-                        </h6>
-                        <h2 class="fw-bold mb-1">
-                            {{__("Referanslarımız")}}
-                        </h2>
-                        <p class="">
-                            {{__("Referanslarımız Alt Başlığı")}}
-                        </p>
-                    </div>
-
-                </div>
-
             </div>
-            <div class="mb-0">
-                <div class="row g-3 g-lg-4">
-                    @foreach($references as $reference)
-                        <div class="col-12 col-lg-3">
-                            <div class="hoverbox-4 bottom border-radius">
-                                <img src="{{image($reference->image)}}" style="min-height: 315px;object-fit: cover" alt="">
-                                <div class="content">
-                                    <h5>{{$reference->getName()}}</h5>
-                                </div>
-                                <div class="hover-content">
-                                    <a class="button button-md button-radius button-outline-white" href="{{route('reference.detail', [$reference->category->getSlug(), $reference->getSlug()])}}">Detay</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div><!-- end row -->
-            </div>
+
         </div>
-    </div>
-    <!-- end product section -->
-    <!-- product section -->
-    <div class="section" style="padding-top: 0px !important;">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center mb-4">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h2 class="fw-bold mb-1">
-                            {{__("İndirilebilir İçerik")}}
-                        </h2>
-                    </div>
+    </section>
 
-                </div>
+@endsection
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            // Your custom options for a specific gallery
+        });
+    </script>
 
-            </div>
-            <div class="mb-0">
-                <div class="owl-carousel" data-owl-dots="false" data-owl-nav="true" data-owl-margin="50" data-owl-autoplay="true" data-owl-xs="1" data-owl-sm="2" data-owl-md="3" data-owl-lg="4" data-owl-xl="5">
-                    @foreach($downloadableContents as $downCont)
-                        <div class="client-box">
-                            <a href="{{image($downCont->getFile())}}" target="_blank">
-                                <img src="{{image($downCont->getImage())}}" alt="">
-                                <span class="fw-semibold p-3 d-block">{{$downCont->getName()}}</span>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end product section -->
 @endsection

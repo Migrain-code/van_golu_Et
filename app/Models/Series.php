@@ -11,11 +11,6 @@ class Series extends Model
 
     public $translatable = ['name', 'slug', 'description', 'meta_title', 'meta_description'];
 
-    public function parent()
-    {
-        return $this->hasOne(SubCategorySon::class, 'id', 'category_id');
-    }
-
     public function products()
     {
         return $this->hasMany(Product::class, 'group_id', 'id')->where('status', 1);

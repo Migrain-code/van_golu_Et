@@ -10,6 +10,7 @@ use App\Models\Language;
 use App\Models\MainPage;
 use App\Models\Product;
 use App\Models\Reference;
+use App\Models\Series;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -27,6 +28,23 @@ class HomeController extends Controller
         return view('frontend.home.index', compact('products','sliders', 'parts', 'blogs', 'references', 'categories'));
     }
 
+    public function product()
+    {
+        $products = Product::where('status', 1)->paginate(12);
+        return view('frontend.product.category.index', compact('products'));
+    }
+
+    public function productDetail($slug)
+    {
+        $product = Product::whereJsonContains('slug->' . App::getLocale(), $slug)->first();
+        return view('frontend.product.detail.index', compact('product'));
+    }
+    public function productCategory($slug)
+    {
+        $category = Series::whereJsonContains('slug->' . App::getLocale(), $slug)->first();
+        $products = $category->products()->paginate(12);
+        return view('frontend.product.category.index', compact('products', 'category'));
+    }
     public function changeLanguage(Language $language)
     {
         $locale = $language->code;
