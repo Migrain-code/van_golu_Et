@@ -54,6 +54,7 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
+                                    <li><a href="/">{{__('Anasayfa')}}</a></li>
                                     <li><a href="{{route('about.index')}}">{{__('Hakkımızda')}}</a></li>
                                     <li><a href="{{route('product.index')}}">{{__('Ürünler')}}</a></li>
                                     <li><a href="{{route('blog.index')}}">{{__('Bloglar')}}</a></li>

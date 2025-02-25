@@ -34,7 +34,7 @@
             @foreach($categories as $category)
                 <div class="col">
                     <div class="category-item">
-                        <a href="#">
+                        <a href="{{route('product.category', $category->getSlug())}}">
                             <div class="icon">
                                 <img src="{{image($category->image)}}" alt="">
                             </div>

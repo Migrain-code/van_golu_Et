@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Series::all();
+        $categories = Category::all();
 
         return view('admin.product.create.index', compact('categories'));
     }
@@ -70,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Series::all();
+        $categories = Category::all();
 
         return view('admin.product.edit.index', compact('product', 'categories'));
     }
@@ -105,7 +105,7 @@ class ProductController extends Controller
 
     public function datatable()
     {
-        $data = Product::latest();
+        $data = Product::orderBy('id', 'asc');
 
         return DataTables::of($data)
             ->editColumn('id', function ($q) {

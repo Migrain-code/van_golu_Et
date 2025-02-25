@@ -15,19 +15,22 @@
         <div class="product-item-wrap-four">
             <div class="row justify-content-center">
                 @foreach($products as $product)
+                    @php
+                        $link = route('product.detail', $product->getSlug());
+                    @endphp
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                         <div class="product-item-four">
                             <div class="product-thumb-four">
-                                <a href="shop-details.html"><img src="{{image($product->image)}}" alt=""></a>
+                                <a href="{{$link}}"><img src="{{image($product->image)}}" alt=""></a>
                                 <span class="batch"><i class="fas fa-star"></i></span>
                             </div>
                             <div class="product-content-four">
                                 <div class="line" data-background="/frontend/assets/img/images/line.png"></div>
-                                <h2 class="title"><a href="shop-details.html">{{$product->getName()}}</a></h2>
+                                <h2 class="title"><a href="{{$link}}">{{$product->getName()}}</a></h2>
 
                                 <div class="product-tag">
                                     <ul class="list-wrap">
-                                        <li><a href="shop.html">{{$product->category->getName()}}</a></li>
+                                        <li><a href="{{$link}}">{{$product->category->getName()}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -41,7 +44,7 @@
                 @endforeach
             </div>
             <div class="shop-now-btn text-center mt-20">
-                <a href="shop.html" class="btn btn-two">Tüm Ürünler</a>
+                <a href="{{route('product.index')}}" class="btn btn-two">{{__('Tüm Ürünler')}}</a>
             </div>
         </div>
     </div>

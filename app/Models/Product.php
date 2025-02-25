@@ -13,7 +13,7 @@ class Product extends Model
     public $translatable = ['name', 'slug', 'meta_title', 'meta_description', 'description', 'advantage', 'technic'];
     public function category()
     {
-        return $this->hasOne(Series::class, 'id', 'group_id');
+        return $this->hasOne(Category::class, 'id', 'group_id');
     }
 
     public function getName()

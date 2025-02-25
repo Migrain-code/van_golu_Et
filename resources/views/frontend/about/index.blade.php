@@ -104,10 +104,10 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 col-md-10">
-                    <div class="faq-img-wrap">
-                        <img src="{{image(setting('about_banner_image'))}}" alt="">
 
-                    </div>
+                        <img src="{{image(setting('about_banner_image'))}}" style="width: 100%;" alt="">
+
+
                 </div>
                 <div class="col-lg-6">
                     <div class="faq-content">

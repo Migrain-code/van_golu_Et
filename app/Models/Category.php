@@ -12,11 +12,11 @@ class Category extends Model
     public $translatable = ['name', 'slug', 'meta_title', 'meta_description'];
 
     // Alt kategoriler için ilişki
-    public function subcategories()
-    {
-        return $this->hasMany(SubCategory::class, 'category_id', 'id');
-    }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'group_id', 'id')->where('status', 1);
+    }
     public function getName()
     {
         return $this->translate('name');

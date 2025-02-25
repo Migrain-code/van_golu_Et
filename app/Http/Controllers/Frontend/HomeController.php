@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function product()
     {
-        $products = Product::where('status', 1)->paginate(12);
+        $products = Product::where('status', 1)->orderBy('id', 'asc')->paginate(12);
         return view('frontend.product.category.index', compact('products'));
     }
 
@@ -41,8 +41,15 @@ class HomeController extends Controller
     }
     public function productCategory($slug)
     {
-        $category = Series::whereJsonContains('slug->' . App::getLocale(), $slug)->first();
+        $category = Category::whereJsonContains('slug->' . App::getLocale(), $slug)->first();
+
         $products = $category->products()->paginate(12);
+        if ($products->count() == 0){
+            return to_route('home')->with('response', [
+               'status' => "error",
+               'message' => "Kategoride Ürün Bulunamadı"
+            ]);
+        }
         return view('frontend.product.category.index', compact('products', 'category'));
     }
     public function changeLanguage(Language $language)

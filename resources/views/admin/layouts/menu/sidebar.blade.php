@@ -211,19 +211,7 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
-
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link-->
-                            <a class="menu-link @if(request()->routeIs('admin.series.*')) active @endif" href="{{route('admin.series.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Ürün Grupları</span>
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
+                        
                     </div>
                     <!--end:Menu Müşteriler-->
 
