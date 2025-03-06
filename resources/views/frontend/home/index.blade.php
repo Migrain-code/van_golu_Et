@@ -134,4 +134,11 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /*let iframe = document.querySelector("iframe");
+            let videoSrc = iframe.getAttribute("src");
+            iframe.setAttribute("src", videoSrc + "?autoplay=1");*/
+        });
+    </script>
 @endsection

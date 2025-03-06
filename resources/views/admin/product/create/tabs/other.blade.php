@@ -21,5 +21,12 @@
         </select>
         <!--end::Input-->
     </div>
-
+    <div class="fv-row mb-7">
+        <!--begin::Label-->
+        <label class="required fs-6 fw-semibold mb-2">Ürün Fiyatı</label>
+        <!--end::Label-->
+        <!--begin::Input-->
+        <input type="number" class="form-control form-control-solid" placeholder="" name="price" value="" />
+        <!--end::Input-->
+    </div>
 </div>

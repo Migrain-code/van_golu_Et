@@ -15,6 +15,7 @@ class FContactController extends Controller
 
     public function store(Request $request)
     {
+
         $contactRequest = new ContactRequest();
         $contactRequest->name = $request->get('name');
         $contactRequest->email = $request->get('email');
@@ -22,7 +23,7 @@ class FContactController extends Controller
         $contactRequest->message = $request->get('message');
         $contactRequest->ip_address = $request->ip();
         if ($contactRequest->save()) {
-            return redirect()->route('contact.index')->with('response', [
+            return back()->with('response', [
                 'status' => "success",
                 'message' => trans('Mesajınız başarıyla gönderildi')
             ]);

@@ -44,11 +44,12 @@ class AppServiceProvider extends ServiceProvider
         }
 
         \Config::set('settings', $settings);
-        $cities = City::all();
-        View::share('cities', $cities);
 
         $languages = Language::orderBy('id', 'asc')->get();
         View::share('languages', $languages);
+
+        $categories = Category::where('status', 1)->take(5)->get();
+        View::share('categories', $categories);
 
         Paginator::useBootstrap();
     }

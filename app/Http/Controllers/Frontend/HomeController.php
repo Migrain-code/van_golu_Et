@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\EmailSubscribtion;
 use App\Models\Language;
 use App\Models\MainPage;
 use App\Models\Product;
@@ -23,11 +24,28 @@ class HomeController extends Controller
         $parts = MainPage::where('status', 1)->get();
         $references = Reference::where('status', 1)->take(3)->get();
         $blogs = Blog::where('status', 1)->where('is_main_page', 1)->take(4)->get();
-        $categories = Category::where('status', 1)->take(5)->get();
+
         $products = Product::where('status', 1)->take(8)->get();
-        return view('frontend.home.index', compact('products','sliders', 'parts', 'blogs', 'references', 'categories'));
+        return view('frontend.home.index', compact('products','sliders', 'parts', 'blogs', 'references'));
     }
 
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ], [
+            'email.required' => 'Email alanı boş bırakılamaz.',
+            'email.email' => 'Email adresiniz gecersiz.'
+        ]);
+        $emailSubs = new EmailSubscribtion();
+        $emailSubs->email = $request->email;
+        $emailSubs->ip_address = $request->ip();
+        $emailSubs->save();
+        return back()->with('response', [
+            'status' => "success",
+            'message' => trans('Email aboneliğiniz başarıyla alındı.')
+        ]);
+    }
     public function product()
     {
         $products = Product::where('status', 1)->orderBy('id', 'asc')->paginate(12);

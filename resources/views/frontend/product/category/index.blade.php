@@ -117,6 +117,7 @@
                                             </div>
                                             <div class="product-content-three">
                                                 <a href="{{$link}}" class="tag"></a>
+                                                <h4 class="price">{{formatPrice($product->price)}}</h4>
                                                 <h2 class="title"><a href="{{$link}}">{{$product->getName()}}</a></h2>
                                             </div>
                                             <div class="product-shape-two">

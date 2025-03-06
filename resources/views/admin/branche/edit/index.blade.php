@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Ürün Düzenle')
+@section('title', 'Şube Düzenle')
 @section('styles')
     <style>
         .nav-line-tabs .nav-item .nav-link {
@@ -12,12 +12,11 @@
             font-weight: bold;
             font-size: 16px;
         }
-
     </style>
 @endsection
 @section('breadcrumb')
     <!--begin::Title-->
-    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Ürün Düzenle</h1>
+    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Şube Düzenle</h1>
     <!--end::Title-->
     <!--begin::Breadcrumb-->
     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -44,7 +43,7 @@
         <li class="breadcrumb-item text-muted"></li>
         <!--end::Item-->
         <li class="breadcrumb-item text-muted">
-            <a href="{{route('admin.product.index')}}" class="text-muted text-hover-primary">Ürünler</a>
+            <a href="{{route('admin.branche.index')}}" class="text-muted text-hover-primary">Şubeler</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->
@@ -53,7 +52,7 @@
         </li>
 
         <li class="breadcrumb-item text-muted">
-           Ürün Düzenle
+           Şube Düzenle
         </li>
     </ul>
     <!--end::Breadcrumb-->
@@ -66,13 +65,13 @@
         <div class="card">
             <!--begin::Card header-->
             <div class="card-header">
-                <div class="card-title">Ürün Düzenle</div>
+                <div class="card-title">Şube Düzenle</div>
 
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form class="form" action="{{route('admin.product.update', $product->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
+                <form class="form" action="{{route('admin.branche.update', $branche->id)}}" method="post" id="kt_modal_add_faq_form" enctype="multipart/form-data" data-kt-redirect="">
                     <!--begin::Modal body-->
                     @csrf
                     @method('PUT')
@@ -82,7 +81,7 @@
                             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6">
                                 @foreach($languages as $row)
                                     <li class="nav-item">
-                                        <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">Ürün Bilgileri ({{$row->name}})</a>
+                                        <a class="nav-link @if($loop->first) active @endif" data-bs-toggle="tab" href="#kt_tab_pane_{{$row->code}}">Şube Bilgileri ({{$row->name}})</a>
                                     </li>
                                 @endforeach
                                     <li class="nav-item">
@@ -92,9 +91,9 @@
 
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $row)
-                                    @include('admin.product.edit.tabs.tab')
+                                    @include('admin.branche.edit.tabs.tab')
                                 @endforeach
-                                @include('admin.product.edit.tabs.other')
+                                @include('admin.branche.edit.tabs.other')
 
                             </div>
 
@@ -127,11 +126,10 @@
     <script>
         tinymce.init({
             selector: ".tinyMiceEditor",
-            height: "300",
+            height : "300",
             language: 'tr',
-            plugins: "advlist autolink link image lists charmap print preview table",
-            toolbar: "formatselect | bold italic underline | alignleft aligncenter alignright | numlist bullist | link image table | preview",
+            plugins : "advlist autolink link image lists charmap print preview",
+            toolbar: "formatselect | bold italic underline | alignleft aligncenter alignright | numlist bullist | link image | preview",
         });
-
     </script>
 @endsection

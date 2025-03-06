@@ -6,7 +6,12 @@
 @section('title', $title)
 @section('description', $descripton)
 @section('styles')
-
+    <style>
+        tbody, td, tfoot, th, thead, tr {
+            border: 1px solid #565674FF !important;
+            padding: 5px;
+        }
+    </style>
 @endsection
 @section('content')
     <!-- breadcrumb-area -->
@@ -67,8 +72,8 @@
                             </div>
                             <span>({{rand(1, 100)}} {{__('Müşteri Yorumu')}})</span>
                         </div>
-                        <h3 class="price"><span>Stokta</span></h3>
 
+                        <h3 class="price">{{formatPrice($product->price)}} <span>- Stokta</span></h3>
                         <p>{{$product->getDescription()}}</p>
 
                         <div class="sd-sku">
@@ -116,6 +121,7 @@
                                 <div class="product-content-three">
                                     <a href="{{route('product.category', $productItem->category->getSlug())}}" class="tag">{{$productItem->category->getName()}}</a>
                                     <h2 class="title"><a href="{{route('product.detail', $productItem->getSlug())}}">{{$productItem->getName()}}</a></h2>
+                                    <h4 class="price">{{formatPrice($product->price)}}</h4>
 
                                 </div>
                                 <div class="product-shape-two">

@@ -125,10 +125,10 @@
     <script>
         tinymce.init({
             selector: ".tinyMiceEditor",
-            height : "300",
+            height: "300",
             language: 'tr',
-            plugins : "advlist autolink link image lists charmap print preview",
-            toolbar: "formatselect | bold italic underline | alignleft aligncenter alignright | numlist bullist | link image | preview",
+            plugins: "advlist autolink link image lists charmap print preview table",
+            toolbar: "formatselect | bold italic underline | alignleft aligncenter alignright | numlist bullist | link image table | preview",
         });
     </script>
 @endsection

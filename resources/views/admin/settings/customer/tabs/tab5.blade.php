@@ -20,6 +20,14 @@
                     <input type="text" class="form-control form-control-solid" placeholder="" name="speed_address" value="{{setting('speed_address')}}" />
                     <!--end::Input-->
                 </div>
+                <div class="fv-row mb-7">
+                    <!--begin::Label-->
+                    <label class="required fs-6 fw-semibold mb-2">Footer Hakkımızda Yazısı</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <input type="text" class="form-control form-control-solid" placeholder="" name="speed_about_text" value="{{setting('speed_about_text')}}" />
+                    <!--end::Input-->
+                </div>
                 <!--end::Input group-->
                 <div class="fv-row mb-7">
                     <!--begin::Label-->
@@ -51,6 +59,14 @@
                     <!--end::Label-->
                     <!--begin::Input-->
                     <input type="file" class="form-control form-control-solid" placeholder="" name="speed_footer_image" value="" />
+                    <!--end::Input-->
+                </div>
+                <div class="fv-row mb-7">
+                    <!--begin::Label-->
+                    <label class="required fs-6 fw-semibold mb-2">Footer Hakkımızda Yazısı</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <textarea class="form-control form-control-solid" placeholder="" name="speed_about_text">{{setting('speed_about_text')}}</textarea>
                     <!--end::Input-->
                 </div>
             </div>

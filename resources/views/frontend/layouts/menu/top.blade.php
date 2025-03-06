@@ -19,11 +19,7 @@
                 </div>
                 <div class="col-lg-6 col-md-4">
                     <div class="header-top-right">
-                        <div class="header-top-menu">
-                            <ul class="list-wrap">
-                                <li><a href="{{route('contact.index')}}">{{__('İletişim')}}</a></li>
-                            </ul>
-                        </div>
+
                         <div class="header-top-social">
                             <ul class="list-wrap">
                                 @if(setting('speed_facebook_url'))
@@ -58,8 +54,7 @@
                                     <li><a href="{{route('about.index')}}">{{__('Hakkımızda')}}</a></li>
                                     <li><a href="{{route('product.index')}}">{{__('Ürünler')}}</a></li>
                                     <li><a href="{{route('blog.index')}}">{{__('Bloglar')}}</a></li>
-                                    <li><a href="#">{{__('İletişim')}}</a></li>
-                                    <li><a href="#">{{__('Şubeler')}}</a></li>
+                                    <li><a href="{{route('branche.index')}}">{{__('Şubeler')}}</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">

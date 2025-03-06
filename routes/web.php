@@ -49,16 +49,22 @@ use Illuminate\Support\Facades\Route;
 Route::post('city', [HomeController::class, 'city'])->name('city');
 Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('subscribe', [HomeController::class, 'subscribe'])->name('subscribe');//->middleware('throttle:2,5');// 5 Dakikada 1 istek
+
 Route::prefix('blog')->as('blog.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Frontend\FBlogController::class, 'index'])->name('index');
     Route::get('/{slug}', [\App\Http\Controllers\Frontend\FBlogController::class, 'detail'])->name('detail');
     Route::get('/category/{slug}', [\App\Http\Controllers\Frontend\FBlogController::class, 'category'])->name('category');
 });
-
+Route::prefix('subeler')->as('branche.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\FBrancheController::class, 'index'])->name('index');
+    Route::get('/{branche}', [\App\Http\Controllers\FBrancheController::class, 'detail'])->name('detail');
+});
 Route::prefix('contact')->as('contact.')->group(function () {
    Route::get('/', [FContactController::class, 'index'])->name('index');
-   Route::post('/form', [FContactController::class, 'store'])->name('sendForm')->middleware('throttle:1,5');
+   Route::post('/form', [FContactController::class, 'store'])->name('sendForm');//->middleware('throttle:1,5');
 });
+
 Route::prefix('job-request-form')->as('jobRequest.')->group(function () {
     Route::get('/', [FJobRequestFormController::class, 'index'])->name('index');
     Route::post('/form', [FJobRequestFormController::class, 'store'])->name('sendForm')/*->middleware('throttle:1,5')*/;
@@ -122,6 +128,7 @@ Route::middleware('auth')->prefix('dashboard')->as('admin.')->group(function (){
     Route::resource('product', ProductController::class);
     Route::resource('reference-category', ReferenceCategoryController::class);
     Route::resource('productionCategory', ProductionCategoryController::class);
+    Route::resource('branche', \App\Http\Controllers\BrancheController::class);
 
     /*------------------------------Ajax Commands-----------------------------------*/
     Route::controller(AjaxController::class)->as('ajax.')->prefix('ajax')->group(function () {
