@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{setting('speed_site_title')." | "}}@yield('title', trans('Anasayfa'))</title>
     <meta name="description" content="@yield('description', trans(setting('speed_meta_descriptions')))">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BTHP0CGY2C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-BTHP0CGY2C');
+    </script>
     <!-- Favicon -->
     @include('frontend.layouts.components.styles')
 
