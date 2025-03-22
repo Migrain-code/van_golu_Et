@@ -23,13 +23,13 @@
                         <div class="header-top-social">
                             <ul class="list-wrap">
                                 @if(setting('speed_facebook_url'))
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{setting('speed_facebook_url')}}"><i class="fab fa-facebook-f"></i></a></li>
                                 @endif
                                 @if(setting('speed_twitter_url'))
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-twitter"></i></a></li>
                                 @endif
                                 @if(setting('speed_intagram_url'))
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{setting('speed_intagram_url')}}"><i class="fab fa-instagram"></i></a></li>
                                 @endif
                             </ul>
                         </div>
