@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
-@section('title', setting('about_meta_title_'.app()->getLocale().'_text'))
-@section('description', setting('about_meta_description'.app()->getLocale().'_text'))
+@section('title', 'Van Gölü Et Şubeleri – Kaliteli ve Taze Etin Adresi')
+@section('description', 'Van Gölü Et olarak en kaliteli ve taze etleri sunuyoruz! Size en yakın şubemizi bulmak ve adres bilgilerine ulaşmak için hemen tıklayın.')
 @section('styles')
 
 @endsection
