@@ -33,7 +33,8 @@
                     <div class="col-lg-4" style="cursor: pointer" onclick="window.open('{{route('branche.detail', $branche->getSlug())}}', '_parent')">
                         <div class="card" style="border-radius: 15px">
                             <div class="card-body">
-                                <img src="{{image($branche->image)}}" style="border-radius: 15px">
+                                <img src="{{image($branche->image)}}" style="border-radius: 15px;height: 400px;
+    object-fit: cover;">
                                 <h3 class="title mt-3">{{$branche->getName()}}</h3>
                             </div>
                         </div>
