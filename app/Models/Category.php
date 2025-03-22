@@ -15,7 +15,7 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'group_id', 'id')->where('status', 1);
+        return $this->hasMany(Product::class, 'group_id', 'id')->where('status', 1)->orderBy('order_number');
     }
     public function getName()
     {

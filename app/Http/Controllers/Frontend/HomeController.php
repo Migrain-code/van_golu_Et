@@ -48,7 +48,7 @@ class HomeController extends Controller
     }
     public function product()
     {
-        $products = Product::where('status', 1)->orderBy('id', 'asc')->paginate(12);
+        $products = Product::where('status', 1)->orderBy('order_number', 'asc')->paginate(12);
         return view('frontend.product.category.index', compact('products'));
     }
 
