@@ -72,8 +72,8 @@
                     <!-- Mobile Menu  -->
                     <div class="mobile-menu">
                         <nav class="menu-box">
-                            <div class="close-btn"><i class="fas fa-times"></i></div>
-                            <div class="nav-logo">
+                            <div class="close-btn"><i class="fas fa-times" style="color: white"></i></div>
+                            <div class="nav-logo" style="background: #2e1b16">
                                 <a href="/"><img src="{{image(setting('logo'))}}" alt="Logo"></a>
                             </div>
                             <div class="menu-outer">
@@ -81,9 +81,18 @@
                             </div>
                             <div class="social-links">
                                 <ul class="clearfix list-wrap">
-                                    <li><a href="{{setting('speed_facebook_url')}}"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="{{setting('speed_instagram_url')}}"><i class="fab fa-instagram"></i></a></li>
+                                    @if(setting('speed_facebook_url'))
+                                        <li><a href="{{setting('speed_facebook_url')}}"><i class="fab fa-facebook-f"></i></a></li>
+                                    @endif
+                                    @if(setting('speed_twitter_url'))
+                                            <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-twitter"></i></a></li>
+                                    @endif
+                                    @if(setting('speed_intagram_url'))
+                                            <li><a href="{{setting('speed_intagram_url')}}"><i class="fab fa-instagram"></i></a></li>
+                                    @endif
+
+
+
                                 </ul>
                             </div>
                         </nav>

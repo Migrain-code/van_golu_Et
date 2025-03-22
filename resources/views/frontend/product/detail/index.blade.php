@@ -72,8 +72,7 @@
                             </div>
                             <span>({{rand(1, 100)}} {{__('Müşteri Yorumu')}})</span>
                         </div>
-
-                        <h3 class="price">{{formatPrice($product->price)}} <span>- Stokta</span></h3>
+                        {{--  <h4 class="price">{{formatPrice($product->price)}}</h4> --}}
                         <p>{{$product->getDescription()}}</p>
 
                         <div class="sd-sku">
@@ -121,8 +120,7 @@
                                 <div class="product-content-three">
                                     <a href="{{route('product.category', $productItem->category->getSlug())}}" class="tag">{{$productItem->category->getName()}}</a>
                                     <h2 class="title"><a href="{{route('product.detail', $productItem->getSlug())}}">{{$productItem->getName()}}</a></h2>
-                                    <h4 class="price">{{formatPrice($product->price)}}</h4>
-
+                                    {{--  <h4 class="price">{{formatPrice($product->price)}}</h4> --}}
                                 </div>
                                 <div class="product-shape-two">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303 445" preserveAspectRatio="none">

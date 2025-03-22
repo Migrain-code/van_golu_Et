@@ -27,7 +27,7 @@
                             <div class="product-content-four">
                                 <div class="line" data-background="/frontend/assets/img/images/line.png"></div>
                                 <h2 class="title"><a href="{{$link}}">{{$product->getName()}}</a></h2>
-                                <h4 class="price">{{formatPrice($product->price)}}</h4>
+                                {{--  <h4 class="price">{{formatPrice($product->price)}}</h4> --}}
                                 <div class="product-tag">
                                     <ul class="list-wrap">
                                         <li><a href="{{$link}}">{{$product->category->getName()}}</a></li>
