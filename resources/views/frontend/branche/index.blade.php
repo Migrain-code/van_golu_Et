@@ -36,6 +36,10 @@
                                 <img src="{{image($branche->image)}}" style="border-radius: 15px;height: 400px;
     object-fit: cover;">
                                 <h3 class="title mt-3">{{$branche->getName()}}</h3>
+                                <div class="d-flex justify-content-end">
+                                    <a class="btn" style="font-size: 12px" href="{{route('branche.detail', $branche->getSlug())}}"><span>{{__('Şubeye Git')}}</span></a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
