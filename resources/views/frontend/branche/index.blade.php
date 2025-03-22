@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 @foreach($branches as $branche)
-                    <div class="col-lg-4" style="cursor: pointer" onclick="window.open('{{route('branche.detail', $branche->getSlug())}}', '_parent')">
+                    <div class="col-lg-4 mb-2" style="cursor: pointer" onclick="window.open('{{route('branche.detail', $branche->getSlug())}}', '_parent')">
                         <div class="card" style="border-radius: 15px">
                             <div class="card-body">
                                 <img src="{{image($branche->image)}}" style="border-radius: 15px;height: 400px;
