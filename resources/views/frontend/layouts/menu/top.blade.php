@@ -26,7 +26,7 @@
                                     <li><a href="{{setting('speed_facebook_url')}}"><i class="fab fa-facebook-f"></i></a></li>
                                 @endif
                                 @if(setting('speed_twitter_url'))
-                                    <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-whatsapp"></i></a></li>
                                 @endif
                                 @if(setting('speed_intagram_url'))
                                     <li><a href="{{setting('speed_intagram_url')}}"><i class="fab fa-instagram"></i></a></li>
@@ -85,11 +85,13 @@
                                         <li><a href="{{setting('speed_facebook_url')}}"><i class="fab fa-facebook-f"></i></a></li>
                                     @endif
                                     @if(setting('speed_twitter_url'))
-                                            <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="{{setting('speed_twitter_url')}}"><i class="fab fa-whatsapp"></i></a></li>
                                     @endif
                                     @if(setting('speed_intagram_url'))
                                             <li><a href="{{setting('speed_intagram_url')}}"><i class="fab fa-instagram"></i></a></li>
                                     @endif
+
+                                    <a class="btn " href="{{setting('speed_twitter_url')}}">Bize Ulaşın</a>
 
 
 
